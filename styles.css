@@ -1,208 +1,161 @@
-/* Variables globales */
-:root {
-    --primary-color: #2d5a7f;
-    --accent-color: #64ffda;
-    --text-primary: #ffffff;
-    --text-secondary: #b3e0ff;
-    --gradient-start: #1a1a2e;
-    --gradient-end: #16213e;
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', () => {
+    // Inicializar todas las funcionalidades
+    initNavbar();
+    initTypingEffect();
+    initScrollAnimations();
+    initProjectHovers();
+    initSkillCards();
+});
+
+// Control de la navbar
+function initNavbar() {
+    const navbar = document.querySelector('.navbar');
+    let lastScroll = 0;
+
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+
+        // Cambiar estilo de navbar al hacer scroll
+        if (currentScroll > 100) {
+            navbar.style.background = 'rgba(10, 25, 47, 0.95)';
+            navbar.style.boxShadow = '0 10px 30px -10px rgba(2, 12, 27, 0.7)';
+        } else {
+            navbar.style.background = 'rgba(10, 25, 47, 0.85)';
+            navbar.style.boxShadow = 'none';
+        }
+
+        // Ocultar/mostrar navbar al hacer scroll
+        if (currentScroll > lastScroll && currentScroll > 100) {
+            navbar.style.transform = 'translateY(-100%)';
+        } else {
+            navbar.style.transform = 'translateY(0)';
+        }
+
+        lastScroll = currentScroll;
+    });
 }
 
-/* Estilos base y reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+// Efecto de escritura para el subtítulo
+function initTypingEffect() {
+    const text = document.querySelector('.typing-text');
+    const words = ['TSU en Desarrollo Multiplataforma', 'Desarrollador Web', 'Programador'];
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let isLineEnding = false;
 
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    color: var(--text-primary);
-    overflow-x: hidden;
-    line-height: 1.6;
-}
+    function type() {
+        const word = words[wordIndex];
+        const currentWord = word.substring(0, charIndex);
+        text.textContent = currentWord;
 
-/* Animación de fondo */
-@keyframes gradientAnimation {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
+        if (!isDeleting && charIndex < word.length) {
+            // Escribiendo
+            charIndex++;
+            isLineEnding = false;
+        } else if (!isDeleting && charIndex === word.length) {
+            // Fin de palabra
+            isLineEnding = true;
+            isDeleting = true;
+            setTimeout(type, 1500);
+            return;
+        } else if (isDeleting && charIndex > 0) {
+            // Borrando
+            charIndex--;
+        } else if (isDeleting && charIndex === 0) {
+            // Cambiar palabra
+            isDeleting = false;
+            wordIndex = (wordIndex + 1) % words.length;
+        }
 
-/* Hero section con efectos modernos */
-.hero {
-    min-height: 100vh;
-    text-align: center;
-    padding: 150px 20px;
-    background: rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(10px);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, rgba(100,255,218,0.1), rgba(0,0,0,0));
-    z-index: -1;
-}
-
-.hero h1 {
-    font-size: 4rem;
-    margin-bottom: 30px;
-    text-shadow: 2px 2px 15px rgba(100,255,218,0.3);
-    animation: fadeIn 1s ease-out;
-    letter-spacing: 2px;
-}
-
-.hero p {
-    font-size: 1.4rem;
-    margin-bottom: 40px;
-    color: var(--text-secondary);
-    max-width: 800px;
-    animation: slideUp 1s ease-out;
-}
-
-/* Redes sociales con efectos elegantes */
-.social-links {
-    display: flex;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.social {
-    text-decoration: none;
-    color: var(--text-primary);
-    font-weight: 500;
-    padding: 12px 30px;
-    border-radius: 50px;
-    background: linear-gradient(45deg, var(--primary-color), rgba(100,255,218,0.2));
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    position: relative;
-    overflow: hidden;
-}
-
-.social::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
-    transform: translateX(-100%);
-    transition: 0.6s;
-}
-
-.social:hover {
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: 0 10px 25px rgba(100,255,218,0.2);
-}
-
-.social:hover::before {
-    transform: translateX(100%);
-}
-
-/* About section con diseño moderno */
-.about {
-    margin: 80px auto;
-    padding: 60px 40px;
-    max-width: 1200px;
-    background: rgba(26, 26, 46, 0.8);
-    border: 1px solid rgba(100,255,218,0.2);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-    backdrop-filter: blur(10px);
-    transform: translateY(0);
-    transition: transform 0.3s ease;
-}
-
-.about:hover {
-    transform: translateY(-5px);
-}
-
-.about h2 {
-    font-size: 2.8rem;
-    margin-bottom: 30px;
-    background: linear-gradient(45deg, var(--accent-color), #64ffff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: none;
-}
-
-.about p {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-}
-
-/* Footer elegante */
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: linear-gradient(to top, var(--gradient-start), transparent);
-    color: var(--text-secondary);
-    font-size: 1rem;
-    position: relative;
-}
-
-footer::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
-}
-
-/* Animaciones */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
+        const typingSpeed = isDeleting ? 50 : isLineEnding ? 1500 : 100;
+        setTimeout(type, typingSpeed);
     }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+
+    type();
 }
 
-/* Media Queries para responsividad */
-@media (max-width: 768px) {
-    .hero h1 {
-        font-size: 3rem;
-    }
-    
-    .hero p {
-        font-size: 1.2rem;
-    }
-    
-    .social-links {
-        flex-direction: column;
-        align-items: center;
-        gap: 15px;
-    }
-    
-    .about {
-        margin: 40px 20px;
-        padding: 30px 20px;
-    }
+// Animaciones al hacer scroll
+function initScrollAnimations() {
+    const elements = document.querySelectorAll('.about, .skills, .projects, .contact');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    elements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        element.style.transition = 'all 0.6s ease-out';
+        observer.observe(element);
+    });
 }
+
+// Efectos hover para proyectos
+function initProjectHovers() {
+    const projects = document.querySelectorAll('.project-card');
+
+    projects.forEach(project => {
+        project.addEventListener('mouseenter', () => {
+            project.style.transform = 'translateY(-10px)';
+            project.style.boxShadow = '0 20px 30px -15px rgba(2,12,27,0.7)';
+        });
+
+        project.addEventListener('mouseleave', () => {
+            project.style.transform = 'translateY(0)';
+            project.style.boxShadow = 'none';
+        });
+    });
+}
+
+// Animación para tarjetas de habilidades
+function initSkillCards() {
+    const cards = document.querySelectorAll('.skill-card');
+
+    cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 100}ms`;
+        card.classList.add('fade-in-up');
+    });
+}
+
+// Efecto parallax para el hero
+window.addEventListener('scroll', () => {
+    const hero = document.querySelector('.hero');
+    const scrolled = window.pageYOffset;
+    hero.style.transform = `translateY(${scrolled * 0.4}px)`;
+});
+
+// Smooth scroll para links de navegación
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+});
+
+// Detectar cuando el scroll llega al fondo para efectos en el footer
+window.addEventListener('scroll', () => {
+    if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 100) {
+        document.querySelector('footer').classList.add('show');
+    }
+});
+
+// Animación de carga inicial
+window.addEventListener('load', () => {
+    document.body.classList.add('loaded');
+});
+
+// Prevenir el flickering durante la carga
+document.body.style.visibility = 'visible';
