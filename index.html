@@ -3,29 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página Personal</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="description" content="Portafolio profesional de estudiante de TSU en Desarrollo de Software Multiplataforma">
+    <title>Portafolio Profesional | TSU Desarrollo de Software</title>
+    
+    <!-- Fuentes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Estilos -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 <body>
-    <div class="hero">
-        <h1>¡Bienvenido a Mi Página!</h1>
-        <p>Sígueme en mis redes sociales:</p>
-        <div class="social-links">
-            <a href="https://facebook.com" target="_blank" class="social facebook">Facebook</a>
-            <a href="https://instagram.com" target="_blank" class="social instagram">Instagram</a>
+    <!-- Navegación -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <span class="logo-text">Portfolio</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-mi">Sobre Mí</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#proyectos">Proyectos</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
         </div>
-    </div>
+    </nav>
 
-    <div class="about">
-        <h2>Sobre mí</h2>
-        <p>Actualmente estoy estudiando <strong>TSU en Desarrollo de Software Multiplataforma</strong> en la <strong>Universidad Tecnológica del Valle de Toluca</strong>. Me apasiona el desarrollo web, las aplicaciones multiplataforma y aprender cosas nuevas cada día.</p>
-    </div>
+    <!-- Sección Hero -->
+    <section id="inicio" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch-text">Desarrollador de Software</h1>
+            <p class="typing-text">TSU en Desarrollo Multiplataforma</p>
+            <div class="hero-buttons">
+                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
+                <a href="#contacto" class="btn btn-secondary">Contactar</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
 
+    <!-- Sección Sobre Mí -->
+    <section id="sobre-mi" class="about">
+        <div class="section-header">
+            <h2>Sobre Mí</h2>
+            <div class="separator"></div>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p class="highlight">Estudiante apasionado de TSU en Desarrollo de Software Multiplataforma</p>
+                <p>Actualmente cursando mis estudios en la <strong>Universidad Tecnológica del Valle de Toluca</strong>, donde me especializo en el desarrollo de soluciones tecnológicas innovadoras.</p>
+                <div class="education">
+                    <h3>Educación</h3>
+                    <div class="education-item">
+                        <span class="year">2023 - Presente</span>
+                        <span class="degree">TSU en Desarrollo de Software Multiplataforma</span>
+                        <span class="school">Universidad Tecnológica del Valle de Toluca</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Habilidades -->
+    <section id="habilidades" class="skills">
+        <div class="section-header">
+            <h2>Mis Habilidades</h2>
+            <div class="separator"></div>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card" data-aos="fade-up">
+                <div class="skill-icon">
+                    <i class="fab fa-html5"></i>
+                </div>
+                <h3>Frontend</h3>
+                <ul>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                </ul>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="skill-icon">
+                    <i class="fas fa-server"></i>
+                </div>
+                <h3>Backend</h3>
+                <ul>
+                    <li>Java</li>
+                    <li>Python</li>
+                    <li>Node.js</li>
+                    <li>SQL</li>
+                </ul>
+            </div>
+            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="skill-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h3>Móvil</h3>
+                <ul>
+                    <li>React Native</li>
+                    <li>Flutter</li>
+                    <li>Android</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Proyectos -->
+    <section id="proyectos" class="projects">
+        <div class="section-header">
+            <h2>Mis Proyectos</h2>
+            <div class="separator"></div>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="/api/placeholder/400/300" alt="Proyecto 1">
+                </div>
+                <div class="project-info">
+                    <h3>Proyecto 1</h3>
+                    <p>Descripción breve del proyecto y tecnologías utilizadas.</p>
+                    <div class="project-links">
+                        <a href="#" class="btn-small">Ver Demo</a>
+                        <a href="#" class="btn-small">Código</a>
+                    </div>
+                </div>
+            </div>
+            <!-- Agregar más proyectos según necesites -->
+        </div>
+    </section>
+
+    <!-- Sección Contacto -->
+    <section id="contacto" class="contact">
+        <div class="section-header">
+            <h2>Contacto</h2>
+            <div class="separator"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:tu@email.com">tu@email.com</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com" target="_blank" class="social github">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="social linkedin">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://facebook.com" target="_blank" class="social facebook">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" class="social instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 Mi Página Personal. Todos los derechos reservados.</p>
+        <div class="footer-content">
+            <p>&copy; 2025 Mi Portafolio. Desarrollado con 💻 y ❤️</p>
+        </div>
     </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
