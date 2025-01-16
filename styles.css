@@ -1,88 +1,208 @@
-/* Estilo global */
+/* Variables globales */
+:root {
+    --primary-color: #2d5a7f;
+    --accent-color: #64ffda;
+    --text-primary: #ffffff;
+    --text-secondary: #b3e0ff;
+    --gradient-start: #1a1a2e;
+    --gradient-end: #16213e;
+}
+
+/* Estilos base y reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-    color: #ffffff;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    color: var(--text-primary);
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
-/* Hero section */
+/* Animación de fondo */
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Hero section con efectos modernos */
 .hero {
+    min-height: 100vh;
     text-align: center;
-    padding: 100px 20px;
-    background: rgba(0, 0, 0, 0.6);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    padding: 150px 20px;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(100,255,218,0.1), rgba(0,0,0,0));
+    z-index: -1;
 }
 
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-    text-shadow: 2px 2px 10px rgba(0, 255, 255, 0.5);
+    font-size: 4rem;
+    margin-bottom: 30px;
+    text-shadow: 2px 2px 15px rgba(100,255,218,0.3);
+    animation: fadeIn 1s ease-out;
+    letter-spacing: 2px;
 }
 
 .hero p {
-    font-size: 1.2rem;
-    margin-bottom: 30px;
+    font-size: 1.4rem;
+    margin-bottom: 40px;
+    color: var(--text-secondary);
+    max-width: 800px;
+    animation: slideUp 1s ease-out;
 }
 
-/* Redes sociales */
+/* Redes sociales con efectos elegantes */
 .social-links {
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 30px;
+    margin-top: 40px;
 }
 
 .social {
     text-decoration: none;
-    color: #ffffff;
-    font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 25px;
-    background: linear-gradient(45deg, #00c6ff, #0072ff);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.3);
+    color: var(--text-primary);
+    font-weight: 500;
+    padding: 12px 30px;
+    border-radius: 50px;
+    background: linear-gradient(45deg, var(--primary-color), rgba(100,255,218,0.2));
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.social::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: translateX(-100%);
+    transition: 0.6s;
 }
 
 .social:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.6);
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(100,255,218,0.2);
 }
 
-/* About section */
+.social:hover::before {
+    transform: translateX(100%);
+}
+
+/* About section con diseño moderno */
 .about {
-    margin: 50px 20px;
-    padding: 30px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid rgba(0, 255, 255, 0.3);
-    border-radius: 15px;
-    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.2);
+    margin: 80px auto;
+    padding: 60px 40px;
+    max-width: 1200px;
+    background: rgba(26, 26, 46, 0.8);
+    border: 1px solid rgba(100,255,218,0.2);
+    border-radius: 20px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    backdrop-filter: blur(10px);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+}
+
+.about:hover {
+    transform: translateY(-5px);
 }
 
 .about h2 {
-    font-size: 2.5rem;
-    margin-bottom: 15px;
-    text-shadow: 1px 1px 8px rgba(0, 255, 255, 0.5);
-    color: #00c6ff;
+    font-size: 2.8rem;
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, var(--accent-color), #64ffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: none;
 }
 
 .about p {
     font-size: 1.2rem;
-    line-height: 1.6;
-    color: #b3d4fc;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 20px;
 }
 
-/* Footer */
+/* Footer elegante */
 footer {
     text-align: center;
-    padding: 20px;
-    background: #001f3f;
-    color: #b3d4fc;
-    font-size: 0.9rem;
-    box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.5);
+    padding: 40px 20px;
+    background: linear-gradient(to top, var(--gradient-start), transparent);
+    color: var(--text-secondary);
+    font-size: 1rem;
+    position: relative;
 }
 
-footer p {
-    margin: 0;
+footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-color), transparent);
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .social-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .about {
+        margin: 40px 20px;
+        padding: 30px 20px;
+    }
 }
