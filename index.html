@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Estudiantil</title>
+    <title>Portafolio - Luis Enrique González Ramírez</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,13 +16,26 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background-color: #f5f5f5;
         }
 
         header {
             background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background: linear-gradient(to right bottom, transparent 49%, #f5f5f5 50%);
         }
 
         .profile-img {
@@ -31,6 +45,13 @@
             margin: 1rem auto;
             display: block;
             background: #eee;
+            border: 5px solid white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
 
         .container {
@@ -43,51 +64,106 @@
             margin: 2rem 0;
             padding: 2rem;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
         }
 
         h1, h2 {
             margin-bottom: 1rem;
             color: #1e3c72;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #2a5298;
+            transition: width 0.3s ease;
+        }
+
+        section:hover h2::after {
+            width: 100px;
         }
 
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .skill-card {
             background: #f8f9fa;
-            padding: 1rem;
-            border-radius: 4px;
+            padding: 1.5rem;
+            border-radius: 10px;
             text-align: center;
+            border: 1px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
         }
 
         .education-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 1rem;
-        }
-
-        .project-card {
-            background: #f8f9fa;
+            margin-bottom: 2rem;
             padding: 1.5rem;
-            border-radius: 8px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #1e3c72;
         }
 
         .contact-info {
-            display: flex;
-            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 2rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #fff;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: #1e3c72;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item a {
+            color: #333;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item a:hover {
+            color: #1e3c72;
         }
 
         @media (max-width: 768px) {
@@ -96,7 +172,11 @@
             }
             
             section {
-                padding: 1rem;
+                padding: 1.5rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -104,65 +184,74 @@
 <body>
     <header>
         <img src="/api/placeholder/200/200" alt="Foto de Perfil" class="profile-img">
-        <h1>Luis Enrique Gonzalez Ramirez</h1>
-        <p>Estudiante de T.S.U. en Tengolofias de la Informacion, Area Desarrollo de Software Multiplataforma.</p>
+        <h1>Luis Enrique González Ramírez</h1>
+        <p>Estudiante de T.S.U. en Tecnologías de la Información</p>
+        <p>Área Desarrollo de Software Multiplataforma</p>
     </header>
 
     <div class="container">
         <section id="sobre-mi">
-            <h2>Sobre Mí</h2>
-            <p>Soy un estudiante apasionado por la tecnología y el desarrollo de software. Me especializo en desarrollo web, siempre buscando aprender nuevas tecnologías y enfrentar desafíos interesantes.</p>
+            <h2><i class="fas fa-user"></i> Sobre Mí</h2>
+            <p>Soy un estudiante apasionado por la tecnología y el desarrollo de software, con especial interés en el desarrollo web. Mi objetivo es crear soluciones innovadoras y eficientes que marquen la diferencia. Constantemente busco nuevos desafíos y oportunidades para expandir mis conocimientos en el campo de la tecnología.</p>
         </section>
 
         <section id="educacion">
-            <h2>Educación</h2>
+            <h2><i class="fas fa-graduation-cap"></i> Educación</h2>
             <div class="education-item">
                 <h3>Universidad Tecnológica del Valle de Toluca</h3>
-                <p>Tegnologias de la informacion</p>
-                <p>2023 - Presente</p>
-            </div>
-            <div class="education-item">
-                <h3></h3>
-                <p></p>
-                <p></p>
+                <p><i class="fas fa-book"></i> T.S.U. en Tecnologías de la Información</p>
+                <p><i class="fas fa-calendar"></i> 2023 - Presente</p>
             </div>
         </section>
 
         <section id="habilidades">
-            <h2>Habilidades Técnicas</h2>
+            <h2><i class="fas fa-code"></i> Habilidades Técnicas</h2>
             <div class="skills-grid">
                 <div class="skill-card">
+                    <i class="fas fa-laptop-code"></i>
                     <h3>Lenguajes de Programación</h3>
-                    <p> </p>
+                    <p>JavaScript, Java, Python (en aprendizaje)</p>
                 </div>
                 <div class="skill-card">
+                    <i class="fas fa-globe"></i>
                     <h3>Desarrollo Web</h3>
-                    <p> </p>
+                    <p>HTML5, CSS3, JavaScript</p>
                 </div>
                 <div class="skill-card">
+                    <i class="fas fa-database"></i>
                     <h3>Bases de Datos</h3>
                     <p>MySQL</p>
                 </div>
                 <div class="skill-card">
+                    <i class="fas fa-tools"></i>
                     <h3>Herramientas</h3>
-                    <p>Git, VS Code</p>
+                    <p>Git, VS Code, GitHub</p>
                 </div>
             </div>
         </section>
+
         <section id="contacto">
-            <h2>Contacto</h2>
+            <h2><i class="fas fa-envelope"></i> Contacto</h2>
             <div class="contact-info">
-                <div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
                     <h3>Email</h3>
-                    <p>kikeramirez@gmail.com</p>
+                    <a href="mailto:kikeramirez@gmail.com">kikeramirez@gmail.com</a>
                 </div>
-                <div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
                     <h3>GitHub</h3>
-                    <p>github.com/KikeGonRam</p>
+                    <a href="https://github.com/KikeGonRam" target="_blank">github.com/KikeGonRam</a>
                 </div>
-                <div>
+                <div class="contact-item">
+                    <i class="fab fa-facebook"></i>
                     <h3>Facebook</h3>
-                    <p>https://www.facebook.com/kike160418</p>
+                    <a href="https://www.facebook.com/kike160418" target="_blank">facebook.com/kike160418</a>
+                </div>
+                 <div class="contact-item">
+                    <i class="fab fa-instagram"></i>
+                    <h3>Facebook</h3>
+                    <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank">instagram.com/kike_gonzalez_16</a>
                 </div>
             </div>
         </section>
