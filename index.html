@@ -3,182 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portafolio profesional de estudiante de TSU en Desarrollo de Software Multiplataforma">
-    <title>Portafolio Profesional | TSU Desarrollo de Software</title>
-    
-    <!-- Fuentes -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
-    <!-- Estilos -->
-    <link rel="stylesheet" href="styles.css">
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="favicon.png">
+    <title>Mi Portafolio Estudiantil</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 1rem auto;
+            display: block;
+            background: #eee;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            margin-bottom: 1rem;
+            color: #1e3c72;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            section {
+                padding: 1rem;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navegación -->
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo">
-                <span class="logo-text">Portfolio</span>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#sobre-mi">Sobre Mí</a></li>
-                <li><a href="#habilidades">Habilidades</a></li>
-                <li><a href="#proyectos">Proyectos</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </div>
-    </nav>
+    <header>
+        <img src="/api/placeholder/200/200" alt="Foto de Perfil" class="profile-img">
+        <h1>Luis Enrique Gonzalez Ramirez</h1>
+        <p>Estudiante de T.S.U. en Tengolofias de la Informacion, Area Desarrollo de Software Multiplataforma.</p>
+    </header>
 
-    <!-- Sección Hero -->
-    <section id="inicio" class="hero">
-        <div class="hero-content">
-            <h1 class="glitch-text">Desarrollador de Software</h1>
-            <p class="typing-text">TSU en Desarrollo Multiplataforma</p>
-            <div class="hero-buttons">
-                <a href="#proyectos" class="btn btn-primary">Ver Proyectos</a>
-                <a href="#contacto" class="btn btn-secondary">Contactar</a>
-            </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="mouse"></div>
-            <span>Scroll Down</span>
-        </div>
-    </section>
-
-    <!-- Sección Sobre Mí -->
-    <section id="sobre-mi" class="about">
-        <div class="section-header">
+    <div class="container">
+        <section id="sobre-mi">
             <h2>Sobre Mí</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="about-content">
-            <div class="about-text">
-                <p class="highlight">Estudiante apasionado de TSU en Desarrollo de Software Multiplataforma</p>
-                <p>Actualmente cursando mis estudios en la <strong>Universidad Tecnológica del Valle de Toluca</strong>, donde me especializo en el desarrollo de soluciones tecnológicas innovadoras.</p>
-                <div class="education">
-                    <h3>Educación</h3>
-                    <div class="education-item">
-                        <span class="year">2023 - Presente</span>
-                        <span class="degree">TSU en Desarrollo de Software Multiplataforma</span>
-                        <span class="school">Universidad Tecnológica del Valle de Toluca</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+            <p>Soy un estudiante apasionado por la tecnología y el desarrollo de software. Me especializo en desarrollo web, siempre buscando aprender nuevas tecnologías y enfrentar desafíos interesantes.</p>
+        </section>
 
-    <!-- Sección Habilidades -->
-    <section id="habilidades" class="skills">
-        <div class="section-header">
-            <h2>Mis Habilidades</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card" data-aos="fade-up">
-                <div class="skill-icon">
-                    <i class="fab fa-html5"></i>
-                </div>
-                <h3>Frontend</h3>
-                <ul>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                </ul>
+        <section id="educacion">
+            <h2>Educación</h2>
+            <div class="education-item">
+                <h3>Universidad Tecnológica del Valle de Toluca</h3>
+                <p>Tegnologias de la informacion</p>
+                <p>2023 - Presente</p>
             </div>
-            <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
-                <div class="skill-icon">
-                    <i class="fas fa-server"></i>
-                </div>
-                <h3>Backend</h3>
-                <ul>
-                    <li>Java</li>
-                    <li>Python</li>
-                    <li>Node.js</li>
-                    <li>SQL</li>
-                </ul>
+            <div class="education-item">
+                <h3></h3>
+                <p></p>
+                <p></p>
             </div>
-            <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
-                <div class="skill-icon">
-                    <i class="fas fa-mobile-alt"></i>
-                </div>
-                <h3>Móvil</h3>
-                <ul>
-                    <li>React Native</li>
-                    <li>Flutter</li>
-                    <li>Android</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Sección Proyectos -->
-    <section id="proyectos" class="projects">
-        <div class="section-header">
-            <h2>Mis Proyectos</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-image">
-                    <img src="/api/placeholder/400/300" alt="Proyecto 1">
+        <section id="habilidades">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Lenguajes de Programación</h3>
+                    <p> </p>
                 </div>
-                <div class="project-info">
-                    <h3>Proyecto 1</h3>
-                    <p>Descripción breve del proyecto y tecnologías utilizadas.</p>
-                    <div class="project-links">
-                        <a href="#" class="btn-small">Ver Demo</a>
-                        <a href="#" class="btn-small">Código</a>
-                    </div>
+                <div class="skill-card">
+                    <h3>Desarrollo Web</h3>
+                    <p> </p>
+                </div>
+                <div class="skill-card">
+                    <h3>Bases de Datos</h3>
+                    <p>MySQL</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Herramientas</h3>
+                    <p>Git, VS Code</p>
                 </div>
             </div>
-            <!-- Agregar más proyectos según necesites -->
-        </div>
-    </section>
-
-    <!-- Sección Contacto -->
-    <section id="contacto" class="contact">
-        <div class="section-header">
+        </section>
+        <section id="contacto">
             <h2>Contacto</h2>
-            <div class="separator"></div>
-        </div>
-        <div class="contact-content">
             <div class="contact-info">
-                <div class="contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <a href="mailto:tu@email.com">tu@email.com</a>
+                <div>
+                    <h3>Email</h3>
+                    <p>kikeramirez@gmail.com</p>
                 </div>
-                <div class="social-links">
-                    <a href="https://github.com" target="_blank" class="social github">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://linkedin.com" target="_blank" class="social linkedin">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://facebook.com" target="_blank" class="social facebook">
-                        <i class="fab fa-facebook"></i>
-                    </a>
-                    <a href="https://instagram.com" target="_blank"  class="social instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
+                <div>
+                    <h3>GitHub</h3>
+                    <p>github.com/KikeGonRam</p>
+                </div>
+                <div>
+                    <h3>Facebook</h3>
+                    <p>https://www.facebook.com/kike160418</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>&copy; 2025 Mi Portafolio. Desarrollado con 💻 y ❤️</p>
-        </div>
-    </footer>
-
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
-    <script src="script.js"></script>
+        </section>
+    </div>
 </body>
 </html>
