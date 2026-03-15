@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV — Luis Enrique González Ramírez</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    :root {
+      --cyan: #006b9b; --text: #1a2332; --muted: #5a6b7c;
+      --border: #dde4ed; --bg: #f8fafc; --accent-bg: #f0f7ff;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--bg); color: var(--text);
+      line-height: 1.6; font-size: 13px;
+    }
+    .cv-wrapper {
+      max-width: 860px; margin: 0 auto;
+      background: #fff; min-height: 100vh;
+    }
+
+    /* ── PRINT BTN ── */
+    .print-bar {
+      background: #011824; padding: .8rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .print-bar span { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: #00d4ff; }
+    .print-btn {
+      padding: .45rem 1.2rem; background: #00d4ff; color: #011824;
+      font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700;
+      border: none; border-radius: 6px; cursor: pointer; transition: all .2s;
+    }
+    .print-btn:hover { background: #00ff9d; }
+
+    /* ── HEADER ── */
+    .cv-header {
+      background: #011824; color: #fff; padding: 2.5rem 2.5rem 2rem;
+      position: relative; overflow: hidden;
+    }
+    .cv-header::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
+      height: 3px; background: linear-gradient(90deg, #00d4ff, #00ff9d);
+    }
+    .cv-header-inner { display: flex; gap: 2rem; align-items: flex-start; }
+    .cv-photo {
+      width: 100px; height: 100px; border-radius: 10px;
+      object-fit: cover; border: 2px solid #00d4ff; flex-shrink: 0;
+    }
+    .cv-name { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: .25rem; }
+    .cv-title { font-size: .88rem; color: #00d4ff; font-weight: 500; margin-bottom: 1rem; }
+    .cv-contact { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; }
+    .cv-contact a, .cv-contact span {
+      font-size: .76rem; color: #94a3b8; text-decoration: none;
+      display: flex; align-items: center; gap: .35rem;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .cv-contact a:hover { color: #00d4ff; }
+    .cv-contact i { color: #00d4ff; font-size: .7rem; }
+
+    /* ── BODY ── */
+    .cv-body { display: grid; grid-template-columns: 1fr 260px; min-height: calc(100vh - 180px); }
+    .cv-main  { padding: 2rem 2rem 2rem 2.5rem; border-right: 1px solid var(--border); }
+    .cv-side  { padding: 2rem 2rem 2rem 1.5rem; background: var(--bg); }
+
+    /* ── SECTIONS ── */
+    .cv-section { margin-bottom: 1.8rem; }
+    .cv-sec-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: .65rem; font-weight: 700; letter-spacing: .15em;
+      text-transform: uppercase; color: var(--cyan);
+      margin-bottom: .9rem; padding-bottom: .45rem;
+      border-bottom: 2px solid var(--cyan);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .cv-sec-title i { font-size: .7rem; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item { margin-bottom: 1.3rem; }
+    .exp-top  { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .2rem; }
+    .exp-role { font-size: .88rem; font-weight: 700; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--muted); white-space: nowrap; margin-left: .5rem; }
+    .exp-company { font-size: .78rem; color: var(--cyan); font-weight: 500; margin-bottom: .4rem; }
+    .exp-list { list-style: none; padding-left: .9rem; }
+    .exp-list li { font-size: .76rem; color: var(--muted); padding: .12rem 0; position: relative; }
+    .exp-list li::before { content: '›'; position: absolute; left: -.8rem; color: var(--cyan); }
+    .exp-list li strong { color: var(--text); font-weight: 600; }
+    .exp-badge {
+      display: inline-block; padding: .1rem .45rem;
+      background: #e0f2fe; border: 1px solid #bae6fd;
+      border-radius: 100px; font-size: .62rem; color: #0369a1;
+      font-weight: 700; margin-left: .4rem; vertical-align: middle;
+    }
+    .exp-badge.active { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
+
+    /* ── PROJECTS ── */
+    .proj-item { margin-bottom: 1rem; padding: .8rem; background: var(--accent-bg); border-radius: 6px; border-left: 3px solid var(--cyan); }
+    .proj-name  { font-size: .84rem; font-weight: 700; margin-bottom: .2rem; }
+    .proj-desc  { font-size: .73rem; color: var(--muted); line-height: 1.5; margin-bottom: .35rem; }
+    .proj-link  { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--cyan); text-decoration: none; }
+    .proj-live  { display: inline-block; padding: .1rem .4rem; background: #d1fae5; border-radius: 4px; font-size: .6rem; color: #065f46; font-weight: 700; margin-left: .3rem; }
+
+    /* ── SIDE SECTIONS ── */
+    .skill-group { margin-bottom: 1.4rem; }
+    .skill-group-name { font-size: .7rem; font-weight: 700; margin-bottom: .5rem; color: var(--text); }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .skill-tag {
+      padding: .18rem .6rem;
+      background: var(--accent-bg); border: 1px solid #bae6fd;
+      border-radius: 100px; font-size: .66rem; color: var(--cyan); font-weight: 500;
+    }
+
+    .edu-cv-item { margin-bottom: 1rem; }
+    .edu-cv-degree { font-size: .78rem; font-weight: 700; margin-bottom: .12rem; }
+    .edu-cv-school { font-size: .7rem; color: var(--muted); }
+    .edu-cv-period { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--cyan); }
+    .edu-cv-badge {
+      display: inline-block; margin-top: .2rem; padding: .1rem .45rem;
+      background: #d1fae5; border-radius: 100px; font-size: .62rem; color: #065f46; font-weight: 700;
+    }
+
+    .lang-item { display: flex; justify-content: space-between; margin-bottom: .5rem; font-size: .76rem; }
+    .lang-bar { height: 3px; background: #e2e8f0; border-radius: 100px; margin-top: .25rem; overflow: hidden; }
+    .lang-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), #0ea5e9); border-radius: 100px; }
+
+    .info-row { display: flex; gap: .5rem; margin-bottom: .4rem; font-size: .76rem; align-items: center; }
+    .info-icon { color: var(--cyan); font-size: .72rem; width: 14px; text-align: center; flex-shrink: 0; }
+
+    /* ── PRINT ── */
+    @media print {
+      .print-bar { display: none; }
+      .cv-wrapper { max-width: 100%; box-shadow: none; }
+      body { background: white; }
+      a { color: var(--cyan) !important; }
+    }
+    @media (max-width: 700px) {
+      .cv-body { grid-template-columns: 1fr; }
+      .cv-side { border-top: 1px solid var(--border); }
+      .cv-header-inner { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="cv-wrapper">
+
+    <!-- PRINT BAR -->
+    <div class="print-bar">
+      <span>❰LGR❱ · Curriculum Vitae · 2025</span>
+      <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> Imprimir / Guardar PDF</button>
+    </div>
+
+    <!-- HEADER -->
+    <div class="cv-header">
+      <div class="cv-header-inner">
+        <img src="images/mi-foto.jpg" alt="Luis González Ramírez" class="cv-photo">
+        <div>
+          <h1 class="cv-name">Luis Enrique González Ramírez</h1>
+          <p class="cv-title">Software Developer · Full-Stack Engineer · Bausen</p>
+          <div class="cv-contact">
+            <a href="mailto:kikeramirez160418@gmail.com"><i class="fas fa-envelope"></i>kikeramirez160418@gmail.com</a>
+            <a href="https://github.com/KikeGonRam" target="_blank"><i class="fab fa-github"></i>github.com/KikeGonRam</a>
+            <a href="https://bausen.mx" target="_blank"><i class="fas fa-globe"></i>bausen.mx</a>
+            <span><i class="fas fa-map-pin"></i>Toluca, México</span>
+            <a href="https://kikeGonRam.github.io" target="_blank"><i class="fas fa-briefcase"></i>kikeGonRam.github.io</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cv-body">
+      <!-- MAIN COLUMN -->
+      <div class="cv-main">
+
+        <!-- PERFIL -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-user"></i> Perfil Profesional</div>
+          <p style="font-size:.78rem;color:var(--muted);line-height:1.65;">
+            Desarrollador de software titulado en T.S.U. y actualmente cursando Ingeniería en Desarrollo y Gestión de Software en la UTVT. Trabajo en <strong style="color:var(--text)">Bausen</strong> donde construyo y mantengo plataformas empresariales en producción. Especializado en arquitectura Full-Stack con Next.js y Spring Boot, seguridad en aplicaciones y APIs REST escalables.
+          </p>
+        </div>
+
+        <!-- EXPERIENCIA -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-briefcase"></i> Experiencia Profesional</div>
+
+          <div class="exp-item">
+            <div class="exp-top">
+              <span class="exp-role">Software Developer <span class="exp-badge active">ACTIVO</span></span>
+              <span class="exp-period">Ago 2025 — Presente</span>
+            </div>
+            <div class="exp-company"><i class="fas fa-building"></i> Bausen · Infraestructura Digital Corporativa</div>
+            <ul class="exp-list">
+              <li>Desarrollo y mantenimiento de la <strong>Plataforma BECHAPRA</strong> — gestión de pagos institucional en producción.</li>
+              <li>Construcción del <strong>Portal Corporativo Bausen</strong> con autenticación TLS v2.5 de grado bancario.</li>
+              <li>Stack: Next.js, TypeScript, seguridad TLS, acceso centralizado, alta disponibilidad en bausen.mx.</li>
+            </ul>
+          </div>
+
+          <div class="exp-item">
+            <div class="exp-top">
+              <span class="exp-role">Desarrollador en Estadía <span class="exp-badge">✓ Completado</span></span>
+              <span class="exp-period">Abr 2025 — Ago 2025</span>
+            </div>
+            <div class="exp-company"><i class="fas fa-flask"></i> Bechapra (actual Bausen) · Estadía Profesional UTVT</div>
+            <ul class="exp-list">
+              <li>Desarrollo de plataforma de pagos institucional y portal corporativo en entorno real de producción.</li>
+              <li>Estadía concluida con contratación directa al renombrar la empresa como Bausen.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PROYECTOS -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-code"></i> Proyectos Destacados</div>
+
+          <div class="proj-item">
+            <div class="proj-name">Plataforma de Pagos BECHAPRA <span class="proj-live">LIVE</span></div>
+            <div class="proj-desc">Sistema empresarial de gestión financiera institucional con autenticación segura y panel administrativo. En producción 24/7.</div>
+            <a href="https://bausen.mx/login" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> bausen.mx/login</a>
+            <div style="margin-top:.3rem" class="skill-tags">
+              <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">TLS</span>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-name">Portal Corporativo Bausen <span class="proj-live">LIVE</span></div>
+            <div class="proj-desc">Nexo central de gestión con autenticación de grado bancario, credenciales de sistema y conexión TLS v2.5.</div>
+            <a href="https://bausen.mx/login-portal/login" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> bausen.mx/login-portal</a>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-name">API REST — Evaluación Docente</div>
+            <div class="proj-desc">Spring Boot + JPA/Hibernate + MapStruct + Log4j2 + MySQL. Documentada con Springdoc/OpenAPI.</div>
+            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" class="proj-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <div style="margin-top:.3rem" class="skill-tags">
+              <span class="skill-tag">Spring Boot</span><span class="skill-tag">Java</span><span class="skill-tag">MySQL</span>
+            </div>
+          </div>
+
+          <div class="proj-item">
+            <div class="proj-name">App Móvil — Gestión Barbería</div>
+            <div class="proj-desc">React Native multiplataforma. 230+ casos de prueba con Cypress, Jest, JMeter. CI/CD con GitHub Actions. ISO/IEC 27001.</div>
+            <div style="margin-top:.3rem" class="skill-tags">
+              <span class="skill-tag">React Native</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Jest</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDE COLUMN -->
+      <div class="cv-side">
+
+        <!-- INFO -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-info-circle"></i> Información</div>
+          <div class="info-row"><span class="info-icon"><i class="fas fa-map-pin"></i></span><span>Toluca, Estado de México</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fas fa-envelope"></i></span><span>kikeramirez160418@gmail.com</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fab fa-github"></i></span><span>KikeGonRam</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fab fa-instagram"></i></span><span>@kike_gonzalez_16</span></div>
+        </div>
+
+        <!-- EDUCACIÓN -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-graduation-cap"></i> Educación</div>
+          <div class="edu-cv-item">
+            <div class="edu-cv-degree">Ingeniería en Desarrollo y Gestión de Software</div>
+            <div class="edu-cv-school">UTVT</div>
+            <div class="edu-cv-period">Sep 2025 — Presente · 8vo Cuatrimestre</div>
+            <span class="edu-cv-badge">● En curso</span>
+          </div>
+          <div class="edu-cv-item">
+            <div class="edu-cv-degree">T.S.U. Desarrollo de Software Multiplataforma</div>
+            <div class="edu-cv-school">UTVT · IDGS-84</div>
+            <div class="edu-cv-period">2022 — Ago 2025</div>
+            <span class="edu-cv-badge">✓ Titulado</span>
+          </div>
+        </div>
+
+        <!-- TECH STACK -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-code"></i> Tech Stack</div>
+          <div class="skill-group">
+            <div class="skill-group-name">Backend</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span>
+              <span class="skill-tag">JPA</span><span class="skill-tag">MapStruct</span><span class="skill-tag">Python</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Frontend</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Next.js</span><span class="skill-tag">React</span>
+              <span class="skill-tag">TypeScript</span><span class="skill-tag">Tailwind</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">DB & DevOps</div>
+            <div class="skill-tags">
+              <span class="skill-tag">MySQL</span><span class="skill-tag">Git</span>
+              <span class="skill-tag">GitHub Actions</span><span class="skill-tag">CI/CD</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <div class="skill-group-name">Testing & Security</div>
+            <div class="skill-tags">
+              <span class="skill-tag">Cypress</span><span class="skill-tag">Jest</span>
+              <span class="skill-tag">JMeter</span><span class="skill-tag">ISO 27001</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- IDIOMAS -->
+        <div class="cv-section">
+          <div class="cv-sec-title"><i class="fas fa-language"></i> Idiomas</div>
+          <div class="lang-item"><span>Español</span><span style="font-size:.68rem;color:var(--muted)">Nativo</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
+          <div style="margin-top:.6rem"></div>
+          <div class="lang-item"><span>Inglés</span><span style="font-size:.68rem;color:var(--muted)">Técnico</span></div>
+          <div class="lang-bar"><div class="lang-fill" style="width:65%"></div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

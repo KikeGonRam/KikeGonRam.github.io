@@ -1,621 +1,812 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis Enrique González Ramírez — Software Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luis González Ramírez — Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- ── STATUS TICKER ── -->
-    <div id="status-bar">
-        <div class="ticker-track">
-            <span class="ticker-content" id="ticker-inner">
-                <span class="t-dot"></span>
-                <span>SISTEMA ONLINE</span>
-                <span class="t-sep">|</span>
-                <span>Luis Enrique González Ramírez</span>
-                <span class="t-sep">|</span>
-                <span>Software Engineer @ Bausen</span>
-                <span class="t-sep">|</span>
-                <span>Ingeniería en Desarrollo y Gestión de Software · UTVT</span>
-                <span class="t-sep">|</span>
-                <span>Disponible para proyectos</span>
-                <span class="t-sep">|</span>
-                <span id="live-clock">--:--:-- CST</span>
-                <span class="t-sep">|</span>
-            </span>
+  <!-- ═══════════════ BOOT LOADER ═══════════════ -->
+  <div id="loader">
+    <div class="loader-inner">
+      <div class="boot-logo">❰<span>LGR</span>❱</div>
+      <div class="boot-lines" id="boot-lines"></div>
+      <div class="boot-bar-wrap">
+        <div class="boot-bar" id="boot-bar"></div>
+      </div>
+      <div class="boot-pct mono" id="boot-pct">0%</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════ STATUS BAR ═══════════════ -->
+  <div id="status-bar">
+    <div class="ticker-track">
+      <span class="ticker-content" id="ticker-inner">
+        <span class="t-dot"></span>
+        <span>SISTEMA ONLINE</span>
+        <span class="t-sep">|</span>
+        <span>Luis Enrique González Ramírez</span>
+        <span class="t-sep">|</span>
+        <span>Software Developer @ Bausen</span>
+        <span class="t-sep">|</span>
+        <span>Ingeniería en Desarrollo y Gestión de Software · UTVT</span>
+        <span class="t-sep">|</span>
+        <span>Available for new projects</span>
+        <span class="t-sep">|</span>
+        <span id="live-clock">--:--:-- CST</span>
+        <span class="t-sep">|</span>
+        <span>bausen.mx</span>
+        <span class="t-sep">|</span>
+        <span>github.com/KikeGonRam</span>
+        <span class="t-sep">|</span>
+      </span>
+    </div>
+  </div>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav id="navbar">
+    <div class="nav-logo">❰<span class="c-cyan">LGR</span>❱</div>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about"><span class="n">01.</span>Sobre mí</a></li>
+      <li><a href="#experience"><span class="n">02.</span>Experiencia</a></li>
+      <li><a href="#projects"><span class="n">03.</span>Proyectos</a></li>
+      <li><a href="#skills"><span class="n">04.</span>Stack</a></li>
+      <li><a href="#github-stats"><span class="n">05.</span>GitHub</a></li>
+      <li><a href="#blog"><span class="n">06.</span>Blog</a></li>
+      <li><a href="#contact"><span class="n">07.</span>Contacto</a></li>
+      <li><a href="cv.html" target="_blank" class="nav-cv"><i class="fas fa-file-lines"></i> CV</a></li>
+    </ul>
+    <div class="nav-right">
+      <span class="pulse-dot"></span>
+      <span class="mono text-xs c-cyan">ONLINE</span>
+      <button class="nav-burger" id="nav-burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero">
+    <canvas id="particle-canvas"></canvas>
+    <div class="scanlines"></div>
+
+    <div class="hero-inner">
+      <!-- Neofetch terminal -->
+      <div class="terminal-window reveal-hero" id="hero-terminal">
+        <div class="term-header">
+          <div class="term-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green-dot"></span>
+          </div>
+          <span class="term-title mono">luis@portfolio:~</span>
         </div>
+        <div class="term-body">
+          <p class="prompt"><span class="c-cyan">luis@bausen</span><span class="c-dim">:</span><span class="c-green">~</span><span class="c-dim">$</span> neofetch</p>
+          <div class="neofetch">
+            <div class="neo-photo-wrap">
+              <img src="images/mi-foto.jpg" alt="Luis González" class="neo-photo">
+            </div>
+            <div class="neo-info">
+              <p class="neo-user">luis<span class="c-dim">@</span><span class="c-cyan">bausen</span></p>
+              <p class="neo-sep">────────────────────</p>
+              <div class="neo-row"><span class="neo-k">Role</span><span class="c-dim">:</span> Software Developer</div>
+              <div class="neo-row"><span class="neo-k">Company</span><span class="c-dim">:</span> <span class="c-cyan">Bausen</span></div>
+              <div class="neo-row"><span class="neo-k">Degree</span><span class="c-dim">:</span> Ing. Desarrollo y Gestión</div>
+              <div class="neo-row"><span class="neo-k">Shell</span><span class="c-dim">:</span> bash · zsh · PowerShell</div>
+              <div class="neo-row"><span class="neo-k">Terminal</span><span class="c-dim">:</span> iTerm2 · WSL · GNOME</div>
+              <div class="neo-row"><span class="neo-k">Stack</span><span class="c-dim">:</span> Java · Next.js · MySQL</div>
+              <div class="neo-row"><span class="neo-k">CPU</span><span class="c-dim">:</span> Full-Stack @ max_threads</div>
+              <div class="neo-row"><span class="neo-k">Uptime</span><span class="c-dim">:</span> <span class="c-green" id="uptime-val">calculando...</span></div>
+              <div class="neo-colors">
+                <span style="background:#ff4d6a"></span><span style="background:#ff8c42"></span>
+                <span style="background:#ffd166"></span><span style="background:#00ff9d"></span>
+                <span style="background:#00d4ff"></span><span style="background:#818cf8"></span>
+                <span style="background:#f0abfc"></span><span style="background:#ffffff"></span>
+              </div>
+            </div>
+          </div>
+          <p class="prompt mt8"><span class="c-cyan">luis@bausen</span><span class="c-dim">:</span><span class="c-green">~</span><span class="c-dim">$</span> <span class="cursor">█</span></p>
+        </div>
+      </div>
+
+      <!-- Hero right -->
+      <div class="hero-right reveal-hero-r">
+        <div class="hero-badge mono">
+          <span class="pulse-dot"></span>
+          available_for_hire = <span class="c-green">true</span>
+        </div>
+        <h1 class="hero-name glitch" data-text="Luis González">
+          Luis<br><span class="c-cyan">González</span><br>Ramírez
+        </h1>
+        <div class="hero-typing-wrap">
+          <span class="c-dim mono">// </span>
+          <span class="hero-typing mono" id="hero-typing"></span>
+          <span class="cursor-sm">_</span>
+        </div>
+        <p class="hero-desc">
+          Construyo sistemas reales que escalan. APIs, plataformas empresariales, apps móviles. Código limpio, arquitectura sólida, producción estable.
+        </p>
+        <div class="os-badges">
+          <div class="os-badge" title="Linux"><i class="fab fa-linux"></i> Linux</div>
+          <div class="os-badge" title="macOS"><i class="fab fa-apple"></i> macOS</div>
+          <div class="os-badge" title="Windows"><i class="fab fa-windows"></i> Windows</div>
+        </div>
+        <div class="hero-cta">
+          <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> Ver proyectos</a>
+          <a href="cv.html" target="_blank" class="btn-ghost"><i class="fas fa-file-lines"></i> Descargar CV</a>
+        </div>
+      </div>
     </div>
 
-    <!-- ── NAV ── -->
-    <nav id="navbar">
-        <div class="nav-logo">
-            <span class="g">❰</span><span class="nav-name">LGR</span><span class="g">❱</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#experience"><span class="n">01.</span>Experiencia</a></li>
-            <li><a href="#projects"><span class="n">02.</span>Proyectos</a></li>
-            <li><a href="#skills"><span class="n">03.</span>Stack</a></li>
-            <li><a href="#education"><span class="n">04.</span>Educación</a></li>
-            <li><a href="#blog"><span class="n">05.</span>Blog</a></li>
-            <li><a href="#contact"><span class="n">06.</span>Contacto</a></li>
-        </ul>
-        <div class="nav-status">
-            <span class="pulse-dot"></span>
-            <span class="mono text-xs text-green">ONLINE</span>
-        </div>
-    </nav>
-
-    <!-- ── HERO ── -->
-    <section id="hero">
-        <div class="hero-inner">
-
-            <!-- Neofetch terminal -->
-            <div class="terminal-window">
-                <div class="term-header">
-                    <div class="term-dots">
-                        <span class="dot red"></span>
-                        <span class="dot yellow"></span>
-                        <span class="dot green-dot"></span>
-                    </div>
-                    <span class="term-title mono">luis@portfolio — bash — 80×24</span>
-                </div>
-                <div class="term-body">
-                    <p class="prompt"><span class="c-green">luis@kike</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> neofetch</p>
-                    <div class="neofetch">
-                        <div class="neo-photo-wrap">
-                            <img src="images/mi-foto.jpg" alt="Luis González" class="neo-photo">
-                        </div>
-                        <div class="neo-info">
-                            <p class="neo-user">luis<span class="c-dim">@</span>kike</p>
-                            <p class="neo-sep c-green">────────────────────</p>
-                            <div class="neo-row"><span class="neo-k">OS</span><span class="c-dim">:</span> Software Engineer</div>
-                            <div class="neo-row"><span class="neo-k">Host</span><span class="c-dim">:</span> Bausen · UTVT IDGS-84</div>
-                            <div class="neo-row"><span class="neo-k">Uptime</span><span class="c-dim">:</span> 2+ años en producción</div>
-                            <div class="neo-row"><span class="neo-k">Packages</span><span class="c-dim">:</span> Java, Spring, Next.js...</div>
-                            <div class="neo-row"><span class="neo-k">Shell</span><span class="c-dim">:</span> bash · zsh · PowerShell</div>
-                            <div class="neo-row"><span class="neo-k">Terminal</span><span class="c-dim">:</span> iTerm2 · WSL · GNOME</div>
-                            <div class="neo-row"><span class="neo-k">CPU</span><span class="c-dim">:</span> Full-Stack Development</div>
-                            <div class="neo-row"><span class="neo-k">GPU</span><span class="c-dim">:</span> Problem Solving @ 60fps</div>
-                            <div class="neo-row"><span class="neo-k">Memory</span><span class="c-dim">:</span> MySQL · Clean Architecture</div>
-                            <div class="neo-colors">
-                                <span style="background:#ff4d6a"></span><span style="background:#ff8c42"></span>
-                                <span style="background:#ffd166"></span><span style="background:#00d46a"></span>
-                                <span style="background:#00c8ff"></span><span style="background:#818cf8"></span>
-                                <span style="background:#f0abfc"></span><span style="background:#ffffff"></span>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="prompt mt8"><span class="c-green">luis@kike</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> <span class="cursor">█</span></p>
-                </div>
-            </div>
-
-            <!-- Hero right -->
-            <div class="hero-right">
-                <div class="hero-badge mono">
-                    <span class="pulse-dot"></span>
-                    available_for_hire = <span class="c-green">true</span>
-                </div>
-                <h1 class="hero-name">
-                    Luis Enrique<br>
-                    <span class="c-green">González</span><br>
-                    Ramírez
-                </h1>
-                <p class="hero-subtitle">
-                    Ingeniero de Software · <span class="c-cyan">Full-Stack Developer</span>
-                </p>
-                <p class="hero-desc">
-                    Construyo sistemas reales. Desde APIs REST con Spring Boot hasta plataformas empresariales en producción con Next.js. Enfocado en seguridad, arquitectura limpia y código que escala.
-                </p>
-                <div class="os-badges">
-                    <div class="os-badge"><i class="fab fa-linux"></i> Linux</div>
-                    <div class="os-badge"><i class="fab fa-apple"></i> macOS</div>
-                    <div class="os-badge"><i class="fab fa-windows"></i> Windows</div>
-                </div>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> Ver proyectos</a>
-                    <a href="#contact" class="btn-ghost"><i class="fas fa-terminal"></i> Contactar</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ── METRICS ── -->
-    <div id="metrics">
-        <div class="metrics-inner">
-            <div class="metric-card">
-                <span class="metric-val mono" data-target="2">0</span><span class="metric-unit">+</span>
-                <span class="metric-lbl">Años de experiencia</span>
-                <div class="metric-bar"><div class="mb-fill" style="--w:65%"></div></div>
-            </div>
-            <div class="metric-card">
-                <span class="metric-val mono" data-target="2">0</span><span class="metric-unit"></span>
-                <span class="metric-lbl">Sistemas en producción</span>
-                <div class="metric-bar"><div class="mb-fill" style="--w:80%"></div></div>
-            </div>
-            <div class="metric-card">
-                <span class="metric-val mono" data-target="5">0</span><span class="metric-unit">+</span>
-                <span class="metric-lbl">Proyectos completados</span>
-                <div class="metric-bar"><div class="mb-fill" style="--w:70%"></div></div>
-            </div>
-            <div class="metric-card">
-                <span class="metric-val mono" data-target="10">0</span><span class="metric-unit">+</span>
-                <span class="metric-lbl">Tecnologías dominadas</span>
-                <div class="metric-bar"><div class="mb-fill" style="--w:75%"></div></div>
-            </div>
-            <div class="metric-card">
-                <span class="metric-val mono" data-target="100">0</span><span class="metric-unit">%</span>
-                <span class="metric-lbl">Uptime · bausen.mx</span>
-                <div class="metric-bar"><div class="mb-fill" style="--w:100%"></div></div>
-            </div>
-        </div>
+    <div class="hero-scroll-hint">
+      <span class="mono text-xs c-dim">scroll down</span>
+      <div class="scroll-arrow"></div>
     </div>
+  </section>
 
-    <!-- ── EXPERIENCE ── -->
-    <section id="experience">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ ls -la ./experience</span>
-                <h2 class="section-title">Experiencia <span class="c-green">Profesional</span></h2>
-            </div>
-            <div class="timeline">
-                <div class="tl-item reveal active-tl">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-top">
-                            <div>
-                                <h3 class="tl-role">Software Developer</h3>
-                                <p class="tl-company"><i class="fas fa-building c-cyan"></i> Bausen · Infraestructura Digital</p>
-                            </div>
-                            <div class="tl-right">
-                                <span class="tl-period mono">2024 — Presente</span>
-                                <span class="badge-active">● ACTIVO</span>
-                            </div>
-                        </div>
-                        <ul class="tl-list">
-                            <li>Desarrollo y mantenimiento de la <strong>Plataforma de Pagos BECHAPRA</strong> — sistema de gestión financiera institucional desplegado en producción en bausen.mx.</li>
-                            <li>Construcción del <strong>Portal Corporativo Bausen</strong> — autenticación de grado bancario, TLS v2.5, gestión de credenciales y acceso centralizado institucional.</li>
-                            <li>Stack: Next.js, TypeScript, autenticación segura, despliegue en servidor productivo.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">TLS/HTTPS</span>
-                            <span class="tag">Auth</span>
-                            <span class="tag green-tag">Producción</span>
-                        </div>
-                    </div>
-                </div>
+  <!-- ═══════════════ METRICS ═══════════════ -->
+  <div id="metrics">
+    <div class="metrics-inner">
+      <div class="metric-card">
+        <span class="metric-val mono" data-target="1">0</span><span class="metric-unit">+</span>
+        <span class="metric-lbl">Año en producción</span>
+        <div class="metric-bar"><div class="mb-fill" style="--w:60%"></div></div>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val mono" data-target="2">0</span><span class="metric-unit"></span>
+        <span class="metric-lbl">Sistemas en producción</span>
+        <div class="metric-bar"><div class="mb-fill" style="--w:80%"></div></div>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val mono" data-target="5">0</span><span class="metric-unit">+</span>
+        <span class="metric-lbl">Proyectos completados</span>
+        <div class="metric-bar"><div class="mb-fill" style="--w:70%"></div></div>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val mono" data-target="230">0</span><span class="metric-unit">+</span>
+        <span class="metric-lbl">Test cases documentados</span>
+        <div class="metric-bar"><div class="mb-fill" style="--w:90%"></div></div>
+      </div>
+      <div class="metric-card">
+        <span class="metric-val mono" data-target="12">0</span><span class="metric-unit">+</span>
+        <span class="metric-lbl">Tecnologías</span>
+        <div class="metric-bar"><div class="mb-fill" style="--w:75%"></div></div>
+      </div>
+    </div>
+  </div>
 
-                <div class="tl-item reveal">
-                    <div class="tl-dot"></div>
-                    <div class="tl-card">
-                        <div class="tl-top">
-                            <div>
-                                <h3 class="tl-role">Desarrollador · Proyectos Académicos</h3>
-                                <p class="tl-company"><i class="fas fa-university c-cyan"></i> UTVT · Grupo IDGS-84</p>
-                            </div>
-                            <div class="tl-right">
-                                <span class="tl-period mono">2022 — 2024</span>
-                                <span class="badge-done">✓ COMPLETADO</span>
-                            </div>
-                        </div>
-                        <ul class="tl-list">
-                            <li>API REST con <strong>Spring Boot</strong>, JPA/Hibernate, MapStruct, Log4j2 y MySQL. Documentada con Springdoc/OpenAPI. Frontend en Next.js con UTVT branding.</li>
-                            <li>App móvil de <strong>gestión de barbería</strong> — arquitectura completa, 230+ casos de prueba, CI/CD, Cypress, Jest, JMeter, Postman/Newman, ISO/IEC 27001.</li>
-                            <li>Módulo Python con <strong>Pandas Series.diff()</strong> para validación y análisis de progresiones aritméticas.</li>
-                        </ul>
-                        <div class="tag-row">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag">Java</span>
-                            <span class="tag">Python</span>
-                            <span class="tag cyan-tag">React Native</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ cat ~/about.md</span>
+        <h2 class="section-title">Sobre <span class="c-cyan">Mí</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo-col reveal">
+          <div class="about-photo-wrap">
+            <img src="images/mi-foto.jpg" alt="Luis González Ramírez" class="about-photo">
+            <div class="about-photo-frame"></div>
+          </div>
+          <div class="about-quick-facts">
+            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-map-pin"></i></span><span>Toluca, México</span></div>
+            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-briefcase"></i></span><span>Bausen · Developer</span></div>
+            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-graduation-cap"></i></span><span>UTVT · Ing. Software</span></div>
+            <div class="qf-item"><span class="qf-icon c-green"><i class="fas fa-circle"></i></span><span class="c-green">Disponible</span></div>
+          </div>
         </div>
-    </section>
-
-    <!-- ── PROJECTS ── -->
-    <section id="projects">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ git log --oneline --all</span>
-                <h2 class="section-title">Proyectos <span class="c-green">Desplegados</span></h2>
-                <p class="section-sub">Sistemas reales, código en producción, arquitectura que escala.</p>
-            </div>
-            <div class="projects-grid">
-
-                <div class="project-card reveal featured">
-                    <div class="pc-header">
-                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-                        <span class="pc-path mono">bechapra-platform/</span>
-                        <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
-                    </div>
-                    <div class="pc-body">
-                        <div class="tag-row">
-                            <span class="tag">Next.js</span><span class="tag cyan-tag">TypeScript</span><span class="tag green-tag">Producción</span>
-                        </div>
-                        <h3 class="pc-name">Plataforma de Pagos BECHAPRA</h3>
-                        <p class="pc-desc">Sistema de gestión de pagos institucional con autenticación segura, control de roles y panel administrativo. Alta disponibilidad en bausen.mx.</p>
-                        <div class="pc-metrics">
-                            <div class="pcm"><span class="pcm-lbl mono">STATUS</span><span class="pcm-val c-green">ONLINE</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">TYPE</span><span class="pcm-val">Enterprise</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">DEPLOY</span><span class="pcm-val">bausen.mx</span></div>
-                        </div>
-                        <div class="pc-footer">
-                            <a href="https://bausen.mx/login" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Ver plataforma</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal featured">
-                    <div class="pc-header">
-                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-                        <span class="pc-path mono">bausen-portal/</span>
-                        <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
-                    </div>
-                    <div class="pc-body">
-                        <div class="tag-row">
-                            <span class="tag">Portal Corp.</span><span class="tag cyan-tag">TLS v2.5</span><span class="tag green-tag">Producción</span>
-                        </div>
-                        <h3 class="pc-name">Portal Corporativo Bausen</h3>
-                        <p class="pc-desc">Nexo central de gestión financiera institucional. Autenticación de grado bancario, acceso por credenciales de sistema y conexión TLS segura.</p>
-                        <div class="pc-metrics">
-                            <div class="pcm"><span class="pcm-lbl mono">STATUS</span><span class="pcm-val c-green">ONLINE</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">AUTH</span><span class="pcm-val">TLS · v2.5</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">DEPLOY</span><span class="pcm-val">bausen.mx</span></div>
-                        </div>
-                        <div class="pc-footer">
-                            <a href="https://bausen.mx/login-portal/login" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Ver portal</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="pc-header">
-                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-                        <span class="pc-path mono">evaluacion-docente-api/</span>
-                        <span class="pc-badge">Académico</span>
-                    </div>
-                    <div class="pc-body">
-                        <div class="tag-row">
-                            <span class="tag">Spring Boot</span><span class="tag cyan-tag">Java</span><span class="tag">MySQL</span><span class="tag">OpenAPI</span>
-                        </div>
-                        <h3 class="pc-name">API REST — Evaluación Docente</h3>
-                        <p class="pc-desc">API RESTful con JPA/Hibernate, MapStruct, Log4j2. Entidades: Estudiante, Docente, Cuestionario, Evaluación. Swagger + frontend Next.js.</p>
-                        <div class="pc-metrics">
-                            <div class="pcm"><span class="pcm-lbl mono">STACK</span><span class="pcm-val">Spring + Next</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">DB</span><span class="pcm-val">MySQL</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">DOCS</span><span class="pcm-val">Swagger</span></div>
-                        </div>
-                        <div class="pc-footer">
-                            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="pc-header">
-                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-                        <span class="pc-path mono">barbershop-app/</span>
-                        <span class="pc-badge wip">WIP</span>
-                    </div>
-                    <div class="pc-body">
-                        <div class="tag-row">
-                            <span class="tag">React Native</span><span class="tag cyan-tag">Mobile</span><span class="tag orange-tag">En desarrollo</span>
-                        </div>
-                        <h3 class="pc-name">App — Gestión Barbería</h3>
-                        <p class="pc-desc">App móvil para gestión de citas. Auth, agenda, roles barbero/cliente. 230+ casos de prueba con Cypress, Jest, JMeter. ISO/IEC 27001 aplicado.</p>
-                        <div class="pc-metrics">
-                            <div class="pcm"><span class="pcm-lbl mono">TESTS</span><span class="pcm-val">230+</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">PLATFORM</span><span class="pcm-val">iOS · Android</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">CI/CD</span><span class="pcm-val">GH Actions</span></div>
-                        </div>
-                        <div class="pc-footer">
-                            <a href="https://github.com/KikeGonRam" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card reveal">
-                    <div class="pc-header">
-                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-                        <span class="pc-path mono">series-aritmeticas-py/</span>
-                        <span class="pc-badge">Académico</span>
-                    </div>
-                    <div class="pc-body">
-                        <div class="tag-row">
-                            <span class="tag">Python</span><span class="tag cyan-tag">Pandas</span><span class="tag">Análisis</span>
-                        </div>
-                        <h3 class="pc-name">Validador — Series Aritméticas</h3>
-                        <p class="pc-desc">Clase ProgresionAritmetica con Pandas Series.diff() para validar progresiones numéricas. Python 3.14 en PyCharm.</p>
-                        <div class="pc-metrics">
-                            <div class="pcm"><span class="pcm-lbl mono">LANG</span><span class="pcm-val">Python 3.14</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">LIB</span><span class="pcm-val">Pandas</span></div>
-                            <div class="pcm"><span class="pcm-lbl mono">IDE</span><span class="pcm-val">PyCharm</span></div>
-                        </div>
-                        <div class="pc-footer">
-                            <a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        <div class="about-text-col reveal">
+          <p>Soy <strong>Luis Enrique González Ramírez</strong>, desarrollador de software con título de T.S.U. y actualmente estudiando Ingeniería en Desarrollo y Gestión de Software en la UTVT. Trabajo en <strong>Bausen</strong> donde he desarrollado plataformas empresariales reales en producción.</p>
+          <p>Me apasiona construir software que <em>funciona de verdad</em> — sistemas que usan personas reales, plataformas que manejan datos reales, APIs que responden 24/7. No me limito a un lenguaje o framework: uso lo que el problema necesita.</p>
+          <p>Fuera del código me interesan la <strong>arquitectura de sistemas</strong>, la seguridad informática, y entender cómo funciona internet a nivel bajo. También disfruto aprender sobre diseño de UI, DevOps y automatización.</p>
+          <div class="about-hobbies">
+            <span class="hb-chip"><i class="fas fa-terminal"></i> CLI tools</span>
+            <span class="hb-chip"><i class="fas fa-shield"></i> Ciberseguridad</span>
+            <span class="hb-chip"><i class="fas fa-network-wired"></i> Redes</span>
+            <span class="hb-chip"><i class="fas fa-robot"></i> Automatización</span>
+            <span class="hb-chip"><i class="fas fa-mobile-alt"></i> Mobile dev</span>
+            <span class="hb-chip"><i class="fas fa-palette"></i> UI/UX</span>
+            <span class="hb-chip"><i class="fas fa-database"></i> Bases de datos</span>
+            <span class="hb-chip"><i class="fas fa-gamepad"></i> Gaming</span>
+          </div>
         </div>
-    </section>
+      </div>
+    </div>
+  </section>
 
-    <!-- ── SKILLS ── -->
-    <section id="skills">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ cat package.json | grep dependencies</span>
-                <h2 class="section-title">Tech <span class="c-green">Stack</span></h2>
-                <p class="section-sub">Tecnologías que uso para construir sistemas completos, del backend al deploy.</p>
-            </div>
+  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
+  <section id="experience">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ ls -la ./experience --sort=date</span>
+        <h2 class="section-title">Experiencia <span class="c-cyan">Profesional</span></h2>
+      </div>
+      <div class="timeline">
 
-            <div class="skills-grid">
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-server c-green"></i><span class="mono">backend/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">Java</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
-                        <div class="skill-row"><span class="sr-name">Spring Boot</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
-                        <div class="skill-row"><span class="sr-name">Python</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
-                        <div class="skill-row"><span class="sr-name">REST APIs</span><div class="sr-bar"><div class="sr-fill" data-w="90"></div></div><span class="sr-pct mono">90%</span></div>
-                        <div class="skill-row"><span class="sr-name">MapStruct / JPA</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
-                    </div>
-                </div>
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-globe c-cyan"></i><span class="mono">frontend/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">Next.js</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
-                        <div class="skill-row"><span class="sr-name">TypeScript</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
-                        <div class="skill-row"><span class="sr-name">React / RN</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
-                        <div class="skill-row"><span class="sr-name">CSS / Tailwind</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
-                        <div class="skill-row"><span class="sr-name">JavaScript</span><div class="sr-bar"><div class="sr-fill" data-w="88"></div></div><span class="sr-pct mono">88%</span></div>
-                    </div>
-                </div>
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-database c-orange"></i><span class="mono">data & db/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">MySQL</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
-                        <div class="skill-row"><span class="sr-name">JPA / Hibernate</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
-                        <div class="skill-row"><span class="sr-name">Pandas</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
-                        <div class="skill-row"><span class="sr-name">MySQL Workbench</span><div class="sr-bar"><div class="sr-fill" data-w="78"></div></div><span class="sr-pct mono">78%</span></div>
-                    </div>
-                </div>
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-shield-halved c-green"></i><span class="mono">security/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">TLS / HTTPS</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
-                        <div class="skill-row"><span class="sr-name">Auth / JWT</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
-                        <div class="skill-row"><span class="sr-name">ISO/IEC 27001</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
-                        <div class="skill-row"><span class="sr-name">ISO 31000</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
-                    </div>
-                </div>
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-vials c-cyan"></i><span class="mono">testing/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">Cypress</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
-                        <div class="skill-row"><span class="sr-name">Jest</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
-                        <div class="skill-row"><span class="sr-name">JMeter</span><div class="sr-bar"><div class="sr-fill" data-w="72"></div></div><span class="sr-pct mono">72%</span></div>
-                        <div class="skill-row"><span class="sr-name">Postman / Newman</span><div class="sr-bar"><div class="sr-fill" data-w="78"></div></div><span class="sr-pct mono">78%</span></div>
-                    </div>
-                </div>
-                <div class="skill-panel reveal">
-                    <div class="sp-head"><i class="fas fa-code-branch c-orange"></i><span class="mono">devops/</span></div>
-                    <div class="skill-list">
-                        <div class="skill-row"><span class="sr-name">Git / GitHub</span><div class="sr-bar"><div class="sr-fill" data-w="88"></div></div><span class="sr-pct mono">88%</span></div>
-                        <div class="skill-row"><span class="sr-name">GitHub Actions</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
-                        <div class="skill-row"><span class="sr-name">CI/CD</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
-                        <div class="skill-row"><span class="sr-name">Swagger / OpenAPI</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
-                    </div>
-                </div>
+        <!-- BAUSEN - Contratado -->
+        <div class="tl-item reveal active-tl">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div>
+                <h3 class="tl-role">Software Developer</h3>
+                <p class="tl-company"><i class="fas fa-building c-cyan"></i> Bausen · Infraestructura Digital Corporativa</p>
+              </div>
+              <div class="tl-right">
+                <span class="tl-period mono">Ago 2025 — Presente</span>
+                <span class="badge-active">● CONTRATADO</span>
+              </div>
             </div>
-
-            <!-- OS Terminal Row -->
-            <div class="os-terminals">
-                <div class="os-term linux reveal">
-                    <div class="ost-head">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
-                        <span class="ost-title mono"><i class="fab fa-linux"></i> bash — Linux</span>
-                    </div>
-                    <div class="ost-body mono">
-                        <p><span class="c-green">luis@ubuntu</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> git status</p>
-                        <p class="c-dim">On branch main · nothing to commit</p>
-                        <p><span class="c-green">✓</span> working tree clean</p>
-                    </div>
-                </div>
-                <div class="os-term mac reveal">
-                    <div class="ost-head">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
-                        <span class="ost-title mono"><i class="fab fa-apple"></i> zsh — macOS</span>
-                    </div>
-                    <div class="ost-body mono">
-                        <p><span class="c-cyan">➜</span> <span class="c-green">~</span> mvn spring-boot:run</p>
-                        <p class="c-dim">Started App in 1.23s (JVM)</p>
-                        <p><span class="c-green">✓</span> Listening on :8080</p>
-                    </div>
-                </div>
-                <div class="os-term win reveal">
-                    <div class="ost-head">
-                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
-                        <span class="ost-title mono"><i class="fab fa-windows"></i> PowerShell — Windows</span>
-                    </div>
-                    <div class="ost-body mono">
-                        <p><span class="c-cyan">PS</span> C:\luis\portfolio<span class="c-green">></span> npm run dev</p>
-                        <p class="c-dim">▲ Next.js 14 ready</p>
-                        <p><span class="c-green">✓</span> localhost:3000</p>
-                    </div>
-                </div>
+            <ul class="tl-list">
+              <li>Contratado directamente tras concluir la estadía. Responsable del desarrollo y mantenimiento de la <strong>Plataforma BECHAPRA</strong> y el <strong>Portal Corporativo</strong> en producción.</li>
+              <li>Gestión de autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo bausen.mx.</li>
+              <li>Stack activo: Next.js, TypeScript, módulos de seguridad, infraestructura digital corporativa.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Next.js</span><span class="tag">TypeScript</span>
+              <span class="tag">TLS/HTTPS</span><span class="tag green-tag">Producción</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- ── EDUCATION ── -->
-    <section id="education">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ cat ~/.education</span>
-                <h2 class="section-title">Educación <span class="c-green">Formal</span></h2>
+        <!-- BECHAPRA - Estadía -->
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div>
+                <h3 class="tl-role">Desarrollador en Estadía</h3>
+                <p class="tl-company"><i class="fas fa-flask c-cyan"></i> Bechapra (hoy Bausen) · Estadía Profesional</p>
+              </div>
+              <div class="tl-right">
+                <span class="tl-period mono">Abr 2025 — Ago 2025</span>
+                <span class="badge-done">✓ COMPLETADO</span>
+              </div>
             </div>
-            <div class="edu-list">
-                <div class="edu-item reveal">
-                    <div class="edu-year mono">Septiembre 2025 — <span class="c-green">HOY</span></div>
-                    <div class="edu-card">
-                        <div class="edu-icon current-edu"><i class="fas fa-graduation-cap"></i></div>
-                        <div>
-                            <h3 class="edu-degree">Ingeniería en Desarrollo y Gestión de Software</h3>
-                            <p class="edu-school">Universidad Tecnológica del Valle de Toluca</p>
-                            <p class="edu-detail">Inicio en 7mo cuatrimestre · 8vo cuatrimestre actual</p>
-                            <span class="edu-badge current-badge">En curso</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="edu-item reveal">
-                    <div class="edu-year mono">2022 — Agosto 2025</div>
-                    <div class="edu-card">
-                        <div class="edu-icon done-edu"><i class="fas fa-certificate"></i></div>
-                        <div>
-                            <h3 class="edu-degree">T.S.U. en Desarrollo de Software Multiplataforma</h3>
-                            <p class="edu-school">Universidad Tecnológica del Valle de Toluca · IDGS-84</p>
-                            <p class="edu-detail">Terminado en 6to cuatrimestre · Titulado</p>
-                            <span class="edu-badge done-badge">✓ Titulado</span>
-                        </div>
-                    </div>
-                </div>
+            <ul class="tl-list">
+              <li>Estadía profesional universitaria en Bechapra. Desarrollo de la <strong>Plataforma de Pagos BECHAPRA</strong> — sistema institucional de gestión financiera.</li>
+              <li>Construcción del <strong>Portal Corporativo</strong> con autenticación de grado bancario, sistema TLS v2.5 y acceso centralizado.</li>
+              <li>Al término de la estadía la empresa fue renombrada a <strong>Bausen</strong> y se formalizó la contratación.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Next.js</span><span class="tag">Auth</span>
+              <span class="tag">Estadía UTVT</span><span class="tag cyan-tag">Primer trabajo</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- ── BLOG ── -->
-    <section id="blog">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ ls -la ./blog --sort=date</span>
-                <h2 class="section-title">Blog <span class="c-green">Técnico</span></h2>
-                <p class="section-sub">Artículos sobre desarrollo, arquitectura y tecnología. En preparación.</p>
+        <!-- ACADÉMICO -->
+        <div class="tl-item reveal">
+          <div class="tl-dot"></div>
+          <div class="tl-card">
+            <div class="tl-top">
+              <div>
+                <h3 class="tl-role">Proyectos Académicos · TSU</h3>
+                <p class="tl-company"><i class="fas fa-university c-cyan"></i> UTVT · Grupo IDGS-84</p>
+              </div>
+              <div class="tl-right">
+                <span class="tl-period mono">2022 — 2025</span>
+                <span class="badge-done">✓ TITULADO</span>
+              </div>
             </div>
-            <div class="blog-grid">
-                <div class="blog-card reveal">
-                    <div class="blog-top">
-                        <span class="blog-tag">Spring Boot</span>
-                        <span class="blog-status mono">DRAFT</span>
-                    </div>
-                    <h3 class="blog-title">JWT Authentication en Spring Boot — Guía práctica</h3>
-                    <p class="blog-desc">Cómo implementar autenticación stateless con JWT, Spring Security y buenas prácticas de seguridad desde cero.</p>
-                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
-                </div>
-                <div class="blog-card reveal">
-                    <div class="blog-top">
-                        <span class="blog-tag cyan-tag">Next.js</span>
-                        <span class="blog-status mono">DRAFT</span>
-                    </div>
-                    <h3 class="blog-title">Next.js 14 + Spring Boot: Full-Stack sin drama</h3>
-                    <p class="blog-desc">Conectando App Router a una API Spring Boot: CORS, fetch tipado, manejo de errores y despliegue en producción.</p>
-                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
-                </div>
-                <div class="blog-card reveal">
-                    <div class="blog-top">
-                        <span class="blog-tag orange-tag">Carrera</span>
-                        <span class="blog-status mono">DRAFT</span>
-                    </div>
-                    <h3 class="blog-title">De TSU a Ingeniería: mi stack y qué cambió</h3>
-                    <p class="blog-desc">Cómo evolucionó mi forma de escribir código, diseñar sistemas y trabajar en equipo al avanzar de TSU a Ingeniería.</p>
-                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
-                </div>
+            <ul class="tl-list">
+              <li><strong>API REST Spring Boot</strong> — JPA/Hibernate, MapStruct, Log4j2, MySQL, Springdoc/OpenAPI, frontend Next.js.</li>
+              <li><strong>App móvil gestión barbería</strong> — 230+ casos de prueba, CI/CD, Cypress, Jest, JMeter, ISO/IEC 27001, ISO 31000.</li>
+              <li><strong>Módulo Python Pandas</strong> — ProgresionAritmetica con Series.diff() para análisis numérico.</li>
+            </ul>
+            <div class="tag-row">
+              <span class="tag">Spring Boot</span><span class="tag">Java</span>
+              <span class="tag">Python</span><span class="tag cyan-tag">React Native</span><span class="tag">MySQL</span>
             </div>
+          </div>
         </div>
-    </section>
 
-    <!-- ── CONTACT ── -->
-    <section id="contact">
-        <div class="section-inner">
-            <div class="section-head reveal">
-                <span class="section-cmd mono">$ ping luis@bausen.dev</span>
-                <h2 class="section-title">¿Hablamos? <span class="c-green">Contacto</span></h2>
-                <p class="section-sub">Disponible para oportunidades, proyectos freelance o platicar de tecnología.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ git log --oneline --all --graph</span>
+        <h2 class="section-title">Proyectos <span class="c-cyan">en Producción</span></h2>
+        <p class="section-sub">Sistemas reales desplegados, código que corre 24/7 y usuarios reales.</p>
+      </div>
+
+      <!-- FEATURED ROW -->
+      <div class="projects-featured reveal">
+        <div class="pf-card left">
+          <div class="pf-glow"></div>
+          <div class="pf-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">~/bechapra-platform/</span>
+            <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
+          </div>
+          <div class="pf-body">
+            <div class="pf-type mono c-dim">// Enterprise · Fintech</div>
+            <h3 class="pf-name">Plataforma de Pagos BECHAPRA</h3>
+            <p class="pf-desc">Sistema de gestión de pagos institucional con autenticación segura, control de roles, panel administrativo y alta disponibilidad. Procesamiento financiero en tiempo real.</p>
+            <div class="pf-metrics-row">
+              <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
+              <div class="pfm"><span class="pfm-k mono">TYPE</span><span class="pfm-v">Enterprise</span></div>
+              <div class="pfm"><span class="pfm-k mono">DEPLOY</span><span class="pfm-v">bausen.mx</span></div>
+              <div class="pfm"><span class="pfm-k mono">SEC</span><span class="pfm-v">TLS v2.5</span></div>
             </div>
-            <div class="contact-grid">
-                <div class="contact-links reveal">
-                    <a href="mailto:kikeramirez@gmail.com" class="contact-item">
-                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
-                        <div class="ci-body"><span class="ci-lbl mono">EMAIL</span><span class="ci-val">kikeramirez@gmail.com</span></div>
-                        <i class="fas fa-chevron-right ci-arr"></i>
-                    </a>
-                    <a href="https://github.com/KikeGonRam" target="_blank" class="contact-item">
-                        <div class="ci-icon"><i class="fab fa-github"></i></div>
-                        <div class="ci-body"><span class="ci-lbl mono">GITHUB</span><span class="ci-val">KikeGonRam</span></div>
-                        <i class="fas fa-chevron-right ci-arr"></i>
-                    </a>
-                    <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank" class="contact-item">
-                        <div class="ci-icon"><i class="fab fa-instagram"></i></div>
-                        <div class="ci-body"><span class="ci-lbl mono">INSTAGRAM</span><span class="ci-val">@kike_gonzalez_16</span></div>
-                        <i class="fas fa-chevron-right ci-arr"></i>
-                    </a>
-                    <a href="https://www.facebook.com/kike160418" target="_blank" class="contact-item">
-                        <div class="ci-icon"><i class="fab fa-facebook"></i></div>
-                        <div class="ci-body"><span class="ci-lbl mono">FACEBOOK</span><span class="ci-val">Kike Gonzalez</span></div>
-                        <i class="fas fa-chevron-right ci-arr"></i>
-                    </a>
-                </div>
-                <div class="contact-term reveal">
-                    <div class="terminal-window">
-                        <div class="term-header">
-                            <div class="term-dots">
-                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
-                            </div>
-                            <span class="term-title mono">send-message.sh</span>
-                        </div>
-                        <div class="term-body">
-                            <p class="prompt"><span class="c-green">$</span> <span class="c-cyan">./send-message.sh</span></p>
-                            <div class="form-grp">
-                                <label class="mono c-green"># nombre:</label>
-                                <input type="text" class="term-input" placeholder="Tu nombre">
-                            </div>
-                            <div class="form-grp">
-                                <label class="mono c-green"># email:</label>
-                                <input type="email" class="term-input" placeholder="tu@email.com">
-                            </div>
-                            <div class="form-grp">
-                                <label class="mono c-green"># mensaje:</label>
-                                <textarea class="term-input" rows="3" placeholder="Cuéntame de tu proyecto..."></textarea>
-                            </div>
-                            <button class="btn-send" id="send-btn">
-                                <i class="fas fa-paper-plane"></i>
-                                <span class="mono">send_message()</span>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+            <div class="tag-row">
+              <span class="tag">Next.js</span><span class="tag cyan-tag">TypeScript</span>
+              <span class="tag green-tag">Producción</span><span class="tag">Auth</span>
             </div>
+            <a href="https://bausen.mx/login" target="_blank" class="btn-primary mt-1"><i class="fas fa-external-link-alt"></i> Ver plataforma</a>
+          </div>
         </div>
-    </section>
 
-    <!-- ── FOOTER ── -->
-    <footer>
-        <div class="footer-inner">
-            <div class="footer-l">
-                <span class="mono c-green">❰LGR❱</span>
-                <p>© 2025 Luis Enrique González Ramírez</p>
+        <div class="pf-card right">
+          <div class="pf-glow glow-indigo"></div>
+          <div class="pf-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">~/bausen-portal/</span>
+            <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
+          </div>
+          <div class="pf-body">
+            <div class="pf-type mono c-dim">// Corporate Portal · Security</div>
+            <h3 class="pf-name">Portal Corporativo Bausen</h3>
+            <p class="pf-desc">Nexo central de gestión financiera institucional. Autenticación de grado bancario, credenciales de sistema, TLS seguro y acceso centralizado corporativo.</p>
+            <div class="pf-metrics-row">
+              <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
+              <div class="pfm"><span class="pfm-k mono">AUTH</span><span class="pfm-v">Bancario</span></div>
+              <div class="pfm"><span class="pfm-k mono">PROTO</span><span class="pfm-v">TLS v2.5</span></div>
+              <div class="pfm"><span class="pfm-k mono">USERS</span><span class="pfm-v">Corporativo</span></div>
             </div>
-            <div class="footer-c mono c-dim">
-                <span class="c-green">▲</span> Built with precision · UTVT IDGS-84
+            <div class="tag-row">
+              <span class="tag">Portal Corp.</span><span class="tag cyan-tag">TLS</span>
+              <span class="tag green-tag">Producción</span><span class="tag">Seguridad</span>
             </div>
-            <div class="footer-r mono c-dim">
-                Ing. TI · Bausen Dev
-            </div>
+            <a href="https://bausen.mx/login-portal/login" target="_blank" class="btn-ghost mt-1"><i class="fas fa-external-link-alt"></i> Ver portal</a>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <script src="js/script.js"></script>
+      <!-- SECONDARY GRID -->
+      <div class="projects-grid">
+        <div class="project-card reveal">
+          <div class="pc-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">evaluacion-docente-api/</span>
+            <span class="pc-badge">Académico</span>
+          </div>
+          <div class="pc-body">
+            <div class="tag-row"><span class="tag">Spring Boot</span><span class="tag cyan-tag">Java</span><span class="tag">MySQL</span><span class="tag">Swagger</span></div>
+            <h3 class="pc-name">API REST — Evaluación Docente</h3>
+            <p class="pc-desc">API RESTful con JPA/Hibernate, MapStruct, Log4j2. Entidades: Estudiante, Docente, Cuestionario, Evaluación. OpenAPI + frontend Next.js.</p>
+            <div class="pc-footer"><a href="https://github.com/KikeGonRam/evaluacion-docente-api" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a></div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">barbershop-app/</span>
+            <span class="pc-badge wip">WIP</span>
+          </div>
+          <div class="pc-body">
+            <div class="tag-row"><span class="tag">React Native</span><span class="tag cyan-tag">Mobile</span><span class="tag orange-tag">En desarrollo</span></div>
+            <h3 class="pc-name">App — Gestión Barbería</h3>
+            <p class="pc-desc">App móvil para gestión de citas, agenda y roles. 230+ casos de prueba, Cypress, Jest, JMeter, Postman/Newman, CI/CD e ISO/IEC 27001.</p>
+            <div class="pc-footer"><a href="https://github.com/KikeGonRam" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a></div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">series-aritmeticas-py/</span>
+            <span class="pc-badge">Python</span>
+          </div>
+          <div class="pc-body">
+            <div class="tag-row"><span class="tag">Python</span><span class="tag cyan-tag">Pandas</span><span class="tag">Análisis</span></div>
+            <h3 class="pc-name">Validador — Series Aritméticas</h3>
+            <p class="pc-desc">Clase ProgresionAritmetica con Pandas Series.diff() para validar y analizar progresiones numéricas. Python 3.14, PyCharm.</p>
+            <div class="pc-footer"><a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ cat package.json | jq '.dependencies'</span>
+        <h2 class="section-title">Tech <span class="c-cyan">Stack</span></h2>
+        <p class="section-sub">Tecnologías que domino para construir sistemas completos, del backend al deploy.</p>
+      </div>
+
+      <div class="skills-universe">
+        <!-- Backend -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">01</span> · backend/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-high"><i class="fab fa-java"></i><span>Java</span><div class="sc-bar"><div style="--p:85%"></div></div></div>
+            <div class="sc-chip lvl-high"><i class="fas fa-leaf"></i><span>Spring Boot</span><div class="sc-bar"><div style="--p:80%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fab fa-python"></i><span>Python</span><div class="sc-bar"><div style="--p:70%"></div></div></div>
+            <div class="sc-chip lvl-high"><i class="fas fa-plug"></i><span>REST APIs</span><div class="sc-bar"><div style="--p:90%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-layer-group"></i><span>MapStruct / JPA</span><div class="sc-bar"><div style="--p:75%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-book-open"></i><span>Swagger / OpenAPI</span><div class="sc-bar"><div style="--p:80%"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Frontend -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">02</span> · frontend/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-high"><i class="fas fa-bolt"></i><span>Next.js</span><div class="sc-bar"><div style="--p:85%"></div></div></div>
+            <div class="sc-chip lvl-high"><i class="fab fa-react"></i><span>React / RN</span><div class="sc-bar"><div style="--p:80%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-code"></i><span>TypeScript</span><div class="sc-bar"><div style="--p:75%"></div></div></div>
+            <div class="sc-chip lvl-high"><i class="fab fa-js"></i><span>JavaScript</span><div class="sc-bar"><div style="--p:88%"></div></div></div>
+            <div class="sc-chip lvl-high"><i class="fab fa-css3-alt"></i><span>CSS / Tailwind</span><div class="sc-bar"><div style="--p:85%"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Data & DB -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">03</span> · data &amp; db/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-high"><i class="fas fa-database"></i><span>MySQL</span><div class="sc-bar"><div style="--p:80%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-server"></i><span>JPA / Hibernate</span><div class="sc-bar"><div style="--p:75%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-chart-line"></i><span>Pandas</span><div class="sc-bar"><div style="--p:65%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-tools"></i><span>MySQL Workbench</span><div class="sc-bar"><div style="--p:78%"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Security -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">04</span> · security/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-high"><i class="fas fa-lock"></i><span>TLS / HTTPS</span><div class="sc-bar"><div style="--p:80%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-key"></i><span>Auth / JWT</span><div class="sc-bar"><div style="--p:75%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-shield-halved"></i><span>ISO/IEC 27001</span><div class="sc-bar"><div style="--p:70%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-triangle-exclamation"></i><span>ISO 31000</span><div class="sc-bar"><div style="--p:65%"></div></div></div>
+          </div>
+        </div>
+
+        <!-- Testing -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">05</span> · testing/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-mid"><i class="fas fa-vial"></i><span>Cypress</span><div class="sc-bar"><div style="--p:70%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-flask"></i><span>Jest</span><div class="sc-bar"><div style="--p:70%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-gauge-high"></i><span>JMeter</span><div class="sc-bar"><div style="--p:72%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-paper-plane"></i><span>Postman / Newman</span><div class="sc-bar"><div style="--p:78%"></div></div></div>
+          </div>
+        </div>
+
+        <!-- DevOps -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">06</span> · devops/</div>
+          <div class="sc-chips">
+            <div class="sc-chip lvl-high"><i class="fab fa-git-alt"></i><span>Git / GitHub</span><div class="sc-bar"><div style="--p:88%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-gears"></i><span>GitHub Actions</span><div class="sc-bar"><div style="--p:70%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-infinity"></i><span>CI/CD</span><div class="sc-bar"><div style="--p:65%"></div></div></div>
+            <div class="sc-chip lvl-mid"><i class="fas fa-server"></i><span>Deployment</span><div class="sc-bar"><div style="--p:75%"></div></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OS Terminal Row -->
+      <div class="os-terminals">
+        <div class="os-term linux reveal">
+          <div class="ost-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span><span class="ost-title mono"><i class="fab fa-linux"></i> bash — Ubuntu</span></div>
+          <div class="ost-body mono">
+            <p><span class="c-cyan">luis@ubuntu</span><span class="c-dim">:~$</span> mvn clean install</p>
+            <p class="c-dim">BUILD SUCCESS · 2.3s</p>
+            <p><span class="c-green">✓</span> Tests: 12 passed</p>
+          </div>
+        </div>
+        <div class="os-term mac reveal">
+          <div class="ost-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span><span class="ost-title mono"><i class="fab fa-apple"></i> zsh — macOS</span></div>
+          <div class="ost-body mono">
+            <p><span class="c-green">➜</span> <span class="c-cyan">~</span> npm run build</p>
+            <p class="c-dim">▲ Next.js compiled · 4.1s</p>
+            <p><span class="c-green">✓</span> Ready for deploy</p>
+          </div>
+        </div>
+        <div class="os-term win reveal">
+          <div class="ost-head"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span><span class="ost-title mono"><i class="fab fa-windows"></i> PowerShell — WSL</span></div>
+          <div class="ost-body mono">
+            <p><span class="c-cyan">PS</span> C:\luis<span class="c-green">></span> git push</p>
+            <p class="c-dim">Enumerating objects: 5</p>
+            <p><span class="c-green">✓</span> main → origin/main</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+  <section id="certifications">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ ls ~/certificates/ --sort=date</span>
+        <h2 class="section-title">Certificaciones <span class="c-cyan">&amp; Cursos</span></h2>
+      </div>
+      <div class="certs-grid">
+        <div class="cert-card reveal">
+          <div class="cert-icon"><i class="fas fa-graduation-cap"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">UTVT</div>
+            <h4 class="cert-name">T.S.U. Desarrollo de Software Multiplataforma</h4>
+            <p class="cert-detail">Título universitario · Titulado 2025</p>
+            <span class="cert-badge done">✓ Completado</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon cyan-icon"><i class="fas fa-shield-halved"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">Seguridad en el Desarrollo</div>
+            <h4 class="cert-name">ISO/IEC 27001 — Seguridad en Aplicaciones</h4>
+            <p class="cert-detail">Aplicado en proyecto barbería · UTVT</p>
+            <span class="cert-badge done">✓ Aplicado</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon orange-icon"><i class="fas fa-leaf"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">Backend Development</div>
+            <h4 class="cert-name">Spring Boot REST API con JPA &amp; Swagger</h4>
+            <p class="cert-detail">Proyecto académico certificado · UTVT</p>
+            <span class="cert-badge done">✓ Completado</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon"><i class="fas fa-bolt"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">Frontend / Full-Stack</div>
+            <h4 class="cert-name">Next.js 14 + TypeScript en Producción</h4>
+            <p class="cert-detail">Plataforma Bausen desplegada en bausen.mx</p>
+            <span class="cert-badge active">● En uso</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon cyan-icon"><i class="fas fa-mobile-alt"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">Mobile Development</div>
+            <h4 class="cert-name">React Native — App Multiplataforma</h4>
+            <p class="cert-detail">iOS + Android · CI/CD · 230+ test cases</p>
+            <span class="cert-badge wip">⏳ En curso</span>
+          </div>
+        </div>
+        <div class="cert-card reveal">
+          <div class="cert-icon orange-icon"><i class="fas fa-infinity"></i></div>
+          <div class="cert-body">
+            <div class="cert-issuer mono c-dim">DevOps</div>
+            <h4 class="cert-name">CI/CD con GitHub Actions</h4>
+            <p class="cert-detail">Pipelines automatizados · Deploy en Pages</p>
+            <span class="cert-badge active">● Activo</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GITHUB STATS ═══════════════ -->
+  <section id="github-stats">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ curl https://api.github.com/users/KikeGonRam</span>
+        <h2 class="section-title">GitHub <span class="c-cyan">Stats</span></h2>
+        <p class="section-sub">Actividad pública en <a href="https://github.com/KikeGonRam" target="_blank" class="c-cyan">github.com/KikeGonRam</a></p>
+      </div>
+      <div class="github-grid">
+        <div class="gh-stats-wrap reveal">
+          <img src="https://github-readme-stats.vercel.app/api?username=KikeGonRam&show_icons=true&theme=transparent&title_color=00d4ff&text_color=c5d4e8&icon_color=00d4ff&border_color=1e2d3d&bg_color=0d1117" alt="GitHub Stats" class="gh-img">
+        </div>
+        <div class="gh-langs-wrap reveal">
+          <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=KikeGonRam&layout=compact&theme=transparent&title_color=00d4ff&text_color=c5d4e8&border_color=1e2d3d&bg_color=0d1117" alt="Top Languages" class="gh-img">
+        </div>
+        <div class="gh-streak-wrap reveal">
+          <img src="https://github-readme-streak-stats.herokuapp.com/?user=KikeGonRam&theme=transparent&hide_border=false&ring=00d4ff&fire=00d4ff&currStreakLabel=00d4ff&sideLabels=c5d4e8&dates=4d6680&border=1e2d3d&background=0d1117" alt="GitHub Streak" class="gh-img">
+        </div>
+        <div class="gh-info-card reveal">
+          <div class="term-header">
+            <div class="term-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="term-title mono">github-profile.json</span>
+          </div>
+          <div class="gh-json mono">
+            <p><span class="c-dim">{</span></p>
+            <p>&nbsp;&nbsp;<span class="json-k">"username"</span>: <span class="json-v">"KikeGonRam"</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"location"</span>: <span class="json-v">"Toluca, México"</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"company"</span>: <span class="json-v">"@Bausen"</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"repos"</span>: <span id="gh-repos" class="json-num">...</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"followers"</span>: <span id="gh-followers" class="json-num">...</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"public_gists"</span>: <span id="gh-gists" class="json-num">...</span>,</p>
+            <p>&nbsp;&nbsp;<span class="json-k">"hireable"</span>: <span class="c-green">true</span></p>
+            <p><span class="c-dim">}</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ EDUCATION ═══════════════ -->
+  <section id="education">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ cat ~/.education</span>
+        <h2 class="section-title">Educación <span class="c-cyan">Formal</span></h2>
+      </div>
+      <div class="edu-list">
+        <div class="edu-item reveal">
+          <div class="edu-year mono">Sep 2025 — <span class="c-cyan">HOY</span></div>
+          <div class="edu-card">
+            <div class="edu-icon current-edu"><i class="fas fa-graduation-cap"></i></div>
+            <div>
+              <h3 class="edu-degree">Ingeniería en Desarrollo y Gestión de Software</h3>
+              <p class="edu-school">Universidad Tecnológica del Valle de Toluca</p>
+              <p class="edu-detail">Continuación directa del TSU · 8vo Cuatrimestre actual</p>
+              <span class="edu-badge current-badge">● En curso</span>
+            </div>
+          </div>
+        </div>
+        <div class="edu-item reveal">
+          <div class="edu-year mono">2022 — Ago 2025</div>
+          <div class="edu-card">
+            <div class="edu-icon done-edu"><i class="fas fa-certificate"></i></div>
+            <div>
+              <h3 class="edu-degree">T.S.U. en Desarrollo de Software Multiplataforma</h3>
+              <p class="edu-school">Universidad Tecnológica del Valle de Toluca · IDGS-84</p>
+              <p class="edu-detail">Completado en 6to cuatrimestre · Titulado</p>
+              <span class="edu-badge done-badge">✓ Titulado</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ BLOG ═══════════════ -->
+  <section id="blog">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ ls ./blog/ -lt | head -5</span>
+        <h2 class="section-title">Blog <span class="c-cyan">Técnico</span></h2>
+        <p class="section-sub">Artículos sobre desarrollo, arquitectura y experiencias reales. Próximamente.</p>
+      </div>
+      <div class="blog-grid">
+        <div class="blog-card reveal blog-featured">
+          <div class="blog-num mono c-dim">001</div>
+          <div class="blog-meta">
+            <span class="blog-tag">Spring Boot</span>
+            <span class="blog-read mono c-dim"><i class="fas fa-clock"></i> 8 min read</span>
+          </div>
+          <h3 class="blog-title">JWT + Spring Security: Autenticación en producción</h3>
+          <p class="blog-desc">Implementé esto en Bausen. Te explico cómo hacer autenticación stateless con JWT, Spring Security 6 y cómo evitar los errores más comunes en producción.</p>
+          <div class="blog-footer">
+            <span class="blog-date mono c-dim">Próximamente · 2025</span>
+            <span class="blog-status mono">DRAFT</span>
+          </div>
+        </div>
+        <div class="blog-card reveal">
+          <div class="blog-num mono c-dim">002</div>
+          <div class="blog-meta">
+            <span class="blog-tag cyan-tag">Next.js</span>
+            <span class="blog-read mono c-dim"><i class="fas fa-clock"></i> 6 min read</span>
+          </div>
+          <h3 class="blog-title">Next.js 14 + Spring Boot: Full-Stack sin drama</h3>
+          <p class="blog-desc">Cómo conectar App Router con una API Spring Boot: CORS correcto, fetch tipado con TypeScript y despliegue en producción real.</p>
+          <div class="blog-footer">
+            <span class="blog-date mono c-dim">Próximamente · 2025</span>
+            <span class="blog-status mono">DRAFT</span>
+          </div>
+        </div>
+        <div class="blog-card reveal">
+          <div class="blog-num mono c-dim">003</div>
+          <div class="blog-meta">
+            <span class="blog-tag orange-tag">Carrera</span>
+            <span class="blog-read mono c-dim"><i class="fas fa-clock"></i> 5 min read</span>
+          </div>
+          <h3 class="blog-title">De estadía a contratado: lo que nadie te dice</h3>
+          <p class="blog-desc">Mi experiencia haciendo estadía en Bechapra y cómo terminé contratado en Bausen. Qué hice bien, qué haría diferente y qué esperar de tu primera estadía.</p>
+          <div class="blog-footer">
+            <span class="blog-date mono c-dim">Próximamente · 2025</span>
+            <span class="blog-status mono">DRAFT</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-head reveal">
+        <span class="section-cmd mono">$ ssh luis@gonzalez.dev</span>
+        <h2 class="section-title">¿Hablamos? <span class="c-cyan">Contacto</span></h2>
+        <p class="section-sub">Disponible para nuevas oportunidades, freelance o simplemente platicar de tecnología.</p>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-links reveal">
+          <a href="mailto:kikeramirez160418@gmail.com" class="contact-item">
+            <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+            <div class="ci-body"><span class="ci-lbl mono">EMAIL</span><span class="ci-val">kikeramirez160418@gmail.com</span></div>
+            <i class="fas fa-chevron-right ci-arr"></i>
+          </a>
+          <a href="https://github.com/KikeGonRam" target="_blank" class="contact-item">
+            <div class="ci-icon"><i class="fab fa-github"></i></div>
+            <div class="ci-body"><span class="ci-lbl mono">GITHUB</span><span class="ci-val">KikeGonRam</span></div>
+            <i class="fas fa-chevron-right ci-arr"></i>
+          </a>
+          <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank" class="contact-item">
+            <div class="ci-icon"><i class="fab fa-instagram"></i></div>
+            <div class="ci-body"><span class="ci-lbl mono">INSTAGRAM</span><span class="ci-val">@kike_gonzalez_16</span></div>
+            <i class="fas fa-chevron-right ci-arr"></i>
+          </a>
+          <a href="https://www.facebook.com/kike160418" target="_blank" class="contact-item">
+            <div class="ci-icon"><i class="fab fa-facebook"></i></div>
+            <div class="ci-body"><span class="ci-lbl mono">FACEBOOK</span><span class="ci-val">Kike Gonzalez</span></div>
+            <i class="fas fa-chevron-right ci-arr"></i>
+          </a>
+          <a href="cv.html" target="_blank" class="contact-item cv-item">
+            <div class="ci-icon cv-icon"><i class="fas fa-file-lines"></i></div>
+            <div class="ci-body"><span class="ci-lbl mono">CURRICULUM VITAE</span><span class="ci-val">Descargar / Ver CV</span></div>
+            <i class="fas fa-chevron-right ci-arr"></i>
+          </a>
+        </div>
+        <div class="contact-term reveal">
+          <div class="terminal-window">
+            <div class="term-header">
+              <div class="term-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+              <span class="term-title mono">send-message.sh</span>
+            </div>
+            <div class="term-body">
+              <p class="prompt"><span class="c-green">$</span> <span class="c-cyan">./send-message.sh</span></p>
+              <div class="form-grp">
+                <label class="mono c-cyan"># nombre:</label>
+                <input type="text" class="term-input" id="c-name" placeholder="Tu nombre">
+              </div>
+              <div class="form-grp">
+                <label class="mono c-cyan"># email:</label>
+                <input type="email" class="term-input" id="c-email" placeholder="tu@email.com">
+              </div>
+              <div class="form-grp">
+                <label class="mono c-cyan"># mensaje:</label>
+                <textarea class="term-input" id="c-msg" rows="3" placeholder="Cuéntame de tu proyecto..."></textarea>
+              </div>
+              <button class="btn-send" id="send-btn">
+                <i class="fas fa-paper-plane"></i>
+                <span class="mono">send_message()</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-l">
+        <span class="mono c-cyan">❰LGR❱</span>
+        <p>© 2025 Luis Enrique González Ramírez</p>
+      </div>
+      <div class="footer-c mono c-dim">
+        Built with <span class="c-cyan">♥</span> · UTVT IDGS-84 · Bausen Dev
+      </div>
+      <div class="footer-r">
+        <a href="https://github.com/KikeGonRam" target="_blank" class="footer-link mono c-dim"><i class="fab fa-github"></i> KikeGonRam</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
