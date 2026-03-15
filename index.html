@@ -3,543 +3,220 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Luis González Ramírez — Ingeniero de Software</title>
+    <title>Luis Enrique González Ramírez — Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-
-    <style>
-        :root {
-            --bg:        #080D18;
-            --surface:   #0F1624;
-            --surface2:  #151E30;
-            --border:    rgba(56,189,248,0.12);
-            --sky:       #38BDF8;
-            --indigo:    #818CF8;
-            --emerald:   #34D399;
-            --text:      #E2E8F0;
-            --muted:     #94A3B8;
-            --font-h:    'Syne', sans-serif;
-            --font-b:    'DM Sans', sans-serif;
-            --radius:    16px;
-            --glow:      0 0 40px rgba(56,189,248,0.18);
-        }
-
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: var(--font-b);
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
-        }
-
-        /* ── NOISE OVERLAY ── */
-        body::before {
-            content: '';
-            position: fixed; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none; z-index: 9999; opacity: 0.4;
-        }
-
-        /* ── NAV ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 1.2rem 3rem;
-            display: flex; justify-content: space-between; align-items: center;
-            background: rgba(8,13,24,0.75);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--border);
-            transition: all .4s;
-        }
-        nav .logo {
-            font-family: var(--font-h);
-            font-weight: 800; font-size: 1.1rem; letter-spacing: -0.5px;
-            color: var(--sky);
-        }
-        nav .links { display: flex; gap: 2.5rem; list-style: none; }
-        nav .links a {
-            font-size: .85rem; font-weight: 500; letter-spacing: .05em;
-            color: var(--muted); text-decoration: none;
-            text-transform: uppercase; transition: color .25s;
-        }
-        nav .links a:hover { color: var(--sky); }
-
-        /* ── HERO ── */
-        #hero {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            padding: 0 3rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Glowing orbs */
-        #hero::before {
-            content: '';
-            position: absolute; top: -200px; right: -200px;
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(56,189,248,0.12) 0%, transparent 65%);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite;
-        }
-        #hero::after {
-            content: '';
-            position: absolute; bottom: -200px; left: -100px;
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(129,140,248,0.1) 0%, transparent 65%);
-            border-radius: 50%;
-            animation: float 10s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) scale(1); }
-            50% { transform: translateY(-40px) scale(1.05); }
-        }
-
-        .hero-inner {
-            max-width: 1100px; margin: 0 auto; width: 100%;
-            display: grid; grid-template-columns: 1fr auto;
-            align-items: center; gap: 4rem;
-            position: relative; z-index: 1;
-            padding-top: 6rem;
-        }
-
-        .hero-badge {
-            display: inline-flex; align-items: center; gap: .6rem;
-            padding: .4rem 1rem;
-            background: rgba(52,211,153,0.1);
-            border: 1px solid rgba(52,211,153,0.3);
-            border-radius: 100px;
-            font-size: .8rem; font-weight: 500; color: var(--emerald);
-            letter-spacing: .05em;
-            margin-bottom: 1.5rem;
-            animation: fadeUp .8s .1s both;
-        }
-        .hero-badge::before { content: '●'; font-size: .5rem; animation: pulse 2s infinite; }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; } 50% { opacity: .3; }
-        }
-
-        .hero-name {
-            font-family: var(--font-h);
-            font-size: clamp(2.8rem, 6vw, 5.5rem);
-            font-weight: 800; line-height: 1.05;
-            letter-spacing: -2px;
-            animation: fadeUp .8s .2s both;
-        }
-        .hero-name .accent { color: var(--sky); }
-
-        .hero-title {
-            font-size: clamp(1rem, 2vw, 1.25rem);
-            color: var(--muted); font-weight: 300;
-            margin: 1rem 0 2rem;
-            animation: fadeUp .8s .35s both;
-        }
-        .hero-title span { color: var(--indigo); font-weight: 500; }
-
-        .hero-cta {
-            display: flex; gap: 1rem; flex-wrap: wrap;
-            animation: fadeUp .8s .5s both;
-        }
-        .btn-primary {
-            padding: .9rem 2rem;
-            background: var(--sky);
-            color: var(--bg); font-family: var(--font-h);
-            font-weight: 700; font-size: .9rem; letter-spacing: .03em;
-            border: none; border-radius: 10px; cursor: pointer;
-            text-decoration: none; transition: all .25s;
-            box-shadow: 0 0 30px rgba(56,189,248,0.3);
-        }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 50px rgba(56,189,248,0.5); }
-        .btn-ghost {
-            padding: .9rem 2rem;
-            background: transparent; color: var(--text);
-            border: 1px solid var(--border); border-radius: 10px;
-            font-family: var(--font-h); font-weight: 600; font-size: .9rem;
-            cursor: pointer; text-decoration: none; transition: all .25s;
-        }
-        .btn-ghost:hover { border-color: var(--sky); color: var(--sky); transform: translateY(-3px); }
-
-        .hero-photo-wrap {
-            animation: fadeUp .8s .4s both;
-            position: relative;
-        }
-        .hero-photo-wrap::before {
-            content: '';
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            background: conic-gradient(var(--sky), var(--indigo), var(--emerald), var(--sky));
-            animation: spin 6s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        .hero-photo {
-            width: 200px; height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            position: relative; z-index: 1;
-            border: 5px solid var(--bg);
-            display: block;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* ── SECTIONS ── */
-        section { padding: 7rem 3rem; }
-        .section-inner { max-width: 1100px; margin: 0 auto; }
-
-        .section-tag {
-            display: inline-block;
-            font-size: .75rem; font-weight: 700; letter-spacing: .15em;
-            text-transform: uppercase; color: var(--sky);
-            margin-bottom: .8rem;
-        }
-        .section-title {
-            font-family: var(--font-h);
-            font-size: clamp(1.8rem, 4vw, 3rem);
-            font-weight: 800; letter-spacing: -1px;
-            line-height: 1.1; margin-bottom: 1.5rem;
-        }
-        .section-sub { color: var(--muted); font-size: 1.05rem; max-width: 600px; }
-
-        .divider { height: 1px; background: var(--border); margin: 0 3rem; }
-
-        /* ── STATS BAR ── */
-        #stats {
-            padding: 3rem;
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-        .stats-grid {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 2rem; text-align: center;
-        }
-        .stat-num {
-            font-family: var(--font-h); font-size: 2.5rem; font-weight: 800;
-            color: var(--sky); display: block;
-        }
-        .stat-label { font-size: .85rem; color: var(--muted); margin-top: .25rem; }
-
-        /* ── ABOUT ── */
-        #about { background: var(--bg); }
-        .about-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 5rem; align-items: center; margin-top: 3rem;
-        }
-        .about-text p { color: var(--muted); margin-bottom: 1.2rem; font-size: 1.02rem; }
-        .about-text p strong { color: var(--text); }
-
-        .about-edu {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 2rem;
-        }
-        .edu-item {
-            display: flex; gap: 1.2rem; align-items: flex-start;
-            padding: 1.2rem 0;
-            border-bottom: 1px solid var(--border);
-        }
-        .edu-item:last-child { border-bottom: none; padding-bottom: 0; }
-        .edu-icon {
-            width: 44px; height: 44px; border-radius: 10px;
-            background: rgba(56,189,248,0.1);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--sky); font-size: 1.1rem; flex-shrink: 0;
-        }
-        .edu-degree { font-family: var(--font-h); font-weight: 700; font-size: .95rem; }
-        .edu-school { font-size: .85rem; color: var(--muted); margin-top: .2rem; }
-        .edu-period { font-size: .75rem; color: var(--indigo); margin-top: .4rem; font-weight: 500; }
-        .badge-done {
-            display: inline-block; padding: .2rem .65rem;
-            background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3);
-            border-radius: 100px; font-size: .7rem; color: var(--emerald);
-            font-weight: 600; margin-left: .5rem; vertical-align: middle;
-        }
-
-        /* ── PROJECTS ── */
-        #projects { background: var(--surface); }
-        .projects-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-            gap: 1.5rem; margin-top: 3rem;
-        }
-        .project-card {
-            background: var(--surface2);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            overflow: hidden;
-            transition: all .35s cubic-bezier(.25,.46,.45,.94);
-            cursor: pointer;
-        }
-        .project-card:hover {
-            transform: translateY(-8px);
-            border-color: rgba(56,189,248,0.4);
-            box-shadow: var(--glow);
-        }
-        .project-img-wrap {
-            height: 180px; overflow: hidden;
-            background: linear-gradient(135deg, var(--surface) 0%, #1a2540 100%);
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-        }
-        .project-img-wrap .mock-browser {
-            width: 85%; background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 8px 8px 0 0; padding: .5rem .8rem;
-            font-size: .65rem; color: var(--muted);
-        }
-        .mock-bar { height: 6px; background: rgba(56,189,248,0.3); border-radius: 100px; margin-bottom: .5rem; }
-        .mock-dots { display: flex; gap: 4px; margin-bottom: .6rem; }
-        .mock-dots span { width: 8px; height: 8px; border-radius: 50%; }
-        .mock-dots span:nth-child(1) { background: #ff5f57; }
-        .mock-dots span:nth-child(2) { background: #ffbd2e; }
-        .mock-dots span:nth-child(3) { background: #28c840; }
-        .mock-content { height: 80px; display: flex; flex-direction: column; gap: 4px; padding: .3rem 0; }
-        .mock-line { height: 6px; background: rgba(255,255,255,0.07); border-radius: 4px; }
-        .mock-line.short { width: 60%; }
-        .mock-line.accent { background: rgba(56,189,248,0.25); }
-
-        .project-body { padding: 1.5rem; }
-        .project-tags { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem; }
-        .tag {
-            padding: .25rem .75rem;
-            background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.2);
-            border-radius: 100px; font-size: .72rem; color: var(--sky); font-weight: 500;
-        }
-        .tag.indigo {
-            background: rgba(129,140,248,0.08); border-color: rgba(129,140,248,0.2);
-            color: var(--indigo);
-        }
-        .tag.emerald {
-            background: rgba(52,211,153,0.08); border-color: rgba(52,211,153,0.2);
-            color: var(--emerald);
-        }
-        .project-name { font-family: var(--font-h); font-weight: 700; font-size: 1.15rem; margin-bottom: .5rem; }
-        .project-desc { font-size: .88rem; color: var(--muted); line-height: 1.6; }
-        .project-footer {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-top: 1.2rem; padding-top: 1rem; border-top: 1px solid var(--border);
-        }
-        .project-link {
-            font-size: .82rem; color: var(--sky); text-decoration: none;
-            font-weight: 600; display: flex; align-items: center; gap: .4rem;
-            transition: gap .25s;
-        }
-        .project-link:hover { gap: .7rem; }
-        .project-status {
-            font-size: .72rem; padding: .25rem .7rem;
-            background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.3);
-            border-radius: 100px; color: var(--emerald); font-weight: 600;
-        }
-        .project-status.wip {
-            background: rgba(251,191,36,0.08); border-color: rgba(251,191,36,0.3);
-            color: #fbbf24;
-        }
-
-        /* ── SKILLS ── */
-        #skills { background: var(--bg); }
-        .skills-cols {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem; margin-top: 3rem;
-        }
-        .skill-group {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
-            padding: 1.8rem;
-            transition: border-color .25s;
-        }
-        .skill-group:hover { border-color: rgba(56,189,248,0.35); }
-        .skill-group-icon {
-            font-size: 1.6rem; margin-bottom: 1rem;
-            background: linear-gradient(135deg, var(--sky), var(--indigo));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        }
-        .skill-group-title { font-family: var(--font-h); font-weight: 700; font-size: 1rem; margin-bottom: 1rem; }
-        .skill-list { display: flex; flex-wrap: wrap; gap: .5rem; }
-        .skill-chip {
-            padding: .3rem .8rem;
-            background: var(--surface2); border: 1px solid var(--border);
-            border-radius: 8px; font-size: .8rem; color: var(--muted);
-            transition: all .2s;
-        }
-        .skill-chip:hover { color: var(--sky); border-color: rgba(56,189,248,0.3); }
-
-        /* ── CONTACT ── */
-        #contact { background: var(--surface); }
-        .contact-grid {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 4rem; margin-top: 3rem; align-items: center;
-        }
-        .contact-left p { color: var(--muted); font-size: 1.02rem; margin-bottom: 2rem; }
-        .contact-links { display: flex; flex-direction: column; gap: 1rem; }
-        .contact-link {
-            display: flex; align-items: center; gap: 1rem;
-            padding: 1rem 1.5rem;
-            background: var(--surface2); border: 1px solid var(--border);
-            border-radius: 12px; text-decoration: none; color: var(--text);
-            transition: all .25s;
-        }
-        .contact-link:hover { border-color: rgba(56,189,248,0.4); transform: translateX(8px); color: var(--sky); }
-        .contact-link .icon { font-size: 1.2rem; color: var(--sky); width: 24px; text-align: center; }
-        .contact-link .label { font-size: .82rem; color: var(--muted); }
-        .contact-link .value { font-weight: 600; font-size: .9rem; }
-
-        .contact-right {
-            background: var(--surface2); border: 1px solid var(--border);
-            border-radius: var(--radius); padding: 2.5rem;
-        }
-        .contact-right h3 { font-family: var(--font-h); font-weight: 700; margin-bottom: 1.5rem; }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-size: .82rem; color: var(--muted); margin-bottom: .5rem; font-weight: 500; }
-        .form-group input,
-        .form-group textarea {
-            width: 100%; padding: .8rem 1rem;
-            background: var(--surface); border: 1px solid var(--border);
-            border-radius: 10px; color: var(--text);
-            font-family: var(--font-b); font-size: .9rem;
-            outline: none; transition: border-color .25s;
-        }
-        .form-group input:focus,
-        .form-group textarea:focus { border-color: var(--sky); }
-        .form-group textarea { height: 100px; resize: none; }
-
-        /* ── FOOTER ── */
-        footer {
-            padding: 2rem 3rem;
-            border-top: 1px solid var(--border);
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        footer p { font-size: .85rem; color: var(--muted); }
-        footer .made { font-size: .82rem; color: var(--muted); }
-        footer .made span { color: var(--sky); }
-
-        /* ── SCROLL REVEAL ── */
-        .reveal {
-            opacity: 0; transform: translateY(40px);
-            transition: opacity .8s ease, transform .8s cubic-bezier(.25,.46,.45,.94);
-        }
-        .reveal.visible { opacity: 1; transform: translateY(0); }
-
-        /* ── MOBILE ── */
-        @media (max-width: 900px) {
-            nav { padding: 1rem 1.5rem; }
-            nav .links { display: none; }
-            section, #hero { padding-left: 1.5rem; padding-right: 1.5rem; }
-            .hero-inner { grid-template-columns: 1fr; text-align: center; }
-            .hero-photo-wrap { order: -1; margin: 0 auto; }
-            .hero-cta { justify-content: center; }
-            .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); }
-            .skills-cols { grid-template-columns: 1fr; }
-            .contact-grid { grid-template-columns: 1fr; }
-            footer { flex-direction: column; gap: .5rem; text-align: center; }
-        }
-    </style>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 
-    <!-- NAV -->
+    <!-- ── STATUS TICKER ── -->
+    <div id="status-bar">
+        <div class="ticker-track">
+            <span class="ticker-content" id="ticker-inner">
+                <span class="t-dot"></span>
+                <span>SISTEMA ONLINE</span>
+                <span class="t-sep">|</span>
+                <span>Luis Enrique González Ramírez</span>
+                <span class="t-sep">|</span>
+                <span>Software Engineer @ Bausen</span>
+                <span class="t-sep">|</span>
+                <span>Ingeniería en Desarrollo y Gestión de Software · UTVT</span>
+                <span class="t-sep">|</span>
+                <span>Disponible para proyectos</span>
+                <span class="t-sep">|</span>
+                <span id="live-clock">--:--:-- CST</span>
+                <span class="t-sep">|</span>
+            </span>
+        </div>
+    </div>
+
+    <!-- ── NAV ── -->
     <nav id="navbar">
-        <div class="logo">LGR</div>
-        <ul class="links">
-            <li><a href="#about">Sobre mí</a></li>
-            <li><a href="#projects">Proyectos</a></li>
-            <li><a href="#skills">Habilidades</a></li>
-            <li><a href="#contact">Contacto</a></li>
+        <div class="nav-logo">
+            <span class="g">❰</span><span class="nav-name">LGR</span><span class="g">❱</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#experience"><span class="n">01.</span>Experiencia</a></li>
+            <li><a href="#projects"><span class="n">02.</span>Proyectos</a></li>
+            <li><a href="#skills"><span class="n">03.</span>Stack</a></li>
+            <li><a href="#education"><span class="n">04.</span>Educación</a></li>
+            <li><a href="#blog"><span class="n">05.</span>Blog</a></li>
+            <li><a href="#contact"><span class="n">06.</span>Contacto</a></li>
         </ul>
+        <div class="nav-status">
+            <span class="pulse-dot"></span>
+            <span class="mono text-xs text-green">ONLINE</span>
+        </div>
     </nav>
 
-    <!-- HERO -->
+    <!-- ── HERO ── -->
     <section id="hero">
         <div class="hero-inner">
-            <div>
-                <div class="hero-badge">Disponible para oportunidades</div>
-                <h1 class="hero-name">
-                    Luis<br>
-                    <span class="accent">González</span><br>
-                    Ramírez
-                </h1>
-                <p class="hero-title">
-                    Ingeniero de Software · <span>Full-Stack Developer</span>
-                </p>
-                <div class="hero-cta">
-                    <a href="#projects" class="btn-primary">Ver proyectos</a>
-                    <a href="#contact" class="btn-ghost">Contactar</a>
+
+            <!-- Neofetch terminal -->
+            <div class="terminal-window">
+                <div class="term-header">
+                    <div class="term-dots">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green-dot"></span>
+                    </div>
+                    <span class="term-title mono">luis@portfolio — bash — 80×24</span>
+                </div>
+                <div class="term-body">
+                    <p class="prompt"><span class="c-green">luis@kike</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> neofetch</p>
+                    <div class="neofetch">
+                        <div class="neo-photo-wrap">
+                            <img src="images/mi-foto.jpg" alt="Luis González" class="neo-photo">
+                        </div>
+                        <div class="neo-info">
+                            <p class="neo-user">luis<span class="c-dim">@</span>kike</p>
+                            <p class="neo-sep c-green">────────────────────</p>
+                            <div class="neo-row"><span class="neo-k">OS</span><span class="c-dim">:</span> Software Engineer</div>
+                            <div class="neo-row"><span class="neo-k">Host</span><span class="c-dim">:</span> Bausen · UTVT IDGS-84</div>
+                            <div class="neo-row"><span class="neo-k">Uptime</span><span class="c-dim">:</span> 2+ años en producción</div>
+                            <div class="neo-row"><span class="neo-k">Packages</span><span class="c-dim">:</span> Java, Spring, Next.js...</div>
+                            <div class="neo-row"><span class="neo-k">Shell</span><span class="c-dim">:</span> bash · zsh · PowerShell</div>
+                            <div class="neo-row"><span class="neo-k">Terminal</span><span class="c-dim">:</span> iTerm2 · WSL · GNOME</div>
+                            <div class="neo-row"><span class="neo-k">CPU</span><span class="c-dim">:</span> Full-Stack Development</div>
+                            <div class="neo-row"><span class="neo-k">GPU</span><span class="c-dim">:</span> Problem Solving @ 60fps</div>
+                            <div class="neo-row"><span class="neo-k">Memory</span><span class="c-dim">:</span> MySQL · Clean Architecture</div>
+                            <div class="neo-colors">
+                                <span style="background:#ff4d6a"></span><span style="background:#ff8c42"></span>
+                                <span style="background:#ffd166"></span><span style="background:#00d46a"></span>
+                                <span style="background:#00c8ff"></span><span style="background:#818cf8"></span>
+                                <span style="background:#f0abfc"></span><span style="background:#ffffff"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="prompt mt8"><span class="c-green">luis@kike</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> <span class="cursor">█</span></p>
                 </div>
             </div>
-            <div class="hero-photo-wrap">
-                <img src="images/mi-foto.jpg" alt="Luis Enrique González Ramírez" class="hero-photo">
+
+            <!-- Hero right -->
+            <div class="hero-right">
+                <div class="hero-badge mono">
+                    <span class="pulse-dot"></span>
+                    available_for_hire = <span class="c-green">true</span>
+                </div>
+                <h1 class="hero-name">
+                    Luis Enrique<br>
+                    <span class="c-green">González</span><br>
+                    Ramírez
+                </h1>
+                <p class="hero-subtitle">
+                    Ingeniero de Software · <span class="c-cyan">Full-Stack Developer</span>
+                </p>
+                <p class="hero-desc">
+                    Construyo sistemas reales. Desde APIs REST con Spring Boot hasta plataformas empresariales en producción con Next.js. Enfocado en seguridad, arquitectura limpia y código que escala.
+                </p>
+                <div class="os-badges">
+                    <div class="os-badge"><i class="fab fa-linux"></i> Linux</div>
+                    <div class="os-badge"><i class="fab fa-apple"></i> macOS</div>
+                    <div class="os-badge"><i class="fab fa-windows"></i> Windows</div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#projects" class="btn-primary"><i class="fas fa-folder-open"></i> Ver proyectos</a>
+                    <a href="#contact" class="btn-ghost"><i class="fas fa-terminal"></i> Contactar</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- STATS -->
-    <div id="stats">
-        <div class="stats-grid">
-            <div>
-                <span class="stat-num">2+</span>
-                <p class="stat-label">Años de experiencia</p>
+    <!-- ── METRICS ── -->
+    <div id="metrics">
+        <div class="metrics-inner">
+            <div class="metric-card">
+                <span class="metric-val mono" data-target="2">0</span><span class="metric-unit">+</span>
+                <span class="metric-lbl">Años de experiencia</span>
+                <div class="metric-bar"><div class="mb-fill" style="--w:65%"></div></div>
             </div>
-            <div>
-                <span class="stat-num">5+</span>
-                <p class="stat-label">Proyectos completados</p>
+            <div class="metric-card">
+                <span class="metric-val mono" data-target="2">0</span><span class="metric-unit"></span>
+                <span class="metric-lbl">Sistemas en producción</span>
+                <div class="metric-bar"><div class="mb-fill" style="--w:80%"></div></div>
             </div>
-            <div>
-                <span class="stat-num">2</span>
-                <p class="stat-label">Sistemas en producción</p>
+            <div class="metric-card">
+                <span class="metric-val mono" data-target="5">0</span><span class="metric-unit">+</span>
+                <span class="metric-lbl">Proyectos completados</span>
+                <div class="metric-bar"><div class="mb-fill" style="--w:70%"></div></div>
             </div>
-            <div>
-                <span class="stat-num">TSU</span>
-                <p class="stat-label">Título obtenido</p>
+            <div class="metric-card">
+                <span class="metric-val mono" data-target="10">0</span><span class="metric-unit">+</span>
+                <span class="metric-lbl">Tecnologías dominadas</span>
+                <div class="metric-bar"><div class="mb-fill" style="--w:75%"></div></div>
+            </div>
+            <div class="metric-card">
+                <span class="metric-val mono" data-target="100">0</span><span class="metric-unit">%</span>
+                <span class="metric-lbl">Uptime · bausen.mx</span>
+                <div class="metric-bar"><div class="mb-fill" style="--w:100%"></div></div>
             </div>
         </div>
     </div>
 
-    <!-- ABOUT -->
-    <section id="about">
+    <!-- ── EXPERIENCE ── -->
+    <section id="experience">
         <div class="section-inner">
-            <div class="reveal">
-                <span class="section-tag">// Sobre mí</span>
-                <h2 class="section-title">Desarrollador apasionado<br>por soluciones reales</h2>
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ ls -la ./experience</span>
+                <h2 class="section-title">Experiencia <span class="c-green">Profesional</span></h2>
             </div>
-            <div class="about-grid">
-                <div class="about-text reveal">
-                    <p>Soy <strong>Luis Enrique González Ramírez</strong>, Ingeniero de Software con título en T.S.U. en Desarrollo de Software Multiplataforma, actualmente cursando la Ingeniería. Me especializo en construir sistemas web y móviles robustos, escalables y bien diseñados.</p>
-                    <p>He trabajado en proyectos reales en producción, como la <strong>Plataforma de Pagos BECHAPRA</strong> y el <strong>Portal Corporativo Bausen</strong>, sistemas empresariales con autenticación, gestión financiera y seguridad de grado bancario.</p>
-                    <p>Mi stack principal abarca <strong>Next.js, Spring Boot, Java, Python y MySQL</strong>. Me interesa la arquitectura de software limpia, las APIs REST bien documentadas y el desarrollo orientado a la seguridad.</p>
-                </div>
-                <div class="about-edu reveal">
-                    <div class="edu-item">
-                        <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
-                        <div>
-                            <div class="edu-degree">
-                                Ingeniería en Tecnologías de la Información
+            <div class="timeline">
+                <div class="tl-item reveal active-tl">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-top">
+                            <div>
+                                <h3 class="tl-role">Software Developer</h3>
+                                <p class="tl-company"><i class="fas fa-building c-cyan"></i> Bausen · Infraestructura Digital</p>
                             </div>
-                            <div class="edu-school">Universidad Tecnológica del Valle de Toluca</div>
-                            <div class="edu-period">2024 – Presente · En curso</div>
+                            <div class="tl-right">
+                                <span class="tl-period mono">2024 — Presente</span>
+                                <span class="badge-active">● ACTIVO</span>
+                            </div>
+                        </div>
+                        <ul class="tl-list">
+                            <li>Desarrollo y mantenimiento de la <strong>Plataforma de Pagos BECHAPRA</strong> — sistema de gestión financiera institucional desplegado en producción en bausen.mx.</li>
+                            <li>Construcción del <strong>Portal Corporativo Bausen</strong> — autenticación de grado bancario, TLS v2.5, gestión de credenciales y acceso centralizado institucional.</li>
+                            <li>Stack: Next.js, TypeScript, autenticación segura, despliegue en servidor productivo.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">TLS/HTTPS</span>
+                            <span class="tag">Auth</span>
+                            <span class="tag green-tag">Producción</span>
                         </div>
                     </div>
-                    <div class="edu-item">
-                        <div class="edu-icon"><i class="fas fa-certificate"></i></div>
-                        <div>
-                            <div class="edu-degree">
-                                T.S.U. en Desarrollo de Software Multiplataforma
-                                <span class="badge-done">✓ Titulado</span>
+                </div>
+
+                <div class="tl-item reveal">
+                    <div class="tl-dot"></div>
+                    <div class="tl-card">
+                        <div class="tl-top">
+                            <div>
+                                <h3 class="tl-role">Desarrollador · Proyectos Académicos</h3>
+                                <p class="tl-company"><i class="fas fa-university c-cyan"></i> UTVT · Grupo IDGS-84</p>
                             </div>
-                            <div class="edu-school">Universidad Tecnológica del Valle de Toluca</div>
-                            <div class="edu-period">2022 – 2024 · Completado</div>
+                            <div class="tl-right">
+                                <span class="tl-period mono">2022 — 2024</span>
+                                <span class="badge-done">✓ COMPLETADO</span>
+                            </div>
+                        </div>
+                        <ul class="tl-list">
+                            <li>API REST con <strong>Spring Boot</strong>, JPA/Hibernate, MapStruct, Log4j2 y MySQL. Documentada con Springdoc/OpenAPI. Frontend en Next.js con UTVT branding.</li>
+                            <li>App móvil de <strong>gestión de barbería</strong> — arquitectura completa, 230+ casos de prueba, CI/CD, Cypress, Jest, JMeter, Postman/Newman, ISO/IEC 27001.</li>
+                            <li>Módulo Python con <strong>Pandas Series.diff()</strong> para validación y análisis de progresiones aritméticas.</li>
+                        </ul>
+                        <div class="tag-row">
+                            <span class="tag">Spring Boot</span>
+                            <span class="tag">Java</span>
+                            <span class="tag">Python</span>
+                            <span class="tag cyan-tag">React Native</span>
+                            <span class="tag">MySQL</span>
                         </div>
                     </div>
                 </div>
@@ -547,173 +224,127 @@
         </div>
     </section>
 
-    <!-- PROJECTS -->
+    <!-- ── PROJECTS ── -->
     <section id="projects">
         <div class="section-inner">
-            <div class="reveal">
-                <span class="section-tag">// Proyectos</span>
-                <h2 class="section-title">Sistemas construidos<br>para el mundo real</h2>
-                <p class="section-sub">De la arquitectura al despliegue — proyectos que resuelven problemas reales y están en producción.</p>
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ git log --oneline --all</span>
+                <h2 class="section-title">Proyectos <span class="c-green">Desplegados</span></h2>
+                <p class="section-sub">Sistemas reales, código en producción, arquitectura que escala.</p>
             </div>
             <div class="projects-grid">
 
-                <!-- BECHAPRA -->
-                <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <div class="mock-browser">
-                            <div class="mock-dots"><span></span><span></span><span></span></div>
-                            <div class="mock-bar"></div>
-                            <div class="mock-content">
-                                <div class="mock-line accent"></div>
-                                <div class="mock-line short"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line short accent"></div>
-                                <div class="mock-line"></div>
-                            </div>
-                        </div>
+                <div class="project-card reveal featured">
+                    <div class="pc-header">
+                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+                        <span class="pc-path mono">bechapra-platform/</span>
+                        <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag indigo">TypeScript</span>
-                            <span class="tag emerald">Producción</span>
+                    <div class="pc-body">
+                        <div class="tag-row">
+                            <span class="tag">Next.js</span><span class="tag cyan-tag">TypeScript</span><span class="tag green-tag">Producción</span>
                         </div>
-                        <div class="project-name">Plataforma de Pagos BECHAPRA</div>
-                        <div class="project-desc">Sistema de gestión de pagos institucional con autenticación segura, control de accesos y panel de administración. Desplegado en bausen.mx.</div>
-                        <div class="project-footer">
-                            <a href="https://bausen.mx/login" target="_blank" class="project-link">
-                                Ver plataforma <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="project-status">Live</span>
+                        <h3 class="pc-name">Plataforma de Pagos BECHAPRA</h3>
+                        <p class="pc-desc">Sistema de gestión de pagos institucional con autenticación segura, control de roles y panel administrativo. Alta disponibilidad en bausen.mx.</p>
+                        <div class="pc-metrics">
+                            <div class="pcm"><span class="pcm-lbl mono">STATUS</span><span class="pcm-val c-green">ONLINE</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">TYPE</span><span class="pcm-val">Enterprise</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">DEPLOY</span><span class="pcm-val">bausen.mx</span></div>
+                        </div>
+                        <div class="pc-footer">
+                            <a href="https://bausen.mx/login" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Ver plataforma</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- BAUSEN PORTAL -->
-                <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <div class="mock-browser">
-                            <div class="mock-dots"><span></span><span></span><span></span></div>
-                            <div class="mock-bar" style="background: rgba(129,140,248,0.4)"></div>
-                            <div class="mock-content">
-                                <div class="mock-line" style="background: rgba(129,140,248,0.25)"></div>
-                                <div class="mock-line short"></div>
-                                <div class="mock-line" style="background: rgba(129,140,248,0.15)"></div>
-                                <div class="mock-line short" style="background: rgba(129,140,248,0.2)"></div>
-                                <div class="mock-line"></div>
-                            </div>
-                        </div>
+                <div class="project-card reveal featured">
+                    <div class="pc-header">
+                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+                        <span class="pc-path mono">bausen-portal/</span>
+                        <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag indigo">Portal Corporativo</span>
-                            <span class="tag">TLS / Auth</span>
-                            <span class="tag emerald">Producción</span>
+                    <div class="pc-body">
+                        <div class="tag-row">
+                            <span class="tag">Portal Corp.</span><span class="tag cyan-tag">TLS v2.5</span><span class="tag green-tag">Producción</span>
                         </div>
-                        <div class="project-name">Portal Bausen Corporativo</div>
-                        <div class="project-desc">Portal de acceso centralizado con infraestructura digital de grado bancario. Gestión financiera institucional con autenticación de credenciales de sistema y conexión TLS segura.</div>
-                        <div class="project-footer">
-                            <a href="https://bausen.mx/login-portal/login" target="_blank" class="project-link">
-                                Ver portal <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="project-status">Live</span>
+                        <h3 class="pc-name">Portal Corporativo Bausen</h3>
+                        <p class="pc-desc">Nexo central de gestión financiera institucional. Autenticación de grado bancario, acceso por credenciales de sistema y conexión TLS segura.</p>
+                        <div class="pc-metrics">
+                            <div class="pcm"><span class="pcm-lbl mono">STATUS</span><span class="pcm-val c-green">ONLINE</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">AUTH</span><span class="pcm-val">TLS · v2.5</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">DEPLOY</span><span class="pcm-val">bausen.mx</span></div>
+                        </div>
+                        <div class="pc-footer">
+                            <a href="https://bausen.mx/login-portal/login" target="_blank" class="btn-link"><i class="fas fa-external-link-alt"></i> Ver portal</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- EVALUACION API -->
                 <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <div class="mock-browser">
-                            <div class="mock-dots"><span></span><span></span><span></span></div>
-                            <div class="mock-bar" style="background: rgba(52,211,153,0.35)"></div>
-                            <div class="mock-content">
-                                <div class="mock-line" style="background: rgba(52,211,153,0.2)"></div>
-                                <div class="mock-line short"></div>
-                                <div class="mock-line" style="background: rgba(52,211,153,0.15)"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line short" style="background: rgba(52,211,153,0.2)"></div>
-                            </div>
-                        </div>
+                    <div class="pc-header">
+                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+                        <span class="pc-path mono">evaluacion-docente-api/</span>
+                        <span class="pc-badge">Académico</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">Spring Boot</span>
-                            <span class="tag indigo">Java</span>
-                            <span class="tag">MySQL</span>
-                            <span class="tag">Swagger</span>
+                    <div class="pc-body">
+                        <div class="tag-row">
+                            <span class="tag">Spring Boot</span><span class="tag cyan-tag">Java</span><span class="tag">MySQL</span><span class="tag">OpenAPI</span>
                         </div>
-                        <div class="project-name">API REST — Evaluación Docente</div>
-                        <div class="project-desc">API RESTful con Spring Boot, JPA, MapStruct y Log4j2. Entidades: Estudiante, Docente, Cuestionario, Evaluación. Documentada con Springdoc/OpenAPI y frontend en Next.js.</div>
-                        <div class="project-footer">
-                            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" target="_blank" class="project-link">
-                                Ver en GitHub <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="project-status">Académico</span>
+                        <h3 class="pc-name">API REST — Evaluación Docente</h3>
+                        <p class="pc-desc">API RESTful con JPA/Hibernate, MapStruct, Log4j2. Entidades: Estudiante, Docente, Cuestionario, Evaluación. Swagger + frontend Next.js.</p>
+                        <div class="pc-metrics">
+                            <div class="pcm"><span class="pcm-lbl mono">STACK</span><span class="pcm-val">Spring + Next</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">DB</span><span class="pcm-val">MySQL</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">DOCS</span><span class="pcm-val">Swagger</span></div>
+                        </div>
+                        <div class="pc-footer">
+                            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- BARBERIA -->
                 <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <div class="mock-browser">
-                            <div class="mock-dots"><span></span><span></span><span></span></div>
-                            <div class="mock-bar" style="background: rgba(251,191,36,0.3)"></div>
-                            <div class="mock-content">
-                                <div class="mock-line" style="background: rgba(251,191,36,0.18)"></div>
-                                <div class="mock-line short"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line short" style="background: rgba(251,191,36,0.15)"></div>
-                                <div class="mock-line"></div>
-                            </div>
-                        </div>
+                    <div class="pc-header">
+                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+                        <span class="pc-path mono">barbershop-app/</span>
+                        <span class="pc-badge wip">WIP</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">Mobile</span>
-                            <span class="tag indigo">React Native</span>
-                            <span class="tag" style="color:#fbbf24; border-color:rgba(251,191,36,0.3); background:rgba(251,191,36,0.08)">En desarrollo</span>
+                    <div class="pc-body">
+                        <div class="tag-row">
+                            <span class="tag">React Native</span><span class="tag cyan-tag">Mobile</span><span class="tag orange-tag">En desarrollo</span>
                         </div>
-                        <div class="project-name">App — Gestión Barbería</div>
-                        <div class="project-desc">Aplicación móvil para gestión de citas en barbería. Incluye autenticación, agenda, roles de barbero/cliente y sistema de notificaciones. Pruebas con Cypress, Jest y JMeter.</div>
-                        <div class="project-footer">
-                            <a href="https://github.com/KikeGonRam" target="_blank" class="project-link">
-                                Ver en GitHub <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="project-status wip">En desarrollo</span>
+                        <h3 class="pc-name">App — Gestión Barbería</h3>
+                        <p class="pc-desc">App móvil para gestión de citas. Auth, agenda, roles barbero/cliente. 230+ casos de prueba con Cypress, Jest, JMeter. ISO/IEC 27001 aplicado.</p>
+                        <div class="pc-metrics">
+                            <div class="pcm"><span class="pcm-lbl mono">TESTS</span><span class="pcm-val">230+</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">PLATFORM</span><span class="pcm-val">iOS · Android</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">CI/CD</span><span class="pcm-val">GH Actions</span></div>
+                        </div>
+                        <div class="pc-footer">
+                            <a href="https://github.com/KikeGonRam" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
 
-                <!-- PYTHON -->
                 <div class="project-card reveal">
-                    <div class="project-img-wrap">
-                        <div class="mock-browser">
-                            <div class="mock-dots"><span></span><span></span><span></span></div>
-                            <div class="mock-bar" style="background: rgba(56,189,248,0.3)"></div>
-                            <div class="mock-content">
-                                <div class="mock-line"></div>
-                                <div class="mock-line short accent"></div>
-                                <div class="mock-line"></div>
-                                <div class="mock-line accent"></div>
-                                <div class="mock-line short"></div>
-                            </div>
-                        </div>
+                    <div class="pc-header">
+                        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+                        <span class="pc-path mono">series-aritmeticas-py/</span>
+                        <span class="pc-badge">Académico</span>
                     </div>
-                    <div class="project-body">
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag indigo">Pandas</span>
-                            <span class="tag">Análisis</span>
+                    <div class="pc-body">
+                        <div class="tag-row">
+                            <span class="tag">Python</span><span class="tag cyan-tag">Pandas</span><span class="tag">Análisis</span>
                         </div>
-                        <div class="project-name">Validador — Series Aritméticas</div>
-                        <div class="project-desc">Módulo Python con clase ProgresionAritmetica que utiliza Pandas Series.diff() para validar y analizar progresiones numéricas. Integrado como Reto académico.</div>
-                        <div class="project-footer">
-                            <a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" class="project-link">
-                                Ver en GitHub <i class="fas fa-arrow-right"></i>
-                            </a>
-                            <span class="project-status">Académico</span>
+                        <h3 class="pc-name">Validador — Series Aritméticas</h3>
+                        <p class="pc-desc">Clase ProgresionAritmetica con Pandas Series.diff() para validar progresiones numéricas. Python 3.14 en PyCharm.</p>
+                        <div class="pc-metrics">
+                            <div class="pcm"><span class="pcm-lbl mono">LANG</span><span class="pcm-val">Python 3.14</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">LIB</span><span class="pcm-val">Pandas</span></div>
+                            <div class="pcm"><span class="pcm-lbl mono">IDE</span><span class="pcm-val">PyCharm</span></div>
+                        </div>
+                        <div class="pc-footer">
+                            <a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" class="btn-link"><i class="fab fa-github"></i> GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -722,236 +353,269 @@
         </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- ── SKILLS ── -->
     <section id="skills">
         <div class="section-inner">
-            <div class="reveal">
-                <span class="section-tag">// Habilidades</span>
-                <h2 class="section-title">Stack tecnológico</h2>
-                <p class="section-sub">Tecnologías que uso para construir sistemas completos, del backend al frontend y la base de datos.</p>
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ cat package.json | grep dependencies</span>
+                <h2 class="section-title">Tech <span class="c-green">Stack</span></h2>
+                <p class="section-sub">Tecnologías que uso para construir sistemas completos, del backend al deploy.</p>
             </div>
-            <div class="skills-cols">
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-server"></i></div>
-                    <div class="skill-group-title">Backend</div>
+
+            <div class="skills-grid">
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-server c-green"></i><span class="mono">backend/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">Java</span>
-                        <span class="skill-chip">Spring Boot</span>
-                        <span class="skill-chip">JPA / Hibernate</span>
-                        <span class="skill-chip">MapStruct</span>
-                        <span class="skill-chip">Log4j2</span>
-                        <span class="skill-chip">Python</span>
-                        <span class="skill-chip">REST APIs</span>
-                        <span class="skill-chip">Swagger / OpenAPI</span>
+                        <div class="skill-row"><span class="sr-name">Java</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
+                        <div class="skill-row"><span class="sr-name">Spring Boot</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
+                        <div class="skill-row"><span class="sr-name">Python</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
+                        <div class="skill-row"><span class="sr-name">REST APIs</span><div class="sr-bar"><div class="sr-fill" data-w="90"></div></div><span class="sr-pct mono">90%</span></div>
+                        <div class="skill-row"><span class="sr-name">MapStruct / JPA</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
                     </div>
                 </div>
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-globe"></i></div>
-                    <div class="skill-group-title">Frontend & Mobile</div>
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-globe c-cyan"></i><span class="mono">frontend/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">Next.js</span>
-                        <span class="skill-chip">React</span>
-                        <span class="skill-chip">TypeScript</span>
-                        <span class="skill-chip">JavaScript</span>
-                        <span class="skill-chip">HTML5 / CSS3</span>
-                        <span class="skill-chip">Tailwind CSS</span>
-                        <span class="skill-chip">React Native</span>
+                        <div class="skill-row"><span class="sr-name">Next.js</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
+                        <div class="skill-row"><span class="sr-name">TypeScript</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
+                        <div class="skill-row"><span class="sr-name">React / RN</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
+                        <div class="skill-row"><span class="sr-name">CSS / Tailwind</span><div class="sr-bar"><div class="sr-fill" data-w="85"></div></div><span class="sr-pct mono">85%</span></div>
+                        <div class="skill-row"><span class="sr-name">JavaScript</span><div class="sr-bar"><div class="sr-fill" data-w="88"></div></div><span class="sr-pct mono">88%</span></div>
                     </div>
                 </div>
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-database"></i></div>
-                    <div class="skill-group-title">Datos & DevOps</div>
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-database c-orange"></i><span class="mono">data & db/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">MySQL</span>
-                        <span class="skill-chip">Pandas</span>
-                        <span class="skill-chip">Git / GitHub</span>
-                        <span class="skill-chip">GitHub Actions</span>
-                        <span class="skill-chip">Postman</span>
-                        <span class="skill-chip">Jest</span>
-                        <span class="skill-chip">Cypress</span>
-                        <span class="skill-chip">JMeter</span>
+                        <div class="skill-row"><span class="sr-name">MySQL</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
+                        <div class="skill-row"><span class="sr-name">JPA / Hibernate</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
+                        <div class="skill-row"><span class="sr-name">Pandas</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
+                        <div class="skill-row"><span class="sr-name">MySQL Workbench</span><div class="sr-bar"><div class="sr-fill" data-w="78"></div></div><span class="sr-pct mono">78%</span></div>
                     </div>
                 </div>
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-shield-halved"></i></div>
-                    <div class="skill-group-title">Seguridad & Estándares</div>
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-shield-halved c-green"></i><span class="mono">security/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">ISO/IEC 27001</span>
-                        <span class="skill-chip">ISO 31000</span>
-                        <span class="skill-chip">TLS / HTTPS</span>
-                        <span class="skill-chip">Auth / JWT</span>
-                        <span class="skill-chip">Seguridad en Apps</span>
+                        <div class="skill-row"><span class="sr-name">TLS / HTTPS</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
+                        <div class="skill-row"><span class="sr-name">Auth / JWT</span><div class="sr-bar"><div class="sr-fill" data-w="75"></div></div><span class="sr-pct mono">75%</span></div>
+                        <div class="skill-row"><span class="sr-name">ISO/IEC 27001</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
+                        <div class="skill-row"><span class="sr-name">ISO 31000</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
                     </div>
                 </div>
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-tools"></i></div>
-                    <div class="skill-group-title">Herramientas</div>
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-vials c-cyan"></i><span class="mono">testing/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">VS Code</span>
-                        <span class="skill-chip">IntelliJ IDEA</span>
-                        <span class="skill-chip">PyCharm</span>
-                        <span class="skill-chip">MySQL Workbench</span>
-                        <span class="skill-chip">Newman</span>
+                        <div class="skill-row"><span class="sr-name">Cypress</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
+                        <div class="skill-row"><span class="sr-name">Jest</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
+                        <div class="skill-row"><span class="sr-name">JMeter</span><div class="sr-bar"><div class="sr-fill" data-w="72"></div></div><span class="sr-pct mono">72%</span></div>
+                        <div class="skill-row"><span class="sr-name">Postman / Newman</span><div class="sr-bar"><div class="sr-fill" data-w="78"></div></div><span class="sr-pct mono">78%</span></div>
                     </div>
                 </div>
-                <div class="skill-group reveal">
-                    <div class="skill-group-icon"><i class="fas fa-lightbulb"></i></div>
-                    <div class="skill-group-title">Metodologías</div>
+                <div class="skill-panel reveal">
+                    <div class="sp-head"><i class="fas fa-code-branch c-orange"></i><span class="mono">devops/</span></div>
                     <div class="skill-list">
-                        <span class="skill-chip">Scrum</span>
-                        <span class="skill-chip">Pruebas de Caja Negra</span>
-                        <span class="skill-chip">Pruebas de Caja Blanca</span>
-                        <span class="skill-chip">CI/CD</span>
-                        <span class="skill-chip">MVC</span>
-                        <span class="skill-chip">ER / UML</span>
+                        <div class="skill-row"><span class="sr-name">Git / GitHub</span><div class="sr-bar"><div class="sr-fill" data-w="88"></div></div><span class="sr-pct mono">88%</span></div>
+                        <div class="skill-row"><span class="sr-name">GitHub Actions</span><div class="sr-bar"><div class="sr-fill" data-w="70"></div></div><span class="sr-pct mono">70%</span></div>
+                        <div class="skill-row"><span class="sr-name">CI/CD</span><div class="sr-bar"><div class="sr-fill" data-w="65"></div></div><span class="sr-pct mono">65%</span></div>
+                        <div class="skill-row"><span class="sr-name">Swagger / OpenAPI</span><div class="sr-bar"><div class="sr-fill" data-w="80"></div></div><span class="sr-pct mono">80%</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OS Terminal Row -->
+            <div class="os-terminals">
+                <div class="os-term linux reveal">
+                    <div class="ost-head">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
+                        <span class="ost-title mono"><i class="fab fa-linux"></i> bash — Linux</span>
+                    </div>
+                    <div class="ost-body mono">
+                        <p><span class="c-green">luis@ubuntu</span><span class="c-dim">:</span><span class="c-cyan">~</span><span class="c-dim">$</span> git status</p>
+                        <p class="c-dim">On branch main · nothing to commit</p>
+                        <p><span class="c-green">✓</span> working tree clean</p>
+                    </div>
+                </div>
+                <div class="os-term mac reveal">
+                    <div class="ost-head">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
+                        <span class="ost-title mono"><i class="fab fa-apple"></i> zsh — macOS</span>
+                    </div>
+                    <div class="ost-body mono">
+                        <p><span class="c-cyan">➜</span> <span class="c-green">~</span> mvn spring-boot:run</p>
+                        <p class="c-dim">Started App in 1.23s (JVM)</p>
+                        <p><span class="c-green">✓</span> Listening on :8080</p>
+                    </div>
+                </div>
+                <div class="os-term win reveal">
+                    <div class="ost-head">
+                        <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
+                        <span class="ost-title mono"><i class="fab fa-windows"></i> PowerShell — Windows</span>
+                    </div>
+                    <div class="ost-body mono">
+                        <p><span class="c-cyan">PS</span> C:\luis\portfolio<span class="c-green">></span> npm run dev</p>
+                        <p class="c-dim">▲ Next.js 14 ready</p>
+                        <p><span class="c-green">✓</span> localhost:3000</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- ── EDUCATION ── -->
+    <section id="education">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ cat ~/.education</span>
+                <h2 class="section-title">Educación <span class="c-green">Formal</span></h2>
+            </div>
+            <div class="edu-list">
+                <div class="edu-item reveal">
+                    <div class="edu-year mono">Septiembre 2025 — <span class="c-green">HOY</span></div>
+                    <div class="edu-card">
+                        <div class="edu-icon current-edu"><i class="fas fa-graduation-cap"></i></div>
+                        <div>
+                            <h3 class="edu-degree">Ingeniería en Desarrollo y Gestión de Software</h3>
+                            <p class="edu-school">Universidad Tecnológica del Valle de Toluca</p>
+                            <p class="edu-detail">Inicio en 7mo cuatrimestre · 8vo cuatrimestre actual</p>
+                            <span class="edu-badge current-badge">En curso</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="edu-item reveal">
+                    <div class="edu-year mono">2022 — Agosto 2025</div>
+                    <div class="edu-card">
+                        <div class="edu-icon done-edu"><i class="fas fa-certificate"></i></div>
+                        <div>
+                            <h3 class="edu-degree">T.S.U. en Desarrollo de Software Multiplataforma</h3>
+                            <p class="edu-school">Universidad Tecnológica del Valle de Toluca · IDGS-84</p>
+                            <p class="edu-detail">Terminado en 6to cuatrimestre · Titulado</p>
+                            <span class="edu-badge done-badge">✓ Titulado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── BLOG ── -->
+    <section id="blog">
+        <div class="section-inner">
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ ls -la ./blog --sort=date</span>
+                <h2 class="section-title">Blog <span class="c-green">Técnico</span></h2>
+                <p class="section-sub">Artículos sobre desarrollo, arquitectura y tecnología. En preparación.</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card reveal">
+                    <div class="blog-top">
+                        <span class="blog-tag">Spring Boot</span>
+                        <span class="blog-status mono">DRAFT</span>
+                    </div>
+                    <h3 class="blog-title">JWT Authentication en Spring Boot — Guía práctica</h3>
+                    <p class="blog-desc">Cómo implementar autenticación stateless con JWT, Spring Security y buenas prácticas de seguridad desde cero.</p>
+                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
+                </div>
+                <div class="blog-card reveal">
+                    <div class="blog-top">
+                        <span class="blog-tag cyan-tag">Next.js</span>
+                        <span class="blog-status mono">DRAFT</span>
+                    </div>
+                    <h3 class="blog-title">Next.js 14 + Spring Boot: Full-Stack sin drama</h3>
+                    <p class="blog-desc">Conectando App Router a una API Spring Boot: CORS, fetch tipado, manejo de errores y despliegue en producción.</p>
+                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
+                </div>
+                <div class="blog-card reveal">
+                    <div class="blog-top">
+                        <span class="blog-tag orange-tag">Carrera</span>
+                        <span class="blog-status mono">DRAFT</span>
+                    </div>
+                    <h3 class="blog-title">De TSU a Ingeniería: mi stack y qué cambió</h3>
+                    <p class="blog-desc">Cómo evolucionó mi forma de escribir código, diseñar sistemas y trabajar en equipo al avanzar de TSU a Ingeniería.</p>
+                    <div class="blog-foot"><span class="mono c-dim text-xs">Próximamente →</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CONTACT ── -->
     <section id="contact">
         <div class="section-inner">
-            <div class="reveal">
-                <span class="section-tag">// Contacto</span>
-                <h2 class="section-title">Hablemos</h2>
+            <div class="section-head reveal">
+                <span class="section-cmd mono">$ ping luis@bausen.dev</span>
+                <h2 class="section-title">¿Hablamos? <span class="c-green">Contacto</span></h2>
+                <p class="section-sub">Disponible para oportunidades, proyectos freelance o platicar de tecnología.</p>
             </div>
             <div class="contact-grid">
-                <div class="contact-left reveal">
-                    <p>Estoy abierto a nuevas oportunidades, proyectos freelance o simplemente platicar sobre tecnología. No dudes en escribirme.</p>
-                    <div class="contact-links">
-                        <a href="mailto:kikeramirez@gmail.com" class="contact-link">
-                            <span class="icon"><i class="fas fa-envelope"></i></span>
-                            <div>
-                                <div class="label">Email</div>
-                                <div class="value">kikeramirez@gmail.com</div>
-                            </div>
-                        </a>
-                        <a href="https://github.com/KikeGonRam" target="_blank" class="contact-link">
-                            <span class="icon"><i class="fab fa-github"></i></span>
-                            <div>
-                                <div class="label">GitHub</div>
-                                <div class="value">KikeGonRam</div>
-                            </div>
-                        </a>
-                        <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank" class="contact-link">
-                            <span class="icon"><i class="fab fa-instagram"></i></span>
-                            <div>
-                                <div class="label">Instagram</div>
-                                <div class="value">@kike_gonzalez_16</div>
-                            </div>
-                        </a>
-                        <a href="https://www.facebook.com/kike160418" target="_blank" class="contact-link">
-                            <span class="icon"><i class="fab fa-facebook"></i></span>
-                            <div>
-                                <div class="label">Facebook</div>
-                                <div class="value">Kike Gonzalez</div>
-                            </div>
-                        </a>
-                    </div>
+                <div class="contact-links reveal">
+                    <a href="mailto:kikeramirez@gmail.com" class="contact-item">
+                        <div class="ci-icon"><i class="fas fa-envelope"></i></div>
+                        <div class="ci-body"><span class="ci-lbl mono">EMAIL</span><span class="ci-val">kikeramirez@gmail.com</span></div>
+                        <i class="fas fa-chevron-right ci-arr"></i>
+                    </a>
+                    <a href="https://github.com/KikeGonRam" target="_blank" class="contact-item">
+                        <div class="ci-icon"><i class="fab fa-github"></i></div>
+                        <div class="ci-body"><span class="ci-lbl mono">GITHUB</span><span class="ci-val">KikeGonRam</span></div>
+                        <i class="fas fa-chevron-right ci-arr"></i>
+                    </a>
+                    <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank" class="contact-item">
+                        <div class="ci-icon"><i class="fab fa-instagram"></i></div>
+                        <div class="ci-body"><span class="ci-lbl mono">INSTAGRAM</span><span class="ci-val">@kike_gonzalez_16</span></div>
+                        <i class="fas fa-chevron-right ci-arr"></i>
+                    </a>
+                    <a href="https://www.facebook.com/kike160418" target="_blank" class="contact-item">
+                        <div class="ci-icon"><i class="fab fa-facebook"></i></div>
+                        <div class="ci-body"><span class="ci-lbl mono">FACEBOOK</span><span class="ci-val">Kike Gonzalez</span></div>
+                        <i class="fas fa-chevron-right ci-arr"></i>
+                    </a>
                 </div>
-                <div class="contact-right reveal">
-                    <h3>Envía un mensaje</h3>
-                    <div class="form-group">
-                        <label>Nombre</label>
-                        <input type="text" placeholder="Tu nombre">
+                <div class="contact-term reveal">
+                    <div class="terminal-window">
+                        <div class="term-header">
+                            <div class="term-dots">
+                                <span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span>
+                            </div>
+                            <span class="term-title mono">send-message.sh</span>
+                        </div>
+                        <div class="term-body">
+                            <p class="prompt"><span class="c-green">$</span> <span class="c-cyan">./send-message.sh</span></p>
+                            <div class="form-grp">
+                                <label class="mono c-green"># nombre:</label>
+                                <input type="text" class="term-input" placeholder="Tu nombre">
+                            </div>
+                            <div class="form-grp">
+                                <label class="mono c-green"># email:</label>
+                                <input type="email" class="term-input" placeholder="tu@email.com">
+                            </div>
+                            <div class="form-grp">
+                                <label class="mono c-green"># mensaje:</label>
+                                <textarea class="term-input" rows="3" placeholder="Cuéntame de tu proyecto..."></textarea>
+                            </div>
+                            <button class="btn-send" id="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                                <span class="mono">send_message()</span>
+                            </button>
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label>Email</label>
-                        <input type="email" placeholder="tu@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label>Mensaje</label>
-                        <textarea placeholder="Cuéntame de tu proyecto..."></textarea>
-                    </div>
-                    <button class="btn-primary" style="width:100%; text-align:center; display:block;">
-                        Enviar mensaje
-                    </button>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- ── FOOTER ── -->
     <footer>
-        <p>© 2025 Luis Enrique González Ramírez</p>
-        <p class="made">Diseñado & desarrollado con <span>♥</span> · UTVT IDGS-84</p>
+        <div class="footer-inner">
+            <div class="footer-l">
+                <span class="mono c-green">❰LGR❱</span>
+                <p>© 2025 Luis Enrique González Ramírez</p>
+            </div>
+            <div class="footer-c mono c-dim">
+                <span class="c-green">▲</span> Built with precision · UTVT IDGS-84
+            </div>
+            <div class="footer-r mono c-dim">
+                Ing. TI · Bausen Dev
+            </div>
+        </div>
     </footer>
 
-    <script>
-        // Scroll reveal
-        const reveals = document.querySelectorAll('.reveal');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, i) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => entry.target.classList.add('visible'), i * 80);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.12 });
-        reveals.forEach(el => observer.observe(el));
-
-        // Nav scroll effect
-        const nav = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            nav.style.background = window.scrollY > 80
-                ? 'rgba(8,13,24,0.95)'
-                : 'rgba(8,13,24,0.75)';
-        });
-
-        // Animated counters
-        const counters = document.querySelectorAll('.stat-num');
-        const counterObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const val = el.textContent;
-                    if (!isNaN(parseInt(val))) {
-                        const target = parseInt(val);
-                        let current = 0;
-                        const step = target / 30;
-                        const suffix = val.replace(/[0-9]/g, '');
-                        const timer = setInterval(() => {
-                            current += step;
-                            if (current >= target) { clearInterval(timer); current = target; }
-                            el.textContent = Math.floor(current) + suffix;
-                        }, 40);
-                    }
-                    counterObserver.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(c => counterObserver.observe(c));
-
-        // Custom cursor (desktop only)
-        if (window.innerWidth > 900) {
-            const dot = document.createElement('div');
-            dot.style.cssText = `
-                position:fixed;width:10px;height:10px;border-radius:50%;
-                background:#38BDF8;pointer-events:none;z-index:99999;
-                transition:transform .15s,opacity .15s;mix-blend-mode:difference;
-                transform:translate(-50%,-50%);
-            `;
-            const ring = document.createElement('div');
-            ring.style.cssText = `
-                position:fixed;width:36px;height:36px;border-radius:50%;
-                border:1.5px solid rgba(56,189,248,0.5);pointer-events:none;z-index:99998;
-                transition:left .12s,top .12s,transform .25s;
-                transform:translate(-50%,-50%);
-            `;
-            document.body.appendChild(dot);
-            document.body.appendChild(ring);
-            document.addEventListener('mousemove', e => {
-                dot.style.left = e.clientX + 'px';
-                dot.style.top  = e.clientY + 'px';
-                ring.style.left = e.clientX + 'px';
-                ring.style.top  = e.clientY + 'px';
-            });
-            document.querySelectorAll('a, button, .project-card').forEach(el => {
-                el.addEventListener('mouseenter', () => ring.style.transform = 'translate(-50%,-50%) scale(1.6)');
-                el.addEventListener('mouseleave', () => ring.style.transform = 'translate(-50%,-50%) scale(1)');
-            });
-        }
-    </script>
+    <script src="js/script.js"></script>
 </body>
 </html>
