@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CV — Luis Enrique González Ramírez</title>
+  <meta name="description" content="Currículum de Luis Enrique González Ramírez, desarrollador de software: Java, Spring Boot, Next.js, MySQL y sistemas en producción.">
+  <meta name="author" content="Luis Enrique González Ramírez">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23011824'/%3E%3Ctext x='50' y='63' font-family='monospace' font-size='42' font-weight='700' fill='%2300d4ff' text-anchor='middle'%3ELGR%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
   <style>
@@ -121,19 +128,58 @@
       background: #d1fae5; border-radius: 100px; font-size: .62rem; color: #065f46; font-weight: 700;
     }
 
-    .lang-item { display: flex; justify-content: space-between; margin-bottom: .5rem; font-size: .76rem; }
-    .lang-bar { height: 3px; background: #e2e8f0; border-radius: 100px; margin-top: .25rem; overflow: hidden; }
-    .lang-fill { height: 100%; background: linear-gradient(90deg, var(--cyan), #0ea5e9); border-radius: 100px; }
+    .lang-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      gap: .5rem; padding: .3rem 0; font-size: .76rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .lang-item:last-child { border-bottom: none; }
+    .lang-lvl { font-size: .68rem; color: var(--muted); white-space: nowrap; }
 
     .info-row { display: flex; gap: .5rem; margin-bottom: .4rem; font-size: .76rem; align-items: center; }
     .info-icon { color: var(--cyan); font-size: .72rem; width: 14px; text-align: center; flex-shrink: 0; }
 
-    /* ── PRINT ── */
+    /* ── PRINT ──
+       Los navegadores NO imprimen fondos por defecto. El encabezado en
+       pantalla es oscuro con texto blanco: si se imprimiera tal cual,
+       el nombre saldría blanco sobre blanco (invisible). En papel se
+       invierte a fondo claro con texto oscuro: legible siempre, sin
+       depender de "Gráficos de fondo" y sin gastar tóner. */
+    @page {
+      size: A4;
+      margin: 12mm 0;
+    }
     @media print {
       .print-bar { display: none; }
-      .cv-wrapper { max-width: 100%; box-shadow: none; }
-      body { background: white; }
-      a { color: var(--cyan) !important; }
+      body { background: #fff; font-size: 11.5px; }
+      .cv-wrapper { max-width: 100%; box-shadow: none; min-height: auto; }
+      .cv-body { min-height: auto; }
+
+      .cv-header {
+        background: #fff;
+        color: var(--text);
+        padding: 0 2.5rem 1.2rem;
+        border-bottom: 2px solid var(--cyan);
+      }
+      .cv-header::after { display: none; }
+      .cv-name  { color: #0f1b2d; }
+      .cv-title { color: var(--cyan); }
+      .cv-contact a,
+      .cv-contact span { color: #3d4d5e; }
+      .cv-photo { border-color: #cbd5e1; }
+
+      /* Evita cortes feos a mitad de un bloque al pasar de página */
+      .cv-section { break-inside: avoid; page-break-inside: avoid; }
+      .exp-item, .proj-item, .edu-cv-item, .skill-group {
+        break-inside: avoid; page-break-inside: avoid;
+      }
+      .cv-sec-title { break-after: avoid; page-break-after: avoid; }
+      h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
+      p, li { orphans: 3; widows: 3; }
+
+      a { color: var(--cyan); text-decoration: none; }
+      .cv-main { border-right: none; }
+      .cv-side { background: #fff; border-left: 1px solid var(--border); }
     }
     @media (max-width: 700px) {
       .cv-body { grid-template-columns: 1fr; }
@@ -147,8 +193,8 @@
 
     <!-- PRINT BAR -->
     <div class="print-bar">
-      <span>❰LGR❱ · Curriculum Vitae · 2025</span>
-      <button class="print-btn" onclick="window.print()"><i class="fas fa-print"></i> Imprimir / Guardar PDF</button>
+      <span>❰LGR❱ · Curriculum Vitae · <span id="cv-year">2026</span></span>
+      <button class="print-btn" onclick="window.print()"><i class="fas fa-print" aria-hidden="true"></i> Imprimir / Guardar PDF</button>
     </div>
 
     <!-- HEADER -->
@@ -157,13 +203,13 @@
         <img src="images/mi-foto.jpg" alt="Luis González Ramírez" class="cv-photo">
         <div>
           <h1 class="cv-name">Luis Enrique González Ramírez</h1>
-          <p class="cv-title">Software Developer · Full-Stack Engineer · Bausen</p>
+          <p class="cv-title">Software Developer</p>
           <div class="cv-contact">
-            <a href="mailto:kikeramirez160418@gmail.com"><i class="fas fa-envelope"></i>kikeramirez160418@gmail.com</a>
-            <a href="https://github.com/KikeGonRam" target="_blank"><i class="fab fa-github"></i>github.com/KikeGonRam</a>
-            <a href="https://bausen.mx" target="_blank"><i class="fas fa-globe"></i>bausen.mx</a>
-            <span><i class="fas fa-map-pin"></i>Toluca, México</span>
-            <a href="https://kikeGonRam.github.io" target="_blank"><i class="fas fa-briefcase"></i>kikeGonRam.github.io</a>
+            <a href="tel:+527222501340"><i class="fas fa-phone" aria-hidden="true"></i>722 250 1340</a>
+            <a href="mailto:kikeramirez160418@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i>kikeramirez160418@gmail.com</a>
+            <a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i>github.com/KikeGonRam</a>
+            <span><i class="fas fa-map-pin" aria-hidden="true"></i>Toluca, México</span>
+            <a href="https://kikeGonRam.github.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-briefcase" aria-hidden="true"></i>kikeGonRam.github.io</a>
           </div>
         </div>
       </div>
@@ -175,26 +221,27 @@
 
         <!-- PERFIL -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-user"></i> Perfil Profesional</div>
+          <div class="cv-sec-title"><i class="fas fa-user" aria-hidden="true"></i> Perfil Profesional</div>
           <p style="font-size:.78rem;color:var(--muted);line-height:1.65;">
-            Desarrollador de software titulado en T.S.U. y actualmente cursando Ingeniería en Desarrollo y Gestión de Software en la UTVT. Trabajo en <strong style="color:var(--text)">Bausen</strong> donde construyo y mantengo plataformas empresariales en producción. Especializado en arquitectura Full-Stack con Next.js y Spring Boot, seguridad en aplicaciones y APIs REST escalables.
+            Desarrollador de software titulado en T.S.U. y actualmente cursando Ingeniería en Desarrollo y Gestión de Software en la UTVT. Construyo y mantengo plataformas empresariales en producción. Especializado en Next.js y Spring Boot, seguridad en aplicaciones y APIs REST escalables.
           </p>
         </div>
 
         <!-- EXPERIENCIA -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-briefcase"></i> Experiencia Profesional</div>
+          <div class="cv-sec-title"><i class="fas fa-briefcase" aria-hidden="true"></i> Experiencia Profesional</div>
 
           <div class="exp-item">
             <div class="exp-top">
               <span class="exp-role">Software Developer <span class="exp-badge active">ACTIVO</span></span>
               <span class="exp-period">Ago 2025 — Presente</span>
             </div>
-            <div class="exp-company"><i class="fas fa-building"></i> Bausen · Infraestructura Digital Corporativa</div>
+            <div class="exp-company"><i class="fas fa-building" aria-hidden="true"></i> Infraestructura Digital Corporativa</div>
             <ul class="exp-list">
-              <li>Desarrollo y mantenimiento de la <strong>Plataforma BECHAPRA</strong> — gestión de pagos institucional en producción.</li>
-              <li>Construcción del <strong>Portal Corporativo Bausen</strong> con autenticación TLS v2.5 de grado bancario.</li>
-              <li>Stack: Next.js, TypeScript, seguridad TLS, acceso centralizado, alta disponibilidad en bausen.mx.</li>
+              <li>Desarrollo del <strong>login principal del portal corporativo</strong>, punto de acceso a los módulos internos de la plataforma.</li>
+              <li>Desarrollo y mantenimiento en equipo de una <strong>plataforma de pagos institucional</strong> en producción.</li>
+              <li>Autenticación TLS de grado bancario, control de accesos y despliegue en servidor productivo.</li>
+              <li>Stack: Next.js, TypeScript, seguridad TLS, acceso centralizado, alta disponibilidad.</li>
             </ul>
           </div>
 
@@ -203,37 +250,52 @@
               <span class="exp-role">Desarrollador en Estadía <span class="exp-badge">✓ Completado</span></span>
               <span class="exp-period">Abr 2025 — Ago 2025</span>
             </div>
-            <div class="exp-company"><i class="fas fa-flask"></i> Bechapra (actual Bausen) · Estadía Profesional UTVT</div>
+            <div class="exp-company"><i class="fas fa-flask" aria-hidden="true"></i> Estadía Profesional UTVT</div>
             <ul class="exp-list">
               <li>Desarrollo de plataforma de pagos institucional y portal corporativo en entorno real de producción.</li>
-              <li>Estadía concluida con contratación directa al renombrar la empresa como Bausen.</li>
+              <li>Estadía concluida con contratación directa.</li>
             </ul>
           </div>
         </div>
 
         <!-- PROYECTOS -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-code"></i> Proyectos Destacados</div>
+          <div class="cv-sec-title"><i class="fas fa-code" aria-hidden="true"></i> Proyectos Destacados</div>
+          <p style="font-size:.7rem;color:var(--muted);margin-bottom:.7rem;">
+            Todos desarrollados en equipo y actualmente en producción. Se indica mi participación.
+          </p>
 
           <div class="proj-item">
-            <div class="proj-name">Plataforma de Pagos BECHAPRA <span class="proj-live">LIVE</span></div>
-            <div class="proj-desc">Sistema empresarial de gestión financiera institucional con autenticación segura y panel administrativo. En producción 24/7.</div>
-            <a href="https://bausen.mx/login" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> bausen.mx/login</a>
+            <div class="proj-name">Portal Corporativo — Login principal <span class="proj-live">LIVE</span></div>
+            <div class="proj-desc">
+              Acceso central de la plataforma: autenticación de grado bancario, credenciales de sistema y
+              conexión TLS. Desde este login se accede al resto de los módulos internos.
+              <strong>Participación:</strong> desarrollo del login principal.
+            </div>
+            <a href="https://bausen.mx/login-portal/login" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt" aria-hidden="true"></i> bausen.mx/login-portal/login</a>
             <div style="margin-top:.3rem" class="skill-tags">
               <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">TLS</span>
             </div>
           </div>
 
           <div class="proj-item">
-            <div class="proj-name">Portal Corporativo Bausen <span class="proj-live">LIVE</span></div>
-            <div class="proj-desc">Nexo central de gestión con autenticación de grado bancario, credenciales de sistema y conexión TLS v2.5.</div>
-            <a href="https://bausen.mx/login-portal/login" class="proj-link" target="_blank"><i class="fas fa-external-link-alt"></i> bausen.mx/login-portal</a>
+            <div class="proj-name">Plataforma de Pagos Institucional <span class="proj-live">LIVE</span></div>
+            <div class="proj-desc">
+              Sistema empresarial de gestión financiera con autenticación segura, control de roles y panel
+              administrativo. <strong>Participación:</strong> desarrollo y mantenimiento en equipo.
+            </div>
+            <div style="margin-top:.3rem" class="skill-tags">
+              <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">TLS</span>
+            </div>
           </div>
 
           <div class="proj-item">
             <div class="proj-name">API REST — Evaluación Docente</div>
-            <div class="proj-desc">Spring Boot + JPA/Hibernate + MapStruct + Log4j2 + MySQL. Documentada con Springdoc/OpenAPI.</div>
-            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" class="proj-link" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <div class="proj-desc">
+              Spring Boot + JPA/Hibernate + MapStruct + Log4j2 + MySQL. Documentada con Springdoc/OpenAPI.
+              <strong>Participación:</strong> proyecto colaborativo.
+            </div>
+            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> github.com/KikeGonRam/evaluacion-docente-api</a>
             <div style="margin-top:.3rem" class="skill-tags">
               <span class="skill-tag">Spring Boot</span><span class="skill-tag">Java</span><span class="skill-tag">MySQL</span>
             </div>
@@ -241,7 +303,10 @@
 
           <div class="proj-item">
             <div class="proj-name">App Móvil — Gestión Barbería</div>
-            <div class="proj-desc">React Native multiplataforma. 230+ casos de prueba con Cypress, Jest, JMeter. CI/CD con GitHub Actions. ISO/IEC 27001.</div>
+            <div class="proj-desc">
+              React Native multiplataforma. 230+ casos de prueba con Cypress, Jest y JMeter. CI/CD con
+              GitHub Actions e ISO/IEC 27001. <strong>Participación:</strong> proyecto colaborativo.
+            </div>
             <div style="margin-top:.3rem" class="skill-tags">
               <span class="skill-tag">React Native</span><span class="skill-tag">CI/CD</span><span class="skill-tag">Jest</span>
             </div>
@@ -255,25 +320,26 @@
 
         <!-- INFO -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-info-circle"></i> Información</div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-map-pin"></i></span><span>Toluca, Estado de México</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-envelope"></i></span><span>kikeramirez160418@gmail.com</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fab fa-github"></i></span><span>KikeGonRam</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fab fa-instagram"></i></span><span>@kike_gonzalez_16</span></div>
+          <div class="cv-sec-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Información</div>
+          <div class="info-row"><span class="info-icon"><i class="fas fa-map-pin" aria-hidden="true"></i></span><span>Toluca, Estado de México</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fas fa-phone" aria-hidden="true"></i></span><span>722 250 1340</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span><span>kikeramirez160418@gmail.com</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>KikeGonRam</span></div>
+          <div class="info-row"><span class="info-icon"><i class="fab fa-instagram" aria-hidden="true"></i></span><span>@kike_gonzalez_16</span></div>
         </div>
 
         <!-- EDUCACIÓN -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-graduation-cap"></i> Educación</div>
+          <div class="cv-sec-title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Educación</div>
           <div class="edu-cv-item">
             <div class="edu-cv-degree">Ingeniería en Desarrollo y Gestión de Software</div>
             <div class="edu-cv-school">UTVT</div>
-            <div class="edu-cv-period">Sep 2025 — Presente · 8vo Cuatrimestre</div>
+            <div class="edu-cv-period">Sep 2025 — Presente</div>
             <span class="edu-cv-badge">● En curso</span>
           </div>
           <div class="edu-cv-item">
             <div class="edu-cv-degree">T.S.U. Desarrollo de Software Multiplataforma</div>
-            <div class="edu-cv-school">UTVT · IDGS-84</div>
+            <div class="edu-cv-school">UTVT</div>
             <div class="edu-cv-period">2022 — Ago 2025</div>
             <span class="edu-cv-badge">✓ Titulado</span>
           </div>
@@ -281,7 +347,7 @@
 
         <!-- TECH STACK -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-code"></i> Tech Stack</div>
+          <div class="cv-sec-title"><i class="fas fa-code" aria-hidden="true"></i> Tech Stack</div>
           <div class="skill-group">
             <div class="skill-group-name">Backend</div>
             <div class="skill-tags">
@@ -314,16 +380,18 @@
 
         <!-- IDIOMAS -->
         <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-language"></i> Idiomas</div>
-          <div class="lang-item"><span>Español</span><span style="font-size:.68rem;color:var(--muted)">Nativo</span></div>
-          <div class="lang-bar"><div class="lang-fill" style="width:100%"></div></div>
-          <div style="margin-top:.6rem"></div>
-          <div class="lang-item"><span>Inglés</span><span style="font-size:.68rem;color:var(--muted)">Técnico</span></div>
-          <div class="lang-bar"><div class="lang-fill" style="width:65%"></div></div>
+          <div class="cv-sec-title"><i class="fas fa-language" aria-hidden="true"></i> Idiomas</div>
+          <div class="lang-item"><span>Español</span><span class="lang-lvl">Nativo</span></div>
+          <div class="lang-item"><span>Inglés</span><span class="lang-lvl">Lectura técnica</span></div>
         </div>
 
       </div>
     </div>
   </div>
+
+  <script>
+    // El año se calcula solo: así el CV no queda fechado en un año viejo.
+    document.getElementById('cv-year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>

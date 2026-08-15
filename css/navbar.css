@@ -1,0 +1,53 @@
+/* ══ STATUS BAR ══ */
+#status-bar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 300;
+  background: var(--cyan); height: 24px;
+  overflow: hidden; display: flex; align-items: center;
+}
+.ticker-track { height: 100%; overflow: hidden; width: 100%; display: flex; align-items: center; }
+.ticker-content {
+  display: flex; align-items: center; gap: 1.5rem;
+  font-family: var(--mono); font-size: .65rem; font-weight: 700;
+  color: #011824; white-space: nowrap;
+  animation: ticker 50s linear infinite;
+  padding-left: 100%;
+}
+.t-sep { opacity: .3; }
+.t-dot {
+  display: inline-block; width: 5px; height: 5px;
+  background: #011824; border-radius: 50%;
+  animation: blink-d 1.5s step-end infinite;
+}
+@keyframes blink-d { 0%,100%{opacity:1} 50%{opacity:.2} }
+@keyframes ticker { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+/* ══ NAVBAR ══ */
+#navbar {
+  position: fixed; top: 24px; left: 0; right: 0; z-index: 200;
+  height: 56px; display: flex; justify-content: space-between; align-items: center;
+  padding: 0 2.5rem;
+  background: rgba(3,8,16,0.92); backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border);
+  transition: background .3s, box-shadow .3s;
+}
+.nav-logo {
+  font-family: var(--mono); font-size: .95rem; font-weight: 800;
+  color: var(--text); letter-spacing: .05em;
+}
+.nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+.nav-links a {
+  font-size: .78rem; font-weight: 500; color: var(--muted);
+  text-decoration: none; transition: color .2s;
+  display: flex; align-items: center; gap: .3rem;
+}
+.nav-links a:hover { color: var(--cyan); }
+.nav-cv {
+  padding: .3rem .8rem;
+  border: 1px solid var(--border); border-radius: 6px;
+  color: var(--cyan) !important;
+}
+.nav-cv:hover { background: rgba(0,212,255,.08) !important; border-color: var(--cyan) !important; }
+.n { font-family: var(--mono); font-size: .65rem; color: var(--cyan); }
+.nav-right { display: flex; align-items: center; gap: .7rem; }
+.nav-burger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 4px; }
+.nav-burger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all .3s; }

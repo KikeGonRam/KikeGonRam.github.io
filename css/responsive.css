@@ -1,0 +1,32 @@
+/* ══ MOBILE ══ */
+@media (max-width: 1100px) {
+  .skills-universe { grid-template-columns: repeat(2, 1fr); }
+  .github-grid { grid-template-columns: 1fr; }
+  .gh-streak-wrap,.gh-info-card { grid-column: 1; }
+}
+@media (max-width: 900px) {
+  #navbar { padding: 0 1.5rem; }
+  #navbar .nav-links { display: none; }
+  #navbar .nav-links.open { display: flex; flex-direction: column; position: fixed; top: calc(24px+56px); left: 0; right: 0; background: rgba(3,8,16,.98); border-bottom: 1px solid var(--border); padding: 1rem 2rem 2rem; gap: 1rem; }
+  .nav-burger { display: flex; }
+  .hero-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .about-photo-wrap { width: auto; }
+  .about-photo { width: 160px; height: 190px; }
+  .metrics-inner { grid-template-columns: repeat(3, 1fr); }
+  .projects-featured { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .skills-universe { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  .edu-item { grid-template-columns: 1fr; gap: .4rem; }
+  .edu-year { padding-top: 0; }
+  .footer-inner { flex-direction: column; text-align: center; }
+  section { padding: 4rem 1.5rem; }
+  #metrics { padding: 1.8rem 1.5rem; }
+}
+@media (max-width: 600px) {
+  .neofetch { flex-direction: column; }
+  .metrics-inner { grid-template-columns: repeat(2, 1fr); }
+  .hero-name { font-size: 2.4rem; }
+  .pf-metrics-row { gap: .8rem; }
+}

@@ -1,0 +1,114 @@
+/* ══════════════════════════════════════════
+   LUIS GONZÁLEZ RAMÍREZ — Portfolio
+   Base: variables, reset, utilidades
+   ══════════════════════════════════════════ */
+
+:root {
+  --bg:      #030810;
+  --p1:      #07101e;
+  --p2:      #0a1628;
+  --border:  #162033;
+  --bhi:     #1e3050;
+  --cyan:    #00d4ff;
+  --green:   #00ff9d;
+  --indigo:  #6366f1;
+  --orange:  #ff8c42;
+  --red:     #ff4d6a;
+  --yellow:  #ffd166;
+  --text:    #c5d4e8;
+  --muted:   #4d6680;
+  --mono:    'JetBrains Mono', monospace;
+  --sans:    'Outfit', sans-serif;
+  --r:       8px;
+  --rl:      14px;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── SCANLINES ── */
+.scanlines {
+  position: absolute; inset: 0; pointer-events: none; z-index: 2;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 3px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 4px
+  );
+  animation: scanline-drift 12s linear infinite;
+}
+@keyframes scanline-drift {
+  from { background-position: 0 0; }
+  to   { background-position: 0 100vh; }
+}
+
+body::after {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 9000;
+  background: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px
+  );
+}
+
+/* ── UTILITIES ── */
+.mono    { font-family: var(--mono); }
+.c-cyan  { color: var(--cyan); }
+.c-green { color: var(--green); }
+.c-dim   { color: var(--muted); }
+.text-xs { font-size: .75rem; }
+.mt-1    { margin-top: 1rem; }
+.mt8     { margin-top: .5rem; }
+
+.pulse-dot {
+  display: inline-block; width: 7px; height: 7px;
+  background: var(--green); border-radius: 50%;
+  animation: pulse-a 2s ease-in-out infinite;
+}
+@keyframes pulse-a {
+  0%,100%{box-shadow:0 0 0 0 rgba(0,255,157,.6);}
+  50%{box-shadow:0 0 0 6px rgba(0,255,157,0);}
+}
+
+/* ══ SCROLL REVEAL ══
+   Se oculta SOLO si el JS está activo (clase .js en <html>).
+   Sin JS el contenido se ve normal, en vez de quedar invisible para siempre. */
+.js .reveal {
+  opacity: 0; transform: translateY(32px);
+  transition: opacity .75s ease, transform .75s cubic-bezier(.25,.46,.45,.94);
+}
+.js .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ══ ACCESIBILIDAD ══
+   Quien configuró "reducir movimiento" en su sistema ve el sitio completo,
+   pero sin glitch, scanlines, parpadeos ni desplazamientos. */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .scanlines, body::after { display: none; }
+  .glitch::before, .glitch::after { display: none; }
+  .js .reveal, .reveal { opacity: 1; transform: none; }
+}
+
+/* Foco visible para navegación con teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
