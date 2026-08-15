@@ -1,0 +1,73 @@
+/* ══ CURSOR PERSONALIZADO ══
+   Punto que sigue al mouse al instante + anillo que lo persigue con
+   inercia. Se posiciona con translate3d (compuesto por GPU) en vez de
+   left/top, que forzaba recálculo de layout en cada movimiento. */
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0; left: 0;
+  pointer-events: none;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity .25s ease;
+  will-change: transform;
+}
+
+/* Visibles solo después del primer movimiento del mouse:
+   evita que aparezcan pegados en la esquina al cargar la página. */
+.cursor-dot.is-active,
+.cursor-ring.is-active { opacity: 1; }
+
+.cursor-dot {
+  z-index: 99999;
+  width: 6px; height: 6px;
+  margin: -3px 0 0 -3px;
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(0, 212, 255, .9);
+}
+
+.cursor-ring {
+  z-index: 99998;
+  width: 30px; height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 1.5px solid rgba(0, 212, 255, .45);
+  transition: opacity .25s ease,
+              width .22s ease, height .22s ease,
+              margin .22s ease,
+              border-color .22s ease,
+              background-color .22s ease;
+}
+
+/* Sobre un elemento interactivo: el anillo crece y se enciende */
+.cursor-ring.is-hover {
+  width: 56px; height: 56px;
+  margin: -28px 0 0 -28px;
+  border-color: rgba(0, 212, 255, .85);
+  background: rgba(0, 212, 255, .06);
+}
+
+/* Al presionar el botón: retroalimentación de clic */
+.cursor-ring.is-down {
+  width: 22px; height: 22px;
+  margin: -11px 0 0 -11px;
+  border-color: var(--green);
+}
+
+/* Sobre campos de texto: barra vertical, como un cursor de escritura */
+.cursor-ring.is-text {
+  width: 3px; height: 26px;
+  margin: -13px 0 0 -1.5px;
+  border-radius: 2px;
+  border-color: transparent;
+  background: rgba(0, 212, 255, .55);
+}
+
+/* Sin cursor propio en táctil, pantallas chicas o con movimiento reducido:
+   ahí el cursor nativo del sistema es la mejor opción. */
+@media (hover: none), (pointer: coarse), (max-width: 900px) {
+  .cursor-dot, .cursor-ring { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cursor-dot, .cursor-ring { display: none; }
+}

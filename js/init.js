@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initUptime();
   fetchGitHub();
   initSendBtn();
+  initCursor();
   duplicateTicker();
   updateClock();
   setInterval(updateClock, 1000);
