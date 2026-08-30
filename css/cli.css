@@ -1,0 +1,68 @@
+/* ══════════════════════════════════════════
+   MODO CLI — terminal interactiva opcional
+   ══════════════════════════════════════════ */
+
+.cli-trigger {
+  display: inline-flex; align-items: center; gap: .55rem;
+  font-family: var(--mono); font-size: .78rem; font-weight: 600;
+  color: var(--green); background: rgba(0,255,157,.06);
+  border: 1px solid rgba(0,255,157,.25); border-radius: 100px;
+  padding: .68rem 1.2rem; cursor: pointer; transition: all .2s;
+}
+.cli-trigger:hover { background: rgba(0,255,157,.12); border-color: rgba(0,255,157,.45); }
+
+.cli-overlay {
+  position: fixed; inset: 0; z-index: 10000;
+  background: rgba(2,6,14,.75);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  padding: 4vh 4vw;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .25s, visibility .25s;
+}
+.cli-overlay.open { opacity: 1; visibility: visible; pointer-events: auto; }
+
+.cli-window {
+  width: min(720px, 100%); max-height: 78vh;
+  display: flex; flex-direction: column;
+  background: rgba(7,16,30,.92);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--border); border-radius: var(--rl);
+  box-shadow: 0 30px 90px rgba(0,0,0,.6);
+  transform: translateY(12px) scale(.98); transition: transform .25s;
+}
+.cli-overlay.open .cli-window { transform: translateY(0) scale(1); }
+
+.cli-header {
+  display: flex; align-items: center; gap: .8rem;
+  padding: .65rem 1.2rem; border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,.25); flex-shrink: 0;
+}
+.cli-close {
+  margin-left: auto; background: none; border: none; color: var(--muted);
+  font-family: var(--mono); font-size: .72rem; cursor: pointer; transition: color .2s;
+}
+.cli-close:hover { color: var(--red); }
+
+.cli-body {
+  flex: 1; overflow-y: auto; padding: 1.1rem 1.3rem;
+  font-family: var(--mono); font-size: .8rem; line-height: 1.75;
+}
+.cli-line { white-space: pre-wrap; word-break: break-word; margin-bottom: .15rem; }
+.cli-line a { color: var(--cyan); }
+.cli-prompt-echo { color: var(--text); }
+.cli-out { white-space: pre-wrap; color: var(--muted); margin-bottom: .8rem; }
+.cli-out strong { color: var(--text); font-weight: 700; }
+.cli-out a { color: var(--cyan); text-decoration: none; }
+.cli-out a:hover { text-decoration: underline; }
+.cli-err { color: var(--red); margin-bottom: .8rem; }
+
+.cli-inputrow {
+  display: flex; align-items: center; gap: .55rem;
+  padding: .8rem 1.3rem; border-top: 1px solid var(--border); flex-shrink: 0;
+}
+.cli-p { color: var(--cyan); font-family: var(--mono); font-size: .8rem; flex-shrink: 0; }
+.cli-input {
+  flex: 1; background: none; border: none; outline: none;
+  font-family: var(--mono); font-size: .8rem; color: var(--text);
+}

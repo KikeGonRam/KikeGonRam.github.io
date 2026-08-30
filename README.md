@@ -8,7 +8,7 @@
 
 ## 🧑‍💻 Sobre mí
 
-Software Developer en **Bausen** · T.S.U. titulado y actualmente cursando Ingeniería en Desarrollo y Gestión de Software @ UTVT · Full-Stack con Java, Spring Boot, Next.js y MySQL.
+Software Developer · T.S.U. titulado y actualmente cursando Ingeniería en Desarrollo y Gestión de Software @ UTVT · Full-Stack con Java, Spring Boot, Next.js y MySQL.
 
 ---
 
@@ -52,10 +52,10 @@ Software Developer en **Bausen** · T.S.U. titulado y actualmente cursando Ingen
 
 ## 💼 Proyectos en producción
 
-| Proyecto | URL | Stack |
+| Proyecto | Rol | Stack |
 |---|---|---|
-| Plataforma BECHAPRA | [bausen.mx/login](https://bausen.mx/login) | Next.js · TypeScript · TLS |
-| Portal Corporativo Bausen | [bausen.mx/login-portal](https://bausen.mx/login-portal/login) | Auth · TLS v2.5 |
+| Plataforma de Pagos Institucional | Desarrollo en equipo | Next.js · TypeScript · TLS |
+| Portal Corporativo — Login principal | Desarrollo del login | Auth · TLS v2.5 |
 
 ---
 

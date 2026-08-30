@@ -37,6 +37,7 @@
   <link rel="stylesheet" href="css/contact.css">
   <link rel="stylesheet" href="css/cursor.css">
   <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/cli.css">
 </head>
 <body>
 
@@ -152,6 +153,7 @@
         <div class="hero-cta">
           <a href="#projects" class="btn-primary"><i class="fas fa-folder-open" aria-hidden="true"></i> Ver proyectos</a>
           <a href="cv.html" target="_blank" rel="noopener noreferrer" class="btn-ghost"><i class="fas fa-file-lines" aria-hidden="true"></i> Ver CV</a>
+          <button type="button" class="cli-trigger" id="cli-trigger" aria-haspopup="dialog"><i class="fas fa-terminal" aria-hidden="true"></i> modo_cli()</button>
         </div>
       </div>
     </div>
@@ -177,10 +179,6 @@
       <div class="metric-card">
         <span class="metric-val mono" data-target="5">5</span><span class="metric-unit">+</span>
         <span class="metric-lbl">Proyectos completados</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val mono" data-target="230">230</span><span class="metric-unit">+</span>
-        <span class="metric-lbl">Test cases documentados</span>
       </div>
       <div class="metric-card">
         <span class="metric-val mono" data-target="12">12</span><span class="metric-unit">+</span>
@@ -306,12 +304,12 @@
             </div>
             <ul class="tl-list">
               <li><strong>API REST Spring Boot</strong> — JPA/Hibernate, MapStruct, Log4j2, MySQL, Springdoc/OpenAPI, frontend Next.js.</li>
-              <li><strong>App móvil gestión barbería</strong> — 230+ casos de prueba, CI/CD, Cypress, Jest, JMeter, ISO/IEC 27001, ISO 31000.</li>
+              <li><strong>Sistema de gestión de citas para barbería (DARKETO)</strong> — Laravel 10, roles cliente/barbero/admin, pagos en línea con Stripe y PayPal, generación de tickets en PDF.</li>
               <li><strong>Módulo Python Pandas</strong> — ProgresionAritmetica con Series.diff() para análisis numérico.</li>
             </ul>
             <div class="tag-row">
               <span class="tag">Spring Boot</span><span class="tag">Java</span>
-              <span class="tag">Python</span><span class="tag cyan-tag">React Native</span><span class="tag">MySQL</span>
+              <span class="tag">Python</span><span class="tag cyan-tag">PHP / Laravel</span><span class="tag">MySQL</span>
             </div>
           </div>
         </div>
@@ -341,7 +339,11 @@
           <div class="pf-body">
             <div class="pf-type mono c-dim">// Enterprise · Fintech</div>
             <h3 class="pf-name">Plataforma de Pagos Institucional</h3>
-            <p class="pf-desc">Sistema de gestión de pagos institucional con autenticación segura, control de roles y panel administrativo. Desarrollado en equipo y actualmente en producción.</p>
+            <div class="pf-case">
+              <div class="pfc-row"><span class="pfc-k mono">PROBLEMA</span><p>La gestión de pagos institucionales dependía de procesos manuales dispersos, sin control de roles ni visibilidad administrativa centralizada.</p></div>
+              <div class="pfc-row"><span class="pfc-k mono">MI ROL</span><p>Desarrollo en equipo del sistema completo: autenticación segura, control de accesos por rol, panel administrativo y despliegue en servidor productivo.</p></div>
+              <div class="pfc-row"><span class="pfc-k mono">RESULTADO</span><p>Plataforma en producción activa con TLS, gestionando pagos institucionales en tiempo real para el negocio.</p></div>
+            </div>
             <div class="pf-metrics-row">
               <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
               <div class="pfm"><span class="pfm-k mono">TYPE</span><span class="pfm-v">Enterprise</span></div>
@@ -365,7 +367,11 @@
           <div class="pf-body">
             <div class="pf-type mono c-dim">// Corporate Portal · Security</div>
             <h3 class="pf-name">Portal Corporativo — Login principal</h3>
-            <p class="pf-desc">Acceso central de la plataforma: autenticación de grado bancario, credenciales de sistema y conexión TLS. Es la puerta de entrada desde la que se accede al resto de los módulos internos.</p>
+            <div class="pf-case">
+              <div class="pfc-row"><span class="pfc-k mono">PROBLEMA</span><p>Los módulos internos de la infraestructura digital corporativa carecían de un único punto de acceso seguro, de grado bancario.</p></div>
+              <div class="pfc-row"><span class="pfc-k mono">MI ROL</span><p>Desarrollé el login principal del portal: autenticación, gestión de credenciales de sistema y conexión TLS — la puerta de entrada al resto de los módulos internos.</p></div>
+              <div class="pfc-row"><span class="pfc-k mono">RESULTADO</span><p>Punto de acceso único en producción, usado a diario para entrar a toda la infraestructura interna. Tras la estadía me contrataron directamente.</p></div>
+            </div>
             <div class="pf-metrics-row">
               <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
               <div class="pfm"><span class="pfm-k mono">ROL</span><span class="pfm-v">Desarrollo del login</span></div>
@@ -376,7 +382,38 @@
               <span class="tag">Portal Corp.</span><span class="tag cyan-tag">TLS</span>
               <span class="tag green-tag">Producción</span><span class="tag">Seguridad</span>
             </div>
-            <a href="https://bausen.mx/login-portal/login" target="_blank" rel="noopener noreferrer" class="btn-primary mt-1"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Ver portal en vivo</a>
+          </div>
+        </div>
+
+        <div class="pf-card full reveal">
+          <div class="pf-glow glow-green"></div>
+          <div class="pf-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">~/urbanblade/</span>
+            <span class="pc-live mono" style="color:var(--orange)"><span class="pulse-dot" style="background:var(--orange)"></span>DEMO LOCAL</span>
+          </div>
+          <div class="pf-body">
+            <div class="pf-type mono c-dim">// Plataforma Full-Stack · Web + Mobile + Data/ML</div>
+            <h3 class="pf-name">UrbanBlade — Plataforma para Barberías</h3>
+            <p class="pf-desc">Ecosistema completo desarrollado en equipo para la gestión de barberías: dashboard web por roles (admin, recepción, barbero, cliente), app móvil para clientes y una capa de analítica con Apache Spark/ML sobre datos reales de negocio (12,500+ citas, 1,000 clientes). Los tres módulos comparten una misma base MongoDB Atlas.</p>
+            <div class="pf-metrics-row">
+              <div class="pfm"><span class="pfm-k mono">MÓDULOS</span><span class="pfm-v">Web · Mobile · ML</span></div>
+              <div class="pfm"><span class="pfm-k mono">BD</span><span class="pfm-v">MongoDB compartida</span></div>
+              <div class="pfm"><span class="pfm-k mono">CI/CD</span><span class="pfm-v c-green">● GitHub Actions</span></div>
+              <div class="pfm"><span class="pfm-k mono">EQUIPO</span><span class="pfm-v">Colaborativo</span></div>
+            </div>
+            <div class="tag-row">
+              <span class="tag">Laravel 12</span><span class="tag cyan-tag">MongoDB</span>
+              <span class="tag">Redis</span><span class="tag">Stripe</span>
+              <span class="tag cyan-tag">Expo / React Native</span>
+              <span class="tag">PySpark</span><span class="tag cyan-tag">Machine Learning</span>
+              <span class="tag green-tag">CI/CD</span>
+            </div>
+            <div class="ub-repos">
+              <a href="https://github.com/KikeGonRam/barber" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Web (barber)</a>
+              <a href="https://github.com/KikeGonRam/mobil" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Mobile (mobil)</a>
+              <a href="https://github.com/KikeGonRam/spark" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Analytics (spark)</a>
+            </div>
           </div>
         </div>
       </div>
@@ -400,20 +437,6 @@
         <div class="project-card reveal">
           <div class="pc-header">
             <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">barbershop-app/</span>
-            <span class="pc-badge wip">WIP</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">React Native</span><span class="tag cyan-tag">Mobile</span><span class="tag orange-tag">En desarrollo</span></div>
-            <h3 class="pc-name">App — Gestión Barbería</h3>
-            <p class="pc-desc">App móvil para gestión de citas, agenda y roles. 230+ casos de prueba, Cypress, Jest, JMeter, Postman/Newman, CI/CD e ISO/IEC 27001.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
             <span class="pc-path mono">series-aritmeticas-py/</span>
             <span class="pc-badge">Colaborativo</span>
           </div>
@@ -422,6 +445,34 @@
             <h3 class="pc-name">Validador — Series Aritméticas</h3>
             <p class="pc-desc">Clase ProgresionAritmetica con Pandas Series.diff() para validar y analizar progresiones numéricas. Python 3.14, PyCharm.</p>
             <div class="pc-footer"><a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">dbmonitor/</span>
+            <span class="pc-badge">Personal</span>
+          </div>
+          <div class="pc-body">
+            <div class="tag-row"><span class="tag">React</span><span class="tag cyan-tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">Docker</span></div>
+            <h3 class="pc-name">DBMonitor — Observabilidad MySQL/MongoDB</h3>
+            <p class="pc-desc">Plataforma de monitoreo en tiempo real: KPIs, slow queries, conexiones activas y uso de almacenamiento. Monorepo con React 18 + Vite, API Node/Express y API FastAPI, JWT y Docker Compose.</p>
+            <div class="pc-footer"><a href="https://github.com/KikeGonRam/dbmonitor" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="pc-header">
+            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+            <span class="pc-path mono">vulncore/</span>
+            <span class="pc-badge">Personal</span>
+          </div>
+          <div class="pc-body">
+            <div class="tag-row"><span class="tag">Rust</span><span class="tag cyan-tag">Go</span><span class="tag">Seguridad</span><span class="tag">Docker</span></div>
+            <h3 class="pc-name">VulnCore — Escáner de Vulnerabilidades</h3>
+            <p class="pc-desc">Escáner async de puertos + matching de CVEs (OSV/NVD/CISA KEV) para servidores Linux. Motor en Rust, API REST en Go, dashboard web, alertas a Slack/Discord y escaneos programados vía cron.</p>
+            <div class="pc-footer"><a href="https://github.com/KikeGonRam/vulncore" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
           </div>
         </div>
       </div>
@@ -448,6 +499,8 @@
             <div class="sc-chip"><i class="fas fa-plug" aria-hidden="true"></i><span>REST APIs</span></div>
             <div class="sc-chip"><i class="fas fa-layer-group" aria-hidden="true"></i><span>MapStruct / JPA</span></div>
             <div class="sc-chip"><i class="fas fa-book-open" aria-hidden="true"></i><span>Swagger / OpenAPI</span></div>
+            <div class="sc-chip"><i class="fab fa-laravel" aria-hidden="true"></i><span>PHP / Laravel</span></div>
+            <div class="sc-chip"><i class="fab fa-stripe" aria-hidden="true"></i><span>Stripe API</span></div>
           </div>
         </div>
 
@@ -471,6 +524,8 @@
             <div class="sc-chip"><i class="fas fa-server" aria-hidden="true"></i><span>JPA / Hibernate</span></div>
             <div class="sc-chip"><i class="fas fa-chart-line" aria-hidden="true"></i><span>Pandas</span></div>
             <div class="sc-chip"><i class="fas fa-tools" aria-hidden="true"></i><span>MySQL Workbench</span></div>
+            <div class="sc-chip"><i class="fas fa-leaf" aria-hidden="true"></i><span>MongoDB</span></div>
+            <div class="sc-chip"><i class="fas fa-bolt" aria-hidden="true"></i><span>Redis</span></div>
           </div>
         </div>
 
@@ -480,19 +535,19 @@
           <div class="sc-chips">
             <div class="sc-chip"><i class="fas fa-lock" aria-hidden="true"></i><span>TLS / HTTPS</span></div>
             <div class="sc-chip"><i class="fas fa-key" aria-hidden="true"></i><span>Auth / JWT</span></div>
-            <div class="sc-chip"><i class="fas fa-shield-halved" aria-hidden="true"></i><span>ISO/IEC 27001</span></div>
-            <div class="sc-chip"><i class="fas fa-triangle-exclamation" aria-hidden="true"></i><span>ISO 31000</span></div>
+            <div class="sc-chip"><i class="fas fa-bug" aria-hidden="true"></i><span>CVE Scanning (OSV/NVD)</span></div>
+            <div class="sc-chip"><i class="fas fa-user-shield" aria-hidden="true"></i><span>Role-based Access Control</span></div>
           </div>
         </div>
 
         <!-- Testing -->
         <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">05</span> · testing/</div>
+          <div class="sc-label mono"><span class="c-cyan">05</span> · testing &amp; calidad/</div>
           <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-vial" aria-hidden="true"></i><span>Cypress</span></div>
-            <div class="sc-chip"><i class="fas fa-flask" aria-hidden="true"></i><span>Jest</span></div>
-            <div class="sc-chip"><i class="fas fa-gauge-high" aria-hidden="true"></i><span>JMeter</span></div>
-            <div class="sc-chip"><i class="fas fa-paper-plane" aria-hidden="true"></i><span>Postman / Newman</span></div>
+            <div class="sc-chip"><i class="fas fa-vial" aria-hidden="true"></i><span>PHPUnit</span></div>
+            <div class="sc-chip"><i class="fas fa-broom" aria-hidden="true"></i><span>ESLint / Prettier</span></div>
+            <div class="sc-chip"><i class="fas fa-check-double" aria-hidden="true"></i><span>Laravel Pint</span></div>
+            <div class="sc-chip"><i class="fas fa-magnifying-glass-chart" aria-hidden="true"></i><span>npm / composer audit</span></div>
           </div>
         </div>
 
@@ -504,6 +559,17 @@
             <div class="sc-chip"><i class="fas fa-gears" aria-hidden="true"></i><span>GitHub Actions</span></div>
             <div class="sc-chip"><i class="fas fa-infinity" aria-hidden="true"></i><span>CI/CD</span></div>
             <div class="sc-chip"><i class="fas fa-server" aria-hidden="true"></i><span>Deployment</span></div>
+          </div>
+        </div>
+
+        <!-- Data Science / ML -->
+        <div class="skill-cluster reveal">
+          <div class="sc-label mono"><span class="c-cyan">07</span> · data science &amp; ml/</div>
+          <div class="sc-chips">
+            <div class="sc-chip"><i class="fas fa-fire" aria-hidden="true"></i><span>PySpark</span></div>
+            <div class="sc-chip"><i class="fas fa-brain" aria-hidden="true"></i><span>Scikit-learn / PyTorch</span></div>
+            <div class="sc-chip"><i class="fas fa-diagram-project" aria-hidden="true"></i><span>XGBoost / LightGBM</span></div>
+            <div class="sc-chip"><i class="fas fa-chart-simple" aria-hidden="true"></i><span>Streamlit / Dashboards</span></div>
           </div>
         </div>
       </div>
@@ -671,6 +737,24 @@
     </div>
   </footer>
 
+  <!-- ═══════════════ MODO CLI ═══════════════ -->
+  <div class="cli-overlay" id="cli-overlay" role="dialog" aria-modal="true" aria-label="Terminal interactiva">
+    <div class="cli-window">
+      <div class="cli-header">
+        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
+        <span class="term-title mono">luis@portfolio:~ — modo CLI</span>
+        <button type="button" class="cli-close mono" id="cli-close">[ESC] cerrar</button>
+      </div>
+      <div class="cli-body" id="cli-body">
+        <div class="cli-out">Bienvenido. Escribe <strong>help</strong> para ver los comandos disponibles.</div>
+      </div>
+      <form class="cli-inputrow" id="cli-form">
+        <span class="cli-p mono">luis@dev:~$</span>
+        <input type="text" class="cli-input" id="cli-input" autocomplete="off" spellcheck="false" aria-label="Comando">
+      </form>
+    </div>
+  </div>
+
   <script src="js/particles.js"></script>
   <script src="js/reveal.js"></script>
   <script src="js/navbar.js"></script>
@@ -678,6 +762,7 @@
   <script src="js/github.js"></script>
   <script src="js/contact.js"></script>
   <script src="js/cursor.js"></script>
+  <script src="js/cli.js"></script>
   <script src="js/init.js"></script>
 </body>
 </html>

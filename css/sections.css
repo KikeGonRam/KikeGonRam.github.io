@@ -127,13 +127,21 @@ section { padding: 6rem 2.5rem; }
   gap: 1.5rem; margin-bottom: 1.5rem;
 }
 .pf-card {
-  background: var(--p1); border: 1px solid var(--border);
+  background: rgba(10,22,40,.55);
+  backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255,255,255,.08);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
   border-radius: var(--rl); overflow: hidden;
   position: relative; transition: all .3s;
 }
-.pf-card:hover { transform: translateY(-6px); border-color: rgba(0,212,255,.4); box-shadow: 0 24px 60px rgba(0,0,0,.4); }
+.pf-card:hover {
+  transform: translateY(-6px); border-color: rgba(0,212,255,.4);
+  background: rgba(10,22,40,.7);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.08);
+}
 .pf-card.left { border-top: 3px solid var(--cyan); }
 .pf-card.right { border-top: 3px solid var(--indigo); }
+.pf-card.full { grid-column: 1 / -1; border-top: 3px solid var(--green); }
 .pf-glow {
   position: absolute; top: -60px; right: -60px;
   width: 200px; height: 200px;
@@ -142,6 +150,8 @@ section { padding: 6rem 2.5rem; }
   animation: glow-rot 8s linear infinite;
 }
 .pf-glow.glow-indigo { background: radial-gradient(circle, rgba(99,102,241,.1) 0%, transparent 70%); }
+.pf-glow.glow-green { background: radial-gradient(circle, rgba(0,255,157,.1) 0%, transparent 70%); }
+.ub-repos { display: flex; flex-wrap: wrap; gap: 1.5rem; padding-top: .9rem; border-top: 1px solid var(--border); }
 @keyframes glow-rot { from{transform:rotate(0)} to{transform:rotate(360deg)} }
 .pf-header {
   display: flex; align-items: center; gap: .8rem;
@@ -152,6 +162,13 @@ section { padding: 6rem 2.5rem; }
 .pf-type { font-size: .72rem; margin-bottom: .6rem; }
 .pf-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .7rem; }
 .pf-desc { font-size: .86rem; color: var(--muted); line-height: 1.65; margin-bottom: 1.2rem; }
+.pf-case { display: flex; flex-direction: column; gap: .65rem; margin-bottom: 1.2rem; }
+.pfc-row { display: flex; gap: .8rem; align-items: baseline; }
+.pfc-k {
+  font-size: .62rem; font-weight: 700; letter-spacing: .07em;
+  color: var(--cyan); flex-shrink: 0; width: 76px;
+}
+.pfc-row p { font-size: .84rem; color: var(--muted); line-height: 1.6; margin: 0; }
 .pf-metrics-row {
   display: flex; gap: 1.2rem; flex-wrap: wrap;
   padding: .8rem 1rem;
@@ -165,10 +182,17 @@ section { padding: 6rem 2.5rem; }
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.3rem;
 }
 .project-card {
-  background: var(--p1); border: 1px solid var(--border);
+  background: rgba(10,22,40,.5);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.07);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.04);
   border-radius: var(--rl); overflow: hidden; transition: all .3s;
 }
-.project-card:hover { border-color: rgba(0,212,255,.35); transform: translateY(-5px); box-shadow: 0 20px 48px rgba(0,0,0,.35); }
+.project-card:hover {
+  border-color: rgba(0,212,255,.35); transform: translateY(-5px);
+  background: rgba(10,22,40,.64);
+  box-shadow: 0 20px 48px rgba(0,0,0,.35), inset 0 1px 0 rgba(255,255,255,.06);
+}
 .pc-header {
   display: flex; align-items: center; gap: .8rem;
   padding: .6rem 1rem; background: rgba(0,0,0,.2); border-bottom: 1px solid var(--border);
