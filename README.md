@@ -63,6 +63,7 @@ Software Developer · T.S.U. titulado y actualmente cursando Ingeniería en Desa
 
 - 📧 kikeramirez160418@gmail.com
 - 💼 [github.com/KikeGonRam](https://github.com/KikeGonRam)
+- 🔗 [linkedin.com/in/luisgonzalezramirez-dev](https://www.linkedin.com/in/luisgonzalezramirez-dev)
 - 📸 [@kike_gonzalez_16](https://instagram.com/kike_gonzalez_16)
 
 ---
