@@ -2,790 +2,134 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- Marca que hay JS: el CSS solo oculta las secciones animadas si esto corrió,
-       así el sitio nunca queda en blanco cuando el JS falla o está bloqueado. -->
-  <script>document.documentElement.classList.add('js');</script>
-  <title>Luis González Ramírez — Software Engineer</title>
-  <meta name="description" content="Portfolio de Luis González Ramírez, desarrollador de software especializado en Java, Spring Boot, Next.js y arquitectura de sistemas.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Luis Enrique González Ramírez — Desarrollador de software</title>
+  <meta name="description" content="Desarrollador de software en Toluca, México. APIs, plataformas web y autenticación segura con Java, TypeScript, PHP y Python. Disponible para nuevas oportunidades.">
   <meta name="author" content="Luis Enrique González Ramírez">
-  <meta name="theme-color" content="#030810">
   <link rel="canonical" href="https://kikegonram.github.io/">
-
-  <!-- Preview al compartir el link (WhatsApp, LinkedIn, X, Discord…) -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://kikegonram.github.io/">
-  <meta property="og:title" content="Luis González Ramírez — Software Engineer">
-  <meta property="og:description" content="Desarrollador de software. Java, Spring Boot, Next.js y sistemas en producción.">
-  <meta property="og:image" content="https://kikegonram.github.io/images/mi-foto.jpg">
-  <meta property="og:locale" content="es_MX">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Luis González Ramírez — Software Engineer">
-  <meta name="twitter:description" content="Desarrollador de software. Java, Spring Boot, Next.js y sistemas en producción.">
-  <meta name="twitter:image" content="https://kikegonram.github.io/images/mi-foto.jpg">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23011824'/%3E%3Ctext x='50' y='63' font-family='monospace' font-size='42' font-weight='700' fill='%2300d4ff' text-anchor='middle'%3ELGR%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/hero.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/contact.css">
-  <link rel="stylesheet" href="css/cursor.css">
-  <link rel="stylesheet" href="css/responsive.css">
-  <link rel="stylesheet" href="css/cli.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- ═══════════════ STATUS BAR ═══════════════ -->
-  <div id="status-bar">
-    <div class="ticker-track">
-      <span class="ticker-content" id="ticker-inner">
-        <span class="t-dot"></span>
-        <span>SISTEMA ONLINE</span>
-        <span class="t-sep">|</span>
-        <span>Luis Enrique González Ramírez</span>
-        <span class="t-sep">|</span>
-        <span>Software Developer</span>
-        <span class="t-sep">|</span>
-        <span>Ingeniería en Desarrollo y Gestión de Software · UTVT</span>
-        <span class="t-sep">|</span>
-        <span>Available for new projects</span>
-        <span class="t-sep">|</span>
-        <span class="live-clock">--:--:-- CST</span>
-        <span class="t-sep">|</span>
-        <span>github.com/KikeGonRam</span>
-        <span class="t-sep">|</span>
-      </span>
-    </div>
+<header class="top">
+  <div class="wrap">
+    <strong>Luis Enrique González Ramírez</strong>
+    <nav aria-label="Secciones">
+      <a href="#experiencia">Experiencia</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#educacion">Educación</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
   </div>
+</header>
 
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
-  <nav id="navbar">
-    <div class="nav-logo">❰<span class="c-cyan">LGR</span>❱</div>
-    <ul class="nav-links" id="nav-links">
-      <li><a href="#about"><span class="n">01.</span>Sobre mí</a></li>
-      <li><a href="#experience"><span class="n">02.</span>Experiencia</a></li>
-      <li><a href="#projects"><span class="n">03.</span>Proyectos</a></li>
-      <li><a href="#skills"><span class="n">04.</span>Stack</a></li>
-      <li><a href="#github-stats"><span class="n">05.</span>GitHub</a></li>
-      <li><a href="#contact"><span class="n">06.</span>Contacto</a></li>
-      <li><a href="cv.html" target="_blank" rel="noopener noreferrer" class="nav-cv"><i class="fas fa-file-lines" aria-hidden="true"></i> CV</a></li>
-    </ul>
-    <div class="nav-right">
-      <span class="pulse-dot"></span>
-      <span class="mono text-xs c-cyan">ONLINE</span>
-      <button class="nav-burger" id="nav-burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
-
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section id="hero">
-    <canvas id="particle-canvas"></canvas>
-    <div class="scanlines"></div>
-
-    <div class="hero-inner">
-      <!-- Neofetch terminal -->
-      <div class="terminal-window reveal-hero" id="hero-terminal">
-        <div class="term-header">
-          <div class="term-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green-dot"></span>
-          </div>
-          <span class="term-title mono">luis@portfolio:~</span>
-        </div>
-        <div class="term-body">
-          <p class="prompt"><span class="c-cyan">luis@dev</span><span class="c-dim">:</span><span class="c-green">~</span><span class="c-dim">$</span> neofetch</p>
-          <div class="neofetch">
-            <div class="neo-photo-wrap">
-              <img src="images/mi-foto.jpg" alt="Luis González Ramírez" class="neo-photo" width="90" height="90">
-            </div>
-            <div class="neo-info">
-              <p class="neo-user">luis<span class="c-dim">@</span><span class="c-cyan">dev</span></p>
-              <p class="neo-sep">────────────────────</p>
-              <div class="neo-row"><span class="neo-k">Role</span><span class="c-dim">:</span> Software Developer</div>
-              <div class="neo-row"><span class="neo-k">Degree</span><span class="c-dim">:</span> Ing. Desarrollo y Gestión</div>
-              <div class="neo-row"><span class="neo-k">Shell</span><span class="c-dim">:</span> bash · zsh · PowerShell</div>
-              <div class="neo-row"><span class="neo-k">Terminal</span><span class="c-dim">:</span> iTerm2 · WSL · GNOME</div>
-              <div class="neo-row"><span class="neo-k">Stack</span><span class="c-dim">:</span> Java · Next.js · MySQL</div>
-              <div class="neo-row"><span class="neo-k">Uptime</span><span class="c-dim">:</span> <span class="c-green" id="uptime-val">calculando...</span></div>
-              <div class="neo-colors">
-                <span style="background:#ff4d6a"></span><span style="background:#ff8c42"></span>
-                <span style="background:#ffd166"></span><span style="background:#00ff9d"></span>
-                <span style="background:#00d4ff"></span><span style="background:#818cf8"></span>
-                <span style="background:#f0abfc"></span><span style="background:#ffffff"></span>
-              </div>
-            </div>
-          </div>
-          <p class="prompt mt8"><span class="c-cyan">luis@dev</span><span class="c-dim">:</span><span class="c-green">~</span><span class="c-dim">$</span> <span class="cursor">█</span></p>
-        </div>
-      </div>
-
-      <!-- Hero right -->
-      <div class="hero-right reveal-hero-r">
-        <div class="hero-badge mono">
-          <span class="pulse-dot"></span>
-          open_to_freelance = <span class="c-green">true</span>
-        </div>
-        <h1 class="hero-name glitch" data-text="Luis González">
-          Luis<br><span class="c-cyan">González</span><br>Ramírez
-        </h1>
-        <div class="hero-typing-wrap">
-          <span class="c-dim mono">// </span>
-          <span class="hero-typing mono" id="hero-typing"></span>
-          <span class="cursor-sm">_</span>
-        </div>
-        <p class="hero-desc">
-          Construyo sistemas reales que escalan. APIs, plataformas empresariales, apps móviles. Código limpio, arquitectura sólida, producción estable.
-        </p>
-        <div class="os-badges">
-          <div class="os-badge" title="Linux"><i class="fab fa-linux" aria-hidden="true"></i> Linux</div>
-          <div class="os-badge" title="macOS"><i class="fab fa-apple" aria-hidden="true"></i> macOS</div>
-          <div class="os-badge" title="Windows"><i class="fab fa-windows" aria-hidden="true"></i> Windows</div>
-        </div>
-        <div class="hero-cta">
-          <a href="#projects" class="btn-primary"><i class="fas fa-folder-open" aria-hidden="true"></i> Ver proyectos</a>
-          <a href="cv.html" target="_blank" rel="noopener noreferrer" class="btn-ghost"><i class="fas fa-file-lines" aria-hidden="true"></i> Ver CV</a>
-          <button type="button" class="cli-trigger" id="cli-trigger" aria-haspopup="dialog"><i class="fas fa-terminal" aria-hidden="true"></i> modo_cli()</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="hero-scroll-hint">
-      <span class="mono text-xs c-dim">scroll down</span>
-      <div class="scroll-arrow"></div>
+<main class="wrap">
+  <section class="hero">
+    <h1>Luis Enrique González Ramírez</h1>
+    <p class="role">Desarrollador de software</p>
+    <p>Desarrollo plataformas web y APIs que están en producción. Actualmente trabajo en una plataforma de pagos institucional y en el portal corporativo de una empresa, a cargo de la autenticación, el control de accesos y el despliegue.</p>
+    <p>Fuera del trabajo construyo proyectos propios de punta a punta con Laravel, Nuxt, Spring Boot y Python. Vivo en Toluca, México, y estoy disponible para nuevas oportunidades.</p>
+    <div class="links">
+      <a class="btn fill" href="cv.html">Ver CV</a>
+      <a class="btn" href="#contacto">Contacto</a>
+      <a class="btn" href="https://github.com/KikeGonRam">GitHub</a>
+      <a class="btn" href="https://www.linkedin.com/in/luisgonzalezramirez-dev">LinkedIn</a>
     </div>
   </section>
 
-  <!-- ═══════════════ METRICS ═══════════════ -->
-  <div id="metrics">
-    <div class="metrics-inner">
-      <!-- El valor real va en el HTML: si el JS no corre, se lee correcto igual. -->
-      <div class="metric-card">
-        <span class="metric-val mono" data-target="1">1</span><span class="metric-unit">+</span>
-        <span class="metric-lbl">Año en producción</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val mono" data-target="2">2</span><span class="metric-unit"></span>
-        <span class="metric-lbl">Sistemas en producción</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val mono" data-target="5">5</span><span class="metric-unit">+</span>
-        <span class="metric-lbl">Proyectos completados</span>
-      </div>
-      <div class="metric-card">
-        <span class="metric-val mono" data-target="12">12</span><span class="metric-unit">+</span>
-        <span class="metric-lbl">Tecnologías</span>
-      </div>
+  <section id="experiencia">
+    <h2>Experiencia</h2>
+    <div class="item">
+      <h3>Software Developer — Infraestructura Digital Corporativa</h3>
+      <p class="meta">Agosto 2025 – Presente · Contratado directamente tras la estadía</p>
+      <ul>
+        <li>Desarrollé el login principal del portal corporativo, el punto de acceso a los módulos internos.</li>
+        <li>Desarrollo y mantenimiento, en equipo, de una plataforma de pagos institucional en producción.</li>
+        <li>Autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo.</li>
+      </ul>
+      <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>TLS</li><li>Autenticación</li></ul>
     </div>
-  </div>
-
-  <!-- ═══════════════ ABOUT ═══════════════ -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ cat ~/about.md</span>
-        <h2 class="section-title">Sobre <span class="c-cyan">Mí</span></h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-photo-col reveal">
-          <div class="about-photo-wrap">
-            <img src="images/mi-foto.jpg" alt="Retrato de Luis Enrique González Ramírez" class="about-photo" loading="lazy" width="220" height="260">
-            <div class="about-photo-frame"></div>
-          </div>
-          <div class="about-quick-facts">
-            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-map-pin" aria-hidden="true"></i></span><span>Toluca, México</span></div>
-            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-briefcase" aria-hidden="true"></i></span><span>Software Developer</span></div>
-            <div class="qf-item"><span class="qf-icon c-cyan"><i class="fas fa-graduation-cap" aria-hidden="true"></i></span><span>UTVT · Ing. Software</span></div>
-            <div class="qf-item"><span class="qf-icon c-green"><i class="fas fa-circle" aria-hidden="true"></i></span><span class="c-green">Disponible</span></div>
-          </div>
-        </div>
-        <div class="about-text-col reveal">
-          <p>Soy <strong>Luis Enrique González Ramírez</strong>, desarrollador de software con título de T.S.U. y actualmente estudiando Ingeniería en Desarrollo y Gestión de Software en la UTVT. He desarrollado plataformas empresariales reales en producción.</p>
-          <p>Me apasiona construir software que <em>funciona de verdad</em> — sistemas que usan personas reales, plataformas que manejan datos reales, APIs que responden 24/7. No me limito a un lenguaje o framework: uso lo que el problema necesita.</p>
-          <p>Fuera del código me interesan la <strong>arquitectura de sistemas</strong>, la seguridad informática, y entender cómo funciona internet a nivel bajo. También disfruto aprender sobre diseño de UI, DevOps y automatización.</p>
-          <div class="about-hobbies">
-            <span class="hb-chip"><i class="fas fa-terminal" aria-hidden="true"></i> CLI tools</span>
-            <span class="hb-chip"><i class="fas fa-shield" aria-hidden="true"></i> Ciberseguridad</span>
-            <span class="hb-chip"><i class="fas fa-network-wired" aria-hidden="true"></i> Redes</span>
-            <span class="hb-chip"><i class="fas fa-robot" aria-hidden="true"></i> Automatización</span>
-            <span class="hb-chip"><i class="fas fa-mobile-alt" aria-hidden="true"></i> Mobile dev</span>
-            <span class="hb-chip"><i class="fas fa-palette" aria-hidden="true"></i> UI/UX</span>
-            <span class="hb-chip"><i class="fas fa-database" aria-hidden="true"></i> Bases de datos</span>
-            <span class="hb-chip"><i class="fas fa-gamepad" aria-hidden="true"></i> Gaming</span>
-          </div>
-        </div>
-      </div>
+    <div class="item">
+      <h3>Estadía profesional — Infraestructura Digital Corporativa</h3>
+      <p class="meta">Abril – Agosto 2025</p>
+      <ul>
+        <li>Desarrollo de la plataforma de pagos institucional y del portal corporativo con autenticación y TLS.</li>
+        <li>Al terminar la estadía se formalizó la contratación.</li>
+      </ul>
     </div>
   </section>
 
-  <!-- ═══════════════ EXPERIENCE ═══════════════ -->
-  <section id="experience">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ ls -la ./experience --sort=date</span>
-        <h2 class="section-title">Experiencia <span class="c-cyan">Profesional</span></h2>
-      </div>
-      <div class="timeline">
-
-        <!-- Empleo actual -->
-        <div class="tl-item reveal active-tl">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3 class="tl-role">Software Developer</h3>
-                <p class="tl-company"><i class="fas fa-building c-cyan" aria-hidden="true"></i> Infraestructura Digital Corporativa</p>
-              </div>
-              <div class="tl-right">
-                <span class="tl-period mono">Ago 2025 — Presente</span>
-                <span class="badge-active">● CONTRATADO</span>
-              </div>
-            </div>
-            <ul class="tl-list">
-              <li>Contratado directamente tras concluir la estadía profesional. Desarrollo del <strong>login principal del portal corporativo</strong>, punto de acceso a los módulos internos.</li>
-              <li>Desarrollo y mantenimiento <strong>en equipo</strong> de una plataforma de pagos institucional en producción.</li>
-              <li>Gestión de autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo.</li>
-              <li>Stack activo: Next.js, TypeScript, módulos de seguridad, infraestructura digital corporativa.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Next.js</span><span class="tag">TypeScript</span>
-              <span class="tag">TLS/HTTPS</span><span class="tag green-tag">Producción</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Estadía -->
-        <div class="tl-item reveal">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3 class="tl-role">Desarrollador en Estadía</h3>
-                <p class="tl-company"><i class="fas fa-flask c-cyan" aria-hidden="true"></i> Estadía Profesional</p>
-              </div>
-              <div class="tl-right">
-                <span class="tl-period mono">Abr 2025 — Ago 2025</span>
-                <span class="badge-done">✓ COMPLETADO</span>
-              </div>
-            </div>
-            <ul class="tl-list">
-              <li>Estadía profesional universitaria. Desarrollo de una <strong>plataforma de pagos</strong> — sistema institucional de gestión financiera.</li>
-              <li>Construcción de un <strong>portal corporativo</strong> con autenticación de grado bancario, TLS y acceso centralizado.</li>
-              <li>Al término de la estadía se formalizó la contratación.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Next.js</span><span class="tag">Auth</span>
-              <span class="tag">Estadía UTVT</span><span class="tag cyan-tag">Primer trabajo</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- ACADÉMICO -->
-        <div class="tl-item reveal">
-          <div class="tl-dot"></div>
-          <div class="tl-card">
-            <div class="tl-top">
-              <div>
-                <h3 class="tl-role">Proyectos Académicos · TSU</h3>
-                <p class="tl-company"><i class="fas fa-university c-cyan" aria-hidden="true"></i> UTVT</p>
-              </div>
-              <div class="tl-right">
-                <span class="tl-period mono">2022 — 2025</span>
-                <span class="badge-done">✓ TITULADO</span>
-              </div>
-            </div>
-            <ul class="tl-list">
-              <li><strong>API REST Spring Boot</strong> — JPA/Hibernate, MapStruct, Log4j2, MySQL, Springdoc/OpenAPI, frontend Next.js.</li>
-              <li><strong>Sistema de gestión de citas para barbería (DARKETO)</strong> — Laravel 10, roles cliente/barbero/admin, pagos en línea con Stripe y PayPal, generación de tickets en PDF.</li>
-              <li><strong>Módulo Python Pandas</strong> — ProgresionAritmetica con Series.diff() para análisis numérico.</li>
-            </ul>
-            <div class="tag-row">
-              <span class="tag">Spring Boot</span><span class="tag">Java</span>
-              <span class="tag">Python</span><span class="tag cyan-tag">PHP / Laravel</span><span class="tag">MySQL</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
+  <section id="proyectos">
+    <h2>Proyectos</h2>
+    <div class="item">
+      <h3>UrbanBlade — plataforma para barberías</h3>
+      <p class="meta">Proyecto en equipo · <a href="https://github.com/KikeGonRam/barber">API</a> · <a href="https://github.com/KikeGonRam/frontend_Urbanblade">Web</a> · <a href="https://github.com/KikeGonRam/spark">Analítica</a></p>
+      <p>Reservas, agenda, pagos, inventario y reportes. Web por roles (administrador, recepción, barbero y cliente) instalable como PWA, API REST con pagos en línea y una capa de analítica separada.</p>
+      <ul class="tags"><li>Laravel</li><li>Nuxt / Vue</li><li>TypeScript</li><li>MongoDB</li><li>Redis</li><li>Stripe</li><li>PySpark</li><li>GitHub Actions</li></ul>
+    </div>
+    <div class="item">
+      <h3>DBMonitor — observabilidad de bases de datos</h3>
+      <p class="meta"><a href="https://github.com/KikeGonRam/dbmonitor">Código</a></p>
+      <p>Monitoreo en tiempo real de MySQL y MongoDB: indicadores, consultas lentas, conexiones y almacenamiento. Autenticación con JWT y despliegue con Docker Compose.</p>
+      <ul class="tags"><li>React</li><li>Node.js</li><li>FastAPI</li><li>Docker</li></ul>
+    </div>
+    <div class="item">
+      <h3>RAG con modelos locales</h3>
+      <p class="meta"><a href="https://github.com/KikeGonRam/RAG">Código</a></p>
+      <p>Sistema que responde preguntas con el contexto de tus propios documentos, sin APIs externas: fragmentación, embeddings, almacén vectorial y chat con streaming.</p>
+      <ul class="tags"><li>FastAPI</li><li>ChromaDB</li><li>Ollama</li></ul>
+    </div>
+    <div class="item">
+      <h3>VulnCore — escáner de vulnerabilidades</h3>
+      <p class="meta"><a href="https://github.com/KikeGonRam/vulncore">Código</a></p>
+      <p>Escaneo asíncrono de puertos y cruce con CVE (OSV, NVD) para servidores Linux, con panel web y alertas.</p>
+      <ul class="tags"><li>Rust</li><li>Go</li><li>Seguridad</li></ul>
+    </div>
+    <div class="item">
+      <h3>API de evaluación docente</h3>
+      <p class="meta"><a href="https://github.com/KikeGonRam/evaluacion-docente-api">Código</a></p>
+      <p>API REST con docentes, estudiantes, cuestionarios y evaluaciones, documentada con OpenAPI y con frontend en Next.js.</p>
+      <ul class="tags"><li>Java</li><li>Spring Boot</li><li>MySQL</li><li>Swagger</li></ul>
     </div>
   </section>
 
-  <!-- ═══════════════ PROJECTS ═══════════════ -->
-  <section id="projects">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ git log --oneline --all --graph</span>
-        <h2 class="section-title">Proyectos <span class="c-cyan">en Producción</span></h2>
-        <p class="section-sub">Sistemas reales desplegados y en uso, desarrollados en equipo. Mi participación se indica en cada tarjeta.</p>
-      </div>
+  <section id="habilidades">
+    <h2>Habilidades</h2>
+    <dl class="skills">
+      <dt>Lenguajes</dt><dd>Java, TypeScript, JavaScript, PHP, Python, SQL</dd>
+      <dt>Backend</dt><dd>Spring Boot, Laravel, Node.js, FastAPI, APIs REST y OpenAPI</dd>
+      <dt>Frontend</dt><dd>Next.js, React, Nuxt, Vue, Tailwind CSS</dd>
+      <dt>Datos</dt><dd>MySQL, MongoDB, Redis, PySpark, ChromaDB</dd>
+      <dt>Seguridad</dt><dd>TLS/HTTPS, JWT, control de acceso por roles</dd>
+      <dt>Calidad y operación</dt><dd>Git, GitHub Actions, Docker, PHPUnit, ESLint, SonarCloud, Postman</dd>
+    </dl>
+  </section>
 
-      <!-- FEATURED ROW -->
-      <div class="projects-featured reveal">
-        <div class="pf-card left">
-          <div class="pf-glow"></div>
-          <div class="pf-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">~/payments-platform/</span>
-            <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
-          </div>
-          <div class="pf-body">
-            <div class="pf-type mono c-dim">// Enterprise · Fintech</div>
-            <h3 class="pf-name">Plataforma de Pagos Institucional</h3>
-            <div class="pf-case">
-              <div class="pfc-row"><span class="pfc-k mono">PROBLEMA</span><p>La gestión de pagos institucionales dependía de procesos manuales dispersos, sin control de roles ni visibilidad administrativa centralizada.</p></div>
-              <div class="pfc-row"><span class="pfc-k mono">MI ROL</span><p>Desarrollo en equipo del sistema completo: autenticación segura, control de accesos por rol, panel administrativo y despliegue en servidor productivo.</p></div>
-              <div class="pfc-row"><span class="pfc-k mono">RESULTADO</span><p>Plataforma en producción activa con TLS, gestionando pagos institucionales en tiempo real para el negocio.</p></div>
-            </div>
-            <div class="pf-metrics-row">
-              <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
-              <div class="pfm"><span class="pfm-k mono">TYPE</span><span class="pfm-v">Enterprise</span></div>
-              <div class="pfm"><span class="pfm-k mono">SEC</span><span class="pfm-v">TLS</span></div>
-              <div class="pfm"><span class="pfm-k mono">EQUIPO</span><span class="pfm-v">Colaborativo</span></div>
-            </div>
-            <div class="tag-row">
-              <span class="tag">Next.js</span><span class="tag cyan-tag">TypeScript</span>
-              <span class="tag green-tag">Producción</span><span class="tag">Auth</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pf-card right">
-          <div class="pf-glow glow-indigo"></div>
-          <div class="pf-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">~/corporate-portal/</span>
-            <span class="pc-live mono"><span class="pulse-dot"></span>LIVE</span>
-          </div>
-          <div class="pf-body">
-            <div class="pf-type mono c-dim">// Corporate Portal · Security</div>
-            <h3 class="pf-name">Portal Corporativo — Login principal</h3>
-            <div class="pf-case">
-              <div class="pfc-row"><span class="pfc-k mono">PROBLEMA</span><p>Los módulos internos de la infraestructura digital corporativa carecían de un único punto de acceso seguro, de grado bancario.</p></div>
-              <div class="pfc-row"><span class="pfc-k mono">MI ROL</span><p>Desarrollé el login principal del portal: autenticación, gestión de credenciales de sistema y conexión TLS — la puerta de entrada al resto de los módulos internos.</p></div>
-              <div class="pfc-row"><span class="pfc-k mono">RESULTADO</span><p>Punto de acceso único en producción, usado a diario para entrar a toda la infraestructura interna. Tras la estadía me contrataron directamente.</p></div>
-            </div>
-            <div class="pf-metrics-row">
-              <div class="pfm"><span class="pfm-k mono">STATUS</span><span class="pfm-v c-green">● ONLINE</span></div>
-              <div class="pfm"><span class="pfm-k mono">ROL</span><span class="pfm-v">Desarrollo del login</span></div>
-              <div class="pfm"><span class="pfm-k mono">PROTO</span><span class="pfm-v">TLS</span></div>
-              <div class="pfm"><span class="pfm-k mono">EQUIPO</span><span class="pfm-v">Colaborativo</span></div>
-            </div>
-            <div class="tag-row">
-              <span class="tag">Portal Corp.</span><span class="tag cyan-tag">TLS</span>
-              <span class="tag green-tag">Producción</span><span class="tag">Seguridad</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="pf-card full reveal">
-          <div class="pf-glow glow-green"></div>
-          <div class="pf-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">~/urbanblade/</span>
-            <span class="pc-live mono" style="color:var(--orange)"><span class="pulse-dot" style="background:var(--orange)"></span>DEMO LOCAL</span>
-          </div>
-          <div class="pf-body">
-            <div class="pf-type mono c-dim">// Plataforma Full-Stack · Web + Mobile + Data/ML</div>
-            <h3 class="pf-name">UrbanBlade — Plataforma para Barberías</h3>
-            <p class="pf-desc">Ecosistema completo desarrollado en equipo para la gestión de barberías: dashboard web por roles (admin, recepción, barbero, cliente), app móvil para clientes y una capa de analítica con Apache Spark/ML sobre datos reales de negocio (12,500+ citas, 1,000 clientes). Los tres módulos comparten una misma base MongoDB Atlas.</p>
-            <div class="pf-metrics-row">
-              <div class="pfm"><span class="pfm-k mono">MÓDULOS</span><span class="pfm-v">Web · Mobile · ML</span></div>
-              <div class="pfm"><span class="pfm-k mono">BD</span><span class="pfm-v">MongoDB compartida</span></div>
-              <div class="pfm"><span class="pfm-k mono">CI/CD</span><span class="pfm-v c-green">● GitHub Actions</span></div>
-              <div class="pfm"><span class="pfm-k mono">EQUIPO</span><span class="pfm-v">Colaborativo</span></div>
-            </div>
-            <div class="tag-row">
-              <span class="tag">Laravel 12</span><span class="tag cyan-tag">MongoDB</span>
-              <span class="tag">Redis</span><span class="tag">Stripe</span>
-              <span class="tag cyan-tag">Expo / React Native</span>
-              <span class="tag">PySpark</span><span class="tag cyan-tag">Machine Learning</span>
-              <span class="tag green-tag">CI/CD</span>
-            </div>
-            <div class="ub-repos">
-              <a href="https://github.com/KikeGonRam/barber" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Web (barber)</a>
-              <a href="https://github.com/KikeGonRam/mobil" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Mobile (mobil)</a>
-              <a href="https://github.com/KikeGonRam/spark" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> Analytics (spark)</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- SECONDARY GRID -->
-      <div class="projects-grid">
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">evaluacion-docente-api/</span>
-            <span class="pc-badge">Colaborativo</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">Spring Boot</span><span class="tag cyan-tag">Java</span><span class="tag">MySQL</span><span class="tag">Swagger</span></div>
-            <h3 class="pc-name">API REST — Evaluación Docente</h3>
-            <p class="pc-desc">API RESTful con JPA/Hibernate, MapStruct, Log4j2. Entidades: Estudiante, Docente, Cuestionario, Evaluación. OpenAPI + frontend Next.js.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam/evaluacion-docente-api" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">series-aritmeticas-py/</span>
-            <span class="pc-badge">Colaborativo</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">Python</span><span class="tag cyan-tag">Pandas</span><span class="tag">Análisis</span></div>
-            <h3 class="pc-name">Validador — Series Aritméticas</h3>
-            <p class="pc-desc">Clase ProgresionAritmetica con Pandas Series.diff() para validar y analizar progresiones numéricas. Python 3.14, PyCharm.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam/series-aritmeticas-python" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">dbmonitor/</span>
-            <span class="pc-badge">Personal</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">React</span><span class="tag cyan-tag">FastAPI</span><span class="tag">Node.js</span><span class="tag">Docker</span></div>
-            <h3 class="pc-name">DBMonitor — Observabilidad MySQL/MongoDB</h3>
-            <p class="pc-desc">Plataforma de monitoreo en tiempo real: KPIs, slow queries, conexiones activas y uso de almacenamiento. Monorepo con React 18 + Vite, API Node/Express y API FastAPI, JWT y Docker Compose.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam/dbmonitor" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">rag-ollama-api/</span>
-            <span class="pc-badge">Personal</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">FastAPI</span><span class="tag cyan-tag">ChromaDB</span><span class="tag">Ollama</span></div>
-            <h3 class="pc-name">RAG Ollama API — LLMs locales</h3>
-            <p class="pc-desc">Sistema RAG (Retrieval Augmented Generation) 100% local, sin APIs externas. Pipeline completo: embeddings, chunking, vectorstore y chat con streaming, arquitectura lista para MCP.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam/RAG" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="pc-header">
-            <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="pc-path mono">vulncore/</span>
-            <span class="pc-badge">Personal</span>
-          </div>
-          <div class="pc-body">
-            <div class="tag-row"><span class="tag">Rust</span><span class="tag cyan-tag">Go</span><span class="tag">Seguridad</span><span class="tag">Docker</span></div>
-            <h3 class="pc-name">VulnCore — Escáner de Vulnerabilidades</h3>
-            <p class="pc-desc">Escáner async de puertos + matching de CVEs (OSV/NVD/CISA KEV) para servidores Linux. Motor en Rust, API REST en Go, dashboard web, alertas a Slack/Discord y escaneos programados vía cron.</p>
-            <div class="pc-footer"><a href="https://github.com/KikeGonRam/vulncore" target="_blank" rel="noopener noreferrer" class="btn-link"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></div>
-          </div>
-        </div>
-      </div>
+  <section id="educacion">
+    <h2>Educación</h2>
+    <div class="item">
+      <h3>Ingeniería en Desarrollo y Gestión de Software</h3>
+      <p class="meta">Universidad Tecnológica del Valle de Toluca · Septiembre 2025 – Presente</p>
+    </div>
+    <div class="item">
+      <h3>T.S.U. en Desarrollo de Software Multiplataforma</h3>
+      <p class="meta">Universidad Tecnológica del Valle de Toluca · 2022 – Agosto 2025 · Titulado</p>
     </div>
   </section>
 
-  <!-- ═══════════════ SKILLS ═══════════════ -->
-  <section id="skills">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ cat package.json | jq '.dependencies'</span>
-        <h2 class="section-title">Tech <span class="c-cyan">Stack</span></h2>
-        <p class="section-sub">Tecnologías que domino para construir sistemas completos, del backend al deploy.</p>
-      </div>
-
-      <div class="skills-universe">
-        <!-- Backend -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">01</span> · backend/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fab fa-java" aria-hidden="true"></i><span>Java</span></div>
-            <div class="sc-chip"><i class="fas fa-leaf" aria-hidden="true"></i><span>Spring Boot</span></div>
-            <div class="sc-chip"><i class="fab fa-python" aria-hidden="true"></i><span>Python</span></div>
-            <div class="sc-chip"><i class="fas fa-plug" aria-hidden="true"></i><span>REST APIs</span></div>
-            <div class="sc-chip"><i class="fas fa-layer-group" aria-hidden="true"></i><span>MapStruct / JPA</span></div>
-            <div class="sc-chip"><i class="fas fa-book-open" aria-hidden="true"></i><span>Swagger / OpenAPI</span></div>
-            <div class="sc-chip"><i class="fab fa-laravel" aria-hidden="true"></i><span>PHP / Laravel</span></div>
-            <div class="sc-chip"><i class="fab fa-stripe" aria-hidden="true"></i><span>Stripe API</span></div>
-            <div class="sc-chip"><i class="fab fa-node-js" aria-hidden="true"></i><span>Node.js</span></div>
-          </div>
-        </div>
-
-        <!-- Frontend -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">02</span> · frontend/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-bolt" aria-hidden="true"></i><span>Next.js</span></div>
-            <div class="sc-chip"><i class="fab fa-react" aria-hidden="true"></i><span>React / RN</span></div>
-            <div class="sc-chip"><i class="fas fa-code" aria-hidden="true"></i><span>TypeScript</span></div>
-            <div class="sc-chip"><i class="fab fa-js" aria-hidden="true"></i><span>JavaScript</span></div>
-            <div class="sc-chip"><i class="fab fa-css3-alt" aria-hidden="true"></i><span>CSS / Tailwind</span></div>
-          </div>
-        </div>
-
-        <!-- Data & DB -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">03</span> · data &amp; db/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-database" aria-hidden="true"></i><span>MySQL</span></div>
-            <div class="sc-chip"><i class="fas fa-server" aria-hidden="true"></i><span>JPA / Hibernate</span></div>
-            <div class="sc-chip"><i class="fas fa-chart-line" aria-hidden="true"></i><span>Pandas</span></div>
-            <div class="sc-chip"><i class="fas fa-tools" aria-hidden="true"></i><span>MySQL Workbench</span></div>
-            <div class="sc-chip"><i class="fas fa-leaf" aria-hidden="true"></i><span>MongoDB</span></div>
-            <div class="sc-chip"><i class="fas fa-bolt" aria-hidden="true"></i><span>Redis</span></div>
-          </div>
-        </div>
-
-        <!-- Security -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">04</span> · security/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-lock" aria-hidden="true"></i><span>TLS / HTTPS</span></div>
-            <div class="sc-chip"><i class="fas fa-key" aria-hidden="true"></i><span>Auth / JWT</span></div>
-            <div class="sc-chip"><i class="fas fa-bug" aria-hidden="true"></i><span>CVE Scanning (OSV/NVD)</span></div>
-            <div class="sc-chip"><i class="fas fa-user-shield" aria-hidden="true"></i><span>Role-based Access Control</span></div>
-          </div>
-        </div>
-
-        <!-- Testing -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">05</span> · testing &amp; calidad/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-vial" aria-hidden="true"></i><span>PHPUnit</span></div>
-            <div class="sc-chip"><i class="fas fa-broom" aria-hidden="true"></i><span>ESLint / Prettier</span></div>
-            <div class="sc-chip"><i class="fas fa-check-double" aria-hidden="true"></i><span>Laravel Pint</span></div>
-            <div class="sc-chip"><i class="fas fa-magnifying-glass-chart" aria-hidden="true"></i><span>npm / composer audit</span></div>
-          </div>
-        </div>
-
-        <!-- DevOps -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">06</span> · devops/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fab fa-git-alt" aria-hidden="true"></i><span>Git / GitHub</span></div>
-            <div class="sc-chip"><i class="fas fa-gears" aria-hidden="true"></i><span>GitHub Actions</span></div>
-            <div class="sc-chip"><i class="fas fa-infinity" aria-hidden="true"></i><span>CI/CD</span></div>
-            <div class="sc-chip"><i class="fas fa-server" aria-hidden="true"></i><span>Deployment</span></div>
-          </div>
-        </div>
-
-        <!-- Data Science / ML -->
-        <div class="skill-cluster reveal">
-          <div class="sc-label mono"><span class="c-cyan">07</span> · data science &amp; ml/</div>
-          <div class="sc-chips">
-            <div class="sc-chip"><i class="fas fa-fire" aria-hidden="true"></i><span>PySpark</span></div>
-            <div class="sc-chip"><i class="fas fa-brain" aria-hidden="true"></i><span>Scikit-learn / PyTorch</span></div>
-            <div class="sc-chip"><i class="fas fa-diagram-project" aria-hidden="true"></i><span>XGBoost / LightGBM</span></div>
-            <div class="sc-chip"><i class="fas fa-chart-simple" aria-hidden="true"></i><span>Streamlit / Dashboards</span></div>
-            <div class="sc-chip"><i class="fas fa-robot" aria-hidden="true"></i><span>RAG (LLMs)</span></div>
-            <div class="sc-chip"><i class="fas fa-microchip" aria-hidden="true"></i><span>Ollama</span></div>
-            <div class="sc-chip"><i class="fas fa-cube" aria-hidden="true"></i><span>ChromaDB</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Toluca, Estado de México</p>
+    <p>
+      <a href="mailto:kikeramirez160418@gmail.com">kikeramirez160418@gmail.com</a><br>
+      <a href="tel:+527222501340">722 250 1340</a> · <a href="https://wa.me/527222501340">WhatsApp</a><br>
+      <a href="https://www.linkedin.com/in/luisgonzalezramirez-dev">LinkedIn</a> · <a href="https://github.com/KikeGonRam">GitHub</a>
+    </p>
   </section>
+</main>
 
-  <!-- ═══════════════ GITHUB STATS ═══════════════ -->
-  <section id="github-stats">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ curl https://api.github.com/users/KikeGonRam</span>
-        <h2 class="section-title">GitHub <span class="c-cyan">Stats</span></h2>
-        <p class="section-sub">Actividad pública en <a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer" class="c-cyan">github.com/KikeGonRam</a></p>
-      </div>
-      <div class="github-grid">
-        <div class="gh-streak-wrap reveal">
-          <img src="https://github-readme-streak-stats.herokuapp.com/?user=KikeGonRam&theme=transparent&hide_border=false&ring=00d4ff&fire=00d4ff&currStreakLabel=00d4ff&sideLabels=c5d4e8&dates=4d6680&border=1e2d3d&background=0d1117" alt="Racha de contribuciones en GitHub" class="gh-img" loading="lazy">
-        </div>
-        <div class="gh-info-card reveal">
-          <div class="term-header">
-            <div class="term-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-            <span class="term-title mono">github-profile.json</span>
-          </div>
-          <div class="gh-json mono">
-            <p><span class="c-dim">{</span></p>
-            <p>&nbsp;&nbsp;<span class="json-k">"username"</span>: <span class="json-v">"KikeGonRam"</span>,</p>
-            <p>&nbsp;&nbsp;<span class="json-k">"location"</span>: <span class="json-v">"Toluca, México"</span>,</p>
-            <p>&nbsp;&nbsp;<span class="json-k">"repos"</span>: <span id="gh-repos" class="json-num">...</span>,</p>
-            <p>&nbsp;&nbsp;<span class="json-k">"followers"</span>: <span id="gh-followers" class="json-num">...</span>,</p>
-            <p>&nbsp;&nbsp;<span class="json-k">"public_gists"</span>: <span id="gh-gists" class="json-num">...</span>,</p>
-            <p>&nbsp;&nbsp;<span class="json-k">"hireable"</span>: <span class="c-green">true</span></p>
-            <p><span class="c-dim">}</span></p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ EDUCATION ═══════════════ -->
-  <section id="education">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ cat ~/.education</span>
-        <h2 class="section-title">Educación <span class="c-cyan">Formal</span></h2>
-      </div>
-      <div class="edu-list">
-        <div class="edu-item reveal">
-          <div class="edu-year mono">Sep 2025 — <span class="c-cyan">HOY</span></div>
-          <div class="edu-card">
-            <div class="edu-icon current-edu"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
-            <div>
-              <h3 class="edu-degree">Ingeniería en Desarrollo y Gestión de Software</h3>
-              <p class="edu-school">Universidad Tecnológica del Valle de Toluca</p>
-              <p class="edu-detail">Continuación directa del TSU</p>
-              <span class="edu-badge current-badge">● En curso</span>
-            </div>
-          </div>
-        </div>
-        <div class="edu-item reveal">
-          <div class="edu-year mono">2022 — Ago 2025</div>
-          <div class="edu-card">
-            <div class="edu-icon done-edu"><i class="fas fa-certificate" aria-hidden="true"></i></div>
-            <div>
-              <h3 class="edu-degree">T.S.U. en Desarrollo de Software Multiplataforma</h3>
-              <p class="edu-school">Universidad Tecnológica del Valle de Toluca</p>
-              <p class="edu-detail">Completado en 6to cuatrimestre · Titulado</p>
-              <span class="edu-badge done-badge">✓ Titulado</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section id="contact">
-    <div class="section-inner">
-      <div class="section-head reveal">
-        <span class="section-cmd mono">$ ssh luis@gonzalez.dev</span>
-        <h2 class="section-title">¿Hablamos? <span class="c-cyan">Contacto</span></h2>
-        <p class="section-sub">Disponible para nuevas oportunidades, freelance o simplemente platicar de tecnología.</p>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-links reveal">
-          <a href="mailto:kikeramirez160418@gmail.com" class="contact-item">
-            <div class="ci-icon"><i class="fas fa-envelope" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">EMAIL</span><span class="ci-val">kikeramirez160418@gmail.com</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="tel:+527222501340" class="contact-item">
-            <div class="ci-icon"><i class="fas fa-phone" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">TELÉFONO</span><span class="ci-val">722 250 1340</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="https://wa.me/527222501340" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="ci-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">WHATSAPP</span><span class="ci-val">Enviar mensaje</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="ci-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">GITHUB</span><span class="ci-val">KikeGonRam</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.linkedin.com/in/luisgonzalezramirez-dev" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="ci-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">LINKEDIN</span><span class="ci-val">Luis González Ramírez</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.instagram.com/kike_gonzalez_16" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="ci-icon"><i class="fab fa-instagram" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">INSTAGRAM</span><span class="ci-val">@kike_gonzalez_16</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="https://www.facebook.com/kike160418" target="_blank" rel="noopener noreferrer" class="contact-item">
-            <div class="ci-icon"><i class="fab fa-facebook" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">FACEBOOK</span><span class="ci-val">Kike Gonzalez</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-          <a href="cv.html" target="_blank" rel="noopener noreferrer" class="contact-item cv-item">
-            <div class="ci-icon cv-icon"><i class="fas fa-file-lines" aria-hidden="true"></i></div>
-            <div class="ci-body"><span class="ci-lbl mono">CURRICULUM VITAE</span><span class="ci-val">Descargar / Ver CV</span></div>
-            <i class="fas fa-chevron-right ci-arr" aria-hidden="true"></i>
-          </a>
-        </div>
-        <div class="contact-term reveal">
-          <div class="terminal-window">
-            <div class="term-header">
-              <div class="term-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-              <span class="term-title mono">send-message.sh</span>
-            </div>
-            <div class="term-body">
-              <p class="prompt"><span class="c-green">$</span> <span class="c-cyan">./send-message.sh</span></p>
-              <div class="form-grp">
-                <label class="mono c-cyan"># nombre:</label>
-                <input type="text" class="term-input" id="c-name" placeholder="Tu nombre">
-              </div>
-              <div class="form-grp">
-                <label class="mono c-cyan"># email:</label>
-                <input type="email" class="term-input" id="c-email" placeholder="tu@email.com">
-              </div>
-              <div class="form-grp">
-                <label class="mono c-cyan"># mensaje:</label>
-                <textarea class="term-input" id="c-msg" rows="3" placeholder="Cuéntame de tu proyecto..."></textarea>
-              </div>
-              <button class="btn-send" id="send-btn">
-                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                <span class="mono">send_message()</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer>
-    <div class="footer-inner">
-      <div class="footer-l">
-        <span class="mono c-cyan">❰LGR❱</span>
-        <p>© <span id="footer-year">2026</span> Luis Enrique González Ramírez</p>
-      </div>
-      <div class="footer-c mono c-dim">
-        Built with <span class="c-cyan">♥</span> · UTVT
-      </div>
-      <div class="footer-r">
-        <a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer" class="footer-link mono c-dim"><i class="fab fa-github" aria-hidden="true"></i> KikeGonRam</a>
-      </div>
-    </div>
-  </footer>
-
-  <!-- ═══════════════ MODO CLI ═══════════════ -->
-  <div class="cli-overlay" id="cli-overlay" role="dialog" aria-modal="true" aria-label="Terminal interactiva">
-    <div class="cli-window">
-      <div class="cli-header">
-        <div class="pc-dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green-dot"></span></div>
-        <span class="term-title mono">luis@portfolio:~ — modo CLI</span>
-        <button type="button" class="cli-close mono" id="cli-close">[ESC] cerrar</button>
-      </div>
-      <div class="cli-body" id="cli-body">
-        <div class="cli-out">Bienvenido. Escribe <strong>help</strong> para ver los comandos disponibles.</div>
-      </div>
-      <form class="cli-inputrow" id="cli-form">
-        <span class="cli-p mono">luis@dev:~$</span>
-        <input type="text" class="cli-input" id="cli-input" autocomplete="off" spellcheck="false" aria-label="Comando">
-      </form>
-    </div>
-  </div>
-
-  <script src="js/particles.js"></script>
-  <script src="js/reveal.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/hero-effects.js"></script>
-  <script src="js/github.js"></script>
-  <script src="js/contact.js"></script>
-  <script src="js/cursor.js"></script>
-  <script src="js/cli.js"></script>
-  <script src="js/init.js"></script>
+<footer>
+  <div class="wrap">© 2026 Luis Enrique González Ramírez · <a href="cv.html">CV</a> · <a href="Luis-Gonzalez-CV.pdf">CV en PDF</a></div>
+</footer>
 </body>
 </html>

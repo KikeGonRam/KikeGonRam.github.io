@@ -2,436 +2,119 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CV — Luis Enrique González Ramírez</title>
-  <meta name="description" content="Currículum de Luis Enrique González Ramírez, desarrollador de software: Java, Spring Boot, Next.js, MySQL y sistemas en producción.">
+  <meta name="description" content="Currículum de Luis Enrique González Ramírez, desarrollador de software en Toluca, México.">
   <meta name="author" content="Luis Enrique González Ramírez">
-  <meta name="robots" content="index, follow">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%23011824'/%3E%3Ctext x='50' y='63' font-family='monospace' font-size='42' font-weight='700' fill='%2300d4ff' text-anchor='middle'%3ELGR%3C/text%3E%3C/svg%3E">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="canonical" href="https://kikegonram.github.io/cv.html">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --cyan: #006b9b; --text: #1a2332; --muted: #5a6b7c;
-      --border: #dde4ed; --bg: #f8fafc; --accent-bg: #f0f7ff;
-    }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body {
-      font-family: 'Outfit', sans-serif;
-      background: var(--bg); color: var(--text);
-      line-height: 1.6; font-size: 13px;
-    }
-    .cv-wrapper {
-      max-width: 860px; margin: 0 auto;
-      background: #fff; min-height: 100vh;
-    }
-
-    /* ── PRINT BTN ── */
-    .print-bar {
-      background: #011824; padding: .8rem 2rem;
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .print-bar span { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: #00d4ff; }
-    .print-btn {
-      padding: .45rem 1.2rem; background: #00d4ff; color: #011824;
-      font-family: 'JetBrains Mono', monospace; font-size: .72rem; font-weight: 700;
-      border: none; border-radius: 6px; cursor: pointer; transition: all .2s;
-    }
-    .print-btn:hover { background: #00ff9d; }
-
-    /* ── HEADER ── */
-    .cv-header {
-      background: #011824; color: #fff; padding: 2.5rem 2.5rem 2rem;
-      position: relative; overflow: hidden;
-    }
-    .cv-header::after {
-      content: ''; position: absolute; bottom: 0; left: 0; right: 0;
-      height: 3px; background: linear-gradient(90deg, #00d4ff, #00ff9d);
-    }
-    .cv-header-inner { display: flex; gap: 2rem; align-items: flex-start; }
-    .cv-photo {
-      width: 100px; height: 100px; border-radius: 10px;
-      object-fit: cover; border: 2px solid #00d4ff; flex-shrink: 0;
-    }
-    .cv-name { font-size: 2rem; font-weight: 800; letter-spacing: -1px; margin-bottom: .25rem; }
-    .cv-title { font-size: .88rem; color: #00d4ff; font-weight: 500; margin-bottom: 1rem; }
-    .cv-contact { display: flex; flex-wrap: wrap; gap: .7rem 1.5rem; }
-    .cv-contact a, .cv-contact span {
-      font-size: .76rem; color: #94a3b8; text-decoration: none;
-      display: flex; align-items: center; gap: .35rem;
-      font-family: 'JetBrains Mono', monospace;
-    }
-    .cv-contact a:hover { color: #00d4ff; }
-    .cv-contact i { color: #00d4ff; font-size: .7rem; }
-
-    /* ── BODY ── */
-    .cv-body { display: grid; grid-template-columns: 1fr 260px; min-height: calc(100vh - 180px); }
-    .cv-main  { padding: 2rem 2rem 2rem 2.5rem; border-right: 1px solid var(--border); }
-    .cv-side  { padding: 2rem 2rem 2rem 1.5rem; background: var(--bg); }
-
-    /* ── SECTIONS ── */
-    .cv-section { margin-bottom: 1.8rem; }
-    .cv-sec-title {
-      font-family: 'JetBrains Mono', monospace;
-      font-size: .65rem; font-weight: 700; letter-spacing: .15em;
-      text-transform: uppercase; color: var(--cyan);
-      margin-bottom: .9rem; padding-bottom: .45rem;
-      border-bottom: 2px solid var(--cyan);
-      display: flex; align-items: center; gap: .5rem;
-    }
-    .cv-sec-title i { font-size: .7rem; }
-
-    /* ── EXPERIENCE ── */
-    .exp-item { margin-bottom: 1.3rem; }
-    .exp-top  { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .2rem; }
-    .exp-role { font-size: .88rem; font-weight: 700; }
-    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--muted); white-space: nowrap; margin-left: .5rem; }
-    .exp-company { font-size: .78rem; color: var(--cyan); font-weight: 500; margin-bottom: .4rem; }
-    .exp-list { list-style: none; padding-left: .9rem; }
-    .exp-list li { font-size: .76rem; color: var(--muted); padding: .12rem 0; position: relative; }
-    .exp-list li::before { content: '›'; position: absolute; left: -.8rem; color: var(--cyan); }
-    .exp-list li strong { color: var(--text); font-weight: 600; }
-    .exp-badge {
-      display: inline-block; padding: .1rem .45rem;
-      background: #e0f2fe; border: 1px solid #bae6fd;
-      border-radius: 100px; font-size: .62rem; color: #0369a1;
-      font-weight: 700; margin-left: .4rem; vertical-align: middle;
-    }
-    .exp-badge.active { background: #d1fae5; border-color: #6ee7b7; color: #065f46; }
-
-    /* ── PROJECTS ── */
-    .proj-item { margin-bottom: 1rem; padding: .8rem; background: var(--accent-bg); border-radius: 6px; border-left: 3px solid var(--cyan); }
-    .proj-name  { font-size: .84rem; font-weight: 700; margin-bottom: .2rem; }
-    .proj-desc  { font-size: .73rem; color: var(--muted); line-height: 1.5; margin-bottom: .35rem; }
-    .proj-link  { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--cyan); text-decoration: none; }
-    .proj-live  { display: inline-block; padding: .1rem .4rem; background: #d1fae5; border-radius: 4px; font-size: .6rem; color: #065f46; font-weight: 700; margin-left: .3rem; }
-
-    /* ── SIDE SECTIONS ── */
-    .skill-group { margin-bottom: 1.4rem; }
-    .skill-group-name { font-size: .7rem; font-weight: 700; margin-bottom: .5rem; color: var(--text); }
-    .skill-tags { display: flex; flex-wrap: wrap; gap: .35rem; }
-    .skill-tag {
-      padding: .18rem .6rem;
-      background: var(--accent-bg); border: 1px solid #bae6fd;
-      border-radius: 100px; font-size: .66rem; color: var(--cyan); font-weight: 500;
-    }
-
-    .edu-cv-item { margin-bottom: 1rem; }
-    .edu-cv-degree { font-size: .78rem; font-weight: 700; margin-bottom: .12rem; }
-    .edu-cv-school { font-size: .7rem; color: var(--muted); }
-    .edu-cv-period { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--cyan); }
-    .edu-cv-badge {
-      display: inline-block; margin-top: .2rem; padding: .1rem .45rem;
-      background: #d1fae5; border-radius: 100px; font-size: .62rem; color: #065f46; font-weight: 700;
-    }
-
-    .lang-item {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: .5rem; padding: .3rem 0; font-size: .76rem;
-      border-bottom: 1px solid var(--border);
-    }
-    .lang-item:last-child { border-bottom: none; }
-    .lang-lvl { font-size: .68rem; color: var(--muted); white-space: nowrap; }
-
-    .info-row { display: flex; gap: .5rem; margin-bottom: .4rem; font-size: .76rem; align-items: center; }
-    .info-icon { color: var(--cyan); font-size: .72rem; width: 14px; text-align: center; flex-shrink: 0; }
-
-    /* ── PRINT ──
-       Los navegadores NO imprimen fondos por defecto. El encabezado en
-       pantalla es oscuro con texto blanco: si se imprimiera tal cual,
-       el nombre saldría blanco sobre blanco (invisible). En papel se
-       invierte a fondo claro con texto oscuro: legible siempre, sin
-       depender de "Gráficos de fondo" y sin gastar tóner. */
-    @page {
-      size: A4;
-      margin: 12mm 0;
-    }
+    .cv { max-width: 820px; margin: 0 auto; padding: 36px 28px 56px; }
+    .cv h1 { font-size: 30px; margin: 0; letter-spacing: -.01em; }
+    .cv .role { color: var(--accent); font-weight: 600; margin: 2px 0 10px; font-size: 17px; }
+    .cv .contact { color: var(--muted); font-size: 14px; margin: 0 0 6px; }
+    .cv .actions { margin: 14px 0 0; font-size: 14px; }
+    .cv h2 { border-bottom: 1px solid var(--line); padding-bottom: 4px; margin: 26px 0 12px; }
+    .cv .row { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    .cv .row h3 { font-size: 15.5px; margin: 0; }
+    .cv .row .when { color: var(--muted); font-size: 14px; white-space: nowrap; }
+    .cv .org { color: var(--muted); font-size: 14px; margin: 1px 0 4px; }
+    .cv ul { margin: 6px 0 0; padding-left: 20px; }
+    .cv li { margin-bottom: 3px; font-size: 15px; }
+    .cv p { margin: 0 0 8px; font-size: 15px; }
+    .cv .block { margin-bottom: 16px; }
     @media print {
-      .print-bar { display: none; }
-      body { background: #fff; font-size: 11.5px; }
-      .cv-wrapper { max-width: 100%; box-shadow: none; min-height: auto; }
-      .cv-body { min-height: auto; }
-
-      .cv-header {
-        background: #fff;
-        color: var(--text);
-        padding: 0 2.5rem 1.2rem;
-        border-bottom: 2px solid var(--cyan);
-      }
-      .cv-header::after { display: none; }
-      .cv-name  { color: #0f1b2d; }
-      .cv-title { color: var(--cyan); }
-      .cv-contact a,
-      .cv-contact span { color: #3d4d5e; }
-      .cv-photo { border-color: #cbd5e1; }
-
-      /* Evita cortes feos a mitad de un bloque al pasar de página */
-      .cv-section { break-inside: avoid; page-break-inside: avoid; }
-      .exp-item, .proj-item, .edu-cv-item, .skill-group {
-        break-inside: avoid; page-break-inside: avoid;
-      }
-      .cv-sec-title { break-after: avoid; page-break-after: avoid; }
-      h1, h2, h3, h4 { break-after: avoid; page-break-after: avoid; }
-      p, li { orphans: 3; widows: 3; }
-
-      a { color: var(--cyan); text-decoration: none; }
-      .cv-main { border-right: none; }
-      .cv-side { background: #fff; border-left: 1px solid var(--border); }
-    }
-    @media (max-width: 700px) {
-      .cv-body { grid-template-columns: 1fr; }
-      .cv-side { border-top: 1px solid var(--border); }
-      .cv-header-inner { flex-direction: column; }
+      @page { size: A4; margin: 14mm; }
+      body { background: #fff; color: #000; font-size: 11pt; }
+      .cv { padding: 0; max-width: none; }
+      .cv .actions, header.top, footer { display: none; }
+      a { color: #000; text-decoration: none; }
+      .cv .block { break-inside: avoid; }
+      .cv h2 { color: #000; }
     }
   </style>
 </head>
 <body>
-  <div class="cv-wrapper">
+<main class="cv">
+  <header>
+    <h1>Luis Enrique González Ramírez</h1>
+    <p class="role">Desarrollador de software</p>
+    <p class="contact">Toluca, Estado de México · <a href="mailto:kikeramirez160418@gmail.com">kikeramirez160418@gmail.com</a> · 722 250 1340</p>
+    <p class="contact"><a href="https://www.linkedin.com/in/luisgonzalezramirez-dev">linkedin.com/in/luisgonzalezramirez-dev</a> · <a href="https://github.com/KikeGonRam">github.com/KikeGonRam</a> · <a href="https://kikegonram.github.io/">kikegonram.github.io</a></p>
+    <p class="actions"><a href="Luis-Gonzalez-CV.pdf">Descargar PDF</a> · <a href="index.html">Portafolio</a></p>
+  </header>
 
-    <!-- PRINT BAR -->
-    <div class="print-bar">
-      <span>❰LGR❱ · Curriculum Vitae · <span id="cv-year">2026</span></span>
-      <button class="print-btn" onclick="window.print()"><i class="fas fa-print" aria-hidden="true"></i> Imprimir / Guardar PDF</button>
-    </div>
+  <h2>Perfil</h2>
+  <p>Desarrollador de software con experiencia en producción en una plataforma de pagos institucional y en el portal corporativo de una empresa, a cargo de autenticación, control de accesos y despliegue. Además desarrollo proyectos propios de punta a punta con Laravel, Nuxt, Spring Boot y Python, con pruebas automáticas, integración continua y análisis de calidad. Titulado como T.S.U. y cursando Ingeniería en Desarrollo y Gestión de Software.</p>
 
-    <!-- HEADER -->
-    <div class="cv-header">
-      <div class="cv-header-inner">
-        <img src="images/mi-foto.jpg" alt="Luis González Ramírez" class="cv-photo">
-        <div>
-          <h1 class="cv-name">Luis Enrique González Ramírez</h1>
-          <p class="cv-title">Software Developer</p>
-          <div class="cv-contact">
-            <a href="tel:+527222501340"><i class="fas fa-phone" aria-hidden="true"></i>722 250 1340</a>
-            <a href="mailto:kikeramirez160418@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i>kikeramirez160418@gmail.com</a>
-            <a href="https://github.com/KikeGonRam" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i>github.com/KikeGonRam</a>
-            <a href="https://www.linkedin.com/in/luisgonzalezramirez-dev" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin" aria-hidden="true"></i>linkedin.com/in/luisgonzalezramirez-dev</a>
-            <span><i class="fas fa-map-pin" aria-hidden="true"></i>Toluca, México (GMT-6)</span>
-            <span><i class="fas fa-globe" aria-hidden="true"></i>Disponible remoto</span>
-            <a href="https://kikeGonRam.github.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-briefcase" aria-hidden="true"></i>kikeGonRam.github.io</a>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="cv-body">
-      <!-- MAIN COLUMN -->
-      <div class="cv-main">
-
-        <!-- PERFIL -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-user" aria-hidden="true"></i> Perfil Profesional</div>
-          <p style="font-size:.78rem;color:var(--muted);line-height:1.65;">
-            Desarrollador de software titulado en T.S.U. y actualmente cursando Ingeniería en Desarrollo y Gestión de Software en la UTVT. Construyo y mantengo plataformas empresariales en producción. Full-stack con Java/Spring Boot, Next.js/TypeScript, PHP/Laravel y Node.js; trabajo también con MongoDB, Redis y una capa de datos/ML con PySpark. También construyo sistemas con LLMs locales: pipelines RAG (FastAPI + ChromaDB + Ollama) y chatbots integrados en producción. Disponible para trabajo remoto (tiempo completo o freelance/part-time), acostumbrado a colaboración async vía Git/GitHub, documentación técnica y pipelines de CI/CD.
-          </p>
-        </div>
-
-        <!-- EXPERIENCIA -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-briefcase" aria-hidden="true"></i> Experiencia Profesional</div>
-
-          <div class="exp-item">
-            <div class="exp-top">
-              <span class="exp-role">Software Developer <span class="exp-badge active">ACTIVO</span></span>
-              <span class="exp-period">Ago 2025 — Presente</span>
-            </div>
-            <div class="exp-company"><i class="fas fa-building" aria-hidden="true"></i> Infraestructura Digital Corporativa</div>
-            <ul class="exp-list">
-              <li>Desarrollo del <strong>login principal del portal corporativo</strong>, punto de acceso a los módulos internos de la plataforma.</li>
-              <li>Desarrollo y mantenimiento en equipo de una <strong>plataforma de pagos institucional</strong> en producción.</li>
-              <li>Autenticación TLS de grado bancario, control de accesos y despliegue en servidor productivo.</li>
-              <li>Stack: Next.js, TypeScript, seguridad TLS, acceso centralizado, alta disponibilidad.</li>
-            </ul>
-          </div>
-
-          <div class="exp-item">
-            <div class="exp-top">
-              <span class="exp-role">Desarrollador en Estadía <span class="exp-badge">✓ Completado</span></span>
-              <span class="exp-period">Abr 2025 — Ago 2025</span>
-            </div>
-            <div class="exp-company"><i class="fas fa-flask" aria-hidden="true"></i> Estadía Profesional UTVT</div>
-            <ul class="exp-list">
-              <li>Desarrollo de plataforma de pagos institucional y portal corporativo en entorno real de producción.</li>
-              <li>Estadía concluida con contratación directa.</li>
-            </ul>
-          </div>
-        </div>
-
-        <!-- PROYECTOS -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-code" aria-hidden="true"></i> Proyectos Destacados</div>
-          <p style="font-size:.7rem;color:var(--muted);margin-bottom:.7rem;">
-            Todos desarrollados en equipo y actualmente en producción. Se indica mi participación.
-          </p>
-
-          <div class="proj-item">
-            <div class="proj-name">Portal Corporativo — Login principal <span class="proj-live">LIVE</span></div>
-            <div class="proj-desc">
-              Acceso central de la plataforma: autenticación de grado bancario, credenciales de sistema y
-              conexión TLS. Desde este login se accede al resto de los módulos internos.
-              <strong>Participación:</strong> desarrollo del login principal.
-            </div>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">TLS</span>
-            </div>
-          </div>
-
-          <div class="proj-item">
-            <div class="proj-name">Plataforma de Pagos Institucional <span class="proj-live">LIVE</span></div>
-            <div class="proj-desc">
-              Sistema empresarial de gestión financiera con autenticación segura, control de roles y panel
-              administrativo. <strong>Participación:</strong> desarrollo y mantenimiento en equipo.
-            </div>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">Next.js</span><span class="skill-tag">TypeScript</span><span class="skill-tag">TLS</span>
-            </div>
-          </div>
-
-          <div class="proj-item">
-            <div class="proj-name">API REST — Evaluación Docente</div>
-            <div class="proj-desc">
-              Spring Boot + JPA/Hibernate + MapStruct + Log4j2 + MySQL. Documentada con Springdoc/OpenAPI.
-              <strong>Participación:</strong> proyecto colaborativo.
-            </div>
-            <a href="https://github.com/KikeGonRam/evaluacion-docente-api" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> github.com/KikeGonRam/evaluacion-docente-api</a>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">Spring Boot</span><span class="skill-tag">Java</span><span class="skill-tag">MySQL</span>
-            </div>
-          </div>
-
-          <div class="proj-item">
-            <div class="proj-name">UrbanBlade — Plataforma para Barberías</div>
-            <div class="proj-desc">
-              Ecosistema completo desarrollado en equipo: dashboard web por roles (Laravel + MongoDB + Redis +
-              Stripe), app móvil para clientes (Expo/React Native) y una capa de analítica con Apache Spark/ML
-              sobre datos reales de negocio (12,500+ citas). CI/CD con GitHub Actions.
-              <strong>Participación:</strong> proyecto colaborativo.
-            </div>
-            <a href="https://github.com/KikeGonRam/barber" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> github.com/KikeGonRam/barber</a>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">Laravel</span><span class="skill-tag">MongoDB</span><span class="skill-tag">PySpark</span>
-            </div>
-          </div>
-
-          <div class="proj-item">
-            <div class="proj-name">RAG Ollama API</div>
-            <div class="proj-desc">
-              Proyecto personal. Sistema RAG (Retrieval Augmented Generation) 100% local, sin APIs externas:
-              FastAPI + ChromaDB + Ollama. Pipeline completo (embeddings, chunking, vectorstore, chat con
-              streaming) con arquitectura lista para MCP.
-            </div>
-            <a href="https://github.com/KikeGonRam/RAG" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> github.com/KikeGonRam/RAG</a>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">FastAPI</span><span class="skill-tag">ChromaDB</span><span class="skill-tag">Ollama</span>
-            </div>
-          </div>
-
-          <div class="proj-item">
-            <div class="proj-name">VulnCore — Escáner de Vulnerabilidades</div>
-            <div class="proj-desc">
-              Proyecto personal. Escáner async de puertos + matching de CVEs (OSV/NVD/CISA KEV) para servidores
-              Linux. Motor en Rust, API REST en Go, dashboard web y CI con GitHub Actions.
-            </div>
-            <a href="https://github.com/KikeGonRam/vulncore" class="proj-link" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> github.com/KikeGonRam/vulncore</a>
-            <div style="margin-top:.3rem" class="skill-tags">
-              <span class="skill-tag">Rust</span><span class="skill-tag">Go</span><span class="skill-tag">Seguridad</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- SIDE COLUMN -->
-      <div class="cv-side">
-
-        <!-- INFO -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-info-circle" aria-hidden="true"></i> Información</div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-map-pin" aria-hidden="true"></i></span><span>Toluca, Estado de México</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-clock" aria-hidden="true"></i></span><span>GMT-6 (CST)</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-globe" aria-hidden="true"></i></span><span>Remoto · tiempo completo o freelance</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-phone" aria-hidden="true"></i></span><span>722 250 1340</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fas fa-envelope" aria-hidden="true"></i></span><span>kikeramirez160418@gmail.com</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fab fa-github" aria-hidden="true"></i></span><span>KikeGonRam</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fab fa-linkedin" aria-hidden="true"></i></span><span>luisgonzalezramirez-dev</span></div>
-          <div class="info-row"><span class="info-icon"><i class="fab fa-instagram" aria-hidden="true"></i></span><span>@kike_gonzalez_16</span></div>
-        </div>
-
-        <!-- EDUCACIÓN -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-graduation-cap" aria-hidden="true"></i> Educación</div>
-          <div class="edu-cv-item">
-            <div class="edu-cv-degree">Ingeniería en Desarrollo y Gestión de Software</div>
-            <div class="edu-cv-school">UTVT</div>
-            <div class="edu-cv-period">Sep 2025 — Presente</div>
-            <span class="edu-cv-badge">● En curso</span>
-          </div>
-          <div class="edu-cv-item">
-            <div class="edu-cv-degree">T.S.U. Desarrollo de Software Multiplataforma</div>
-            <div class="edu-cv-school">UTVT</div>
-            <div class="edu-cv-period">2022 — Ago 2025</div>
-            <span class="edu-cv-badge">✓ Titulado</span>
-          </div>
-        </div>
-
-        <!-- TECH STACK -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-code" aria-hidden="true"></i> Tech Stack</div>
-          <div class="skill-group">
-            <div class="skill-group-name">Backend</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span>
-              <span class="skill-tag">JPA</span><span class="skill-tag">PHP / Laravel</span><span class="skill-tag">Python</span><span class="skill-tag">Node.js</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-name">IA / Data</div>
-            <div class="skill-tags">
-              <span class="skill-tag">RAG</span><span class="skill-tag">Ollama</span>
-              <span class="skill-tag">ChromaDB</span><span class="skill-tag">PySpark</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-name">Frontend</div>
-            <div class="skill-tags">
-              <span class="skill-tag">Next.js</span><span class="skill-tag">React</span>
-              <span class="skill-tag">TypeScript</span><span class="skill-tag">Tailwind</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-name">DB & DevOps</div>
-            <div class="skill-tags">
-              <span class="skill-tag">MySQL</span><span class="skill-tag">MongoDB</span>
-              <span class="skill-tag">Redis</span><span class="skill-tag">Git</span>
-              <span class="skill-tag">GitHub Actions</span><span class="skill-tag">CI/CD</span>
-            </div>
-          </div>
-          <div class="skill-group">
-            <div class="skill-group-name">Testing & Security</div>
-            <div class="skill-tags">
-              <span class="skill-tag">PHPUnit</span><span class="skill-tag">ESLint / Prettier</span>
-              <span class="skill-tag">TLS / JWT</span><span class="skill-tag">CVE Scanning</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- IDIOMAS -->
-        <div class="cv-section">
-          <div class="cv-sec-title"><i class="fas fa-language" aria-hidden="true"></i> Idiomas</div>
-          <div class="lang-item"><span>Español</span><span class="lang-lvl">Nativo</span></div>
-          <div class="lang-item"><span>Inglés</span><span class="lang-lvl">Lectura técnica</span></div>
-        </div>
-
-      </div>
-    </div>
+  <h2>Experiencia</h2>
+  <div class="block">
+    <div class="row"><h3>Software Developer</h3><span class="when">Ago 2025 – Presente</span></div>
+    <p class="org">Infraestructura Digital Corporativa · Contratado directamente tras la estadía profesional</p>
+    <ul>
+      <li>Desarrollé el login principal del portal corporativo, punto de acceso a los módulos internos.</li>
+      <li>Desarrollo y mantenimiento, en equipo, de una plataforma de pagos institucional en producción.</li>
+      <li>Autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo.</li>
+      <li>Tecnologías: Next.js, TypeScript.</li>
+    </ul>
+  </div>
+  <div class="block">
+    <div class="row"><h3>Desarrollador en estadía profesional</h3><span class="when">Abr 2025 – Ago 2025</span></div>
+    <p class="org">Infraestructura Digital Corporativa</p>
+    <ul>
+      <li>Desarrollo de la plataforma de pagos institucional y del portal corporativo con autenticación y TLS.</li>
+      <li>Al término de la estadía se formalizó la contratación.</li>
+    </ul>
   </div>
 
-  <script>
-    // El año se calcula solo: así el CV no queda fechado en un año viejo.
-    document.getElementById('cv-year').textContent = new Date().getFullYear();
-  </script>
+  <h2>Proyectos</h2>
+  <div class="block">
+    <div class="row"><h3>UrbanBlade — plataforma para barberías</h3><span class="when">Proyecto en equipo</span></div>
+    <p class="org">github.com/KikeGonRam/barber · frontend_Urbanblade · spark</p>
+    <ul>
+      <li>Reservas, agenda, pagos, inventario y reportes con paneles por rol (administrador, recepción, barbero y cliente).</li>
+      <li>API REST con Laravel, MongoDB, Redis y pagos con Stripe; web en Nuxt, Vue y TypeScript instalable como PWA.</li>
+      <li>Analítica con PySpark y Streamlit separada de la operación; CI con GitHub Actions, PHPUnit, ESLint y SonarCloud.</li>
+    </ul>
+  </div>
+  <div class="block">
+    <div class="row"><h3>DBMonitor — observabilidad de bases de datos</h3></div>
+    <p class="org">github.com/KikeGonRam/dbmonitor</p>
+    <ul><li>Monitoreo de MySQL y MongoDB: indicadores, consultas lentas y conexiones. React, Node.js, FastAPI, JWT y Docker Compose.</li></ul>
+  </div>
+  <div class="block">
+    <div class="row"><h3>RAG con modelos locales</h3></div>
+    <p class="org">github.com/KikeGonRam/RAG</p>
+    <ul><li>Respuestas con el contexto de documentos propios y sin APIs externas. FastAPI, ChromaDB y Ollama.</li></ul>
+  </div>
+  <div class="block">
+    <div class="row"><h3>VulnCore — escáner de vulnerabilidades</h3></div>
+    <p class="org">github.com/KikeGonRam/vulncore</p>
+    <ul><li>Escaneo asíncrono de puertos y cruce con CVE (OSV, NVD) para servidores Linux. Rust y Go.</li></ul>
+  </div>
+  <div class="block">
+    <div class="row"><h3>API de evaluación docente</h3></div>
+    <p class="org">github.com/KikeGonRam/evaluacion-docente-api</p>
+    <ul><li>API REST con Spring Boot, JPA/Hibernate, MapStruct y MySQL, documentada con OpenAPI; frontend en Next.js.</li></ul>
+  </div>
+
+  <h2>Habilidades</h2>
+  <p><strong>Lenguajes:</strong> Java, TypeScript, JavaScript, PHP, Python, SQL.</p>
+  <p><strong>Backend:</strong> Spring Boot, Laravel, Node.js, FastAPI, APIs REST y OpenAPI.</p>
+  <p><strong>Frontend:</strong> Next.js, React, Nuxt, Vue, Tailwind CSS.</p>
+  <p><strong>Datos:</strong> MySQL, MongoDB, Redis, PySpark, ChromaDB.</p>
+  <p><strong>Seguridad:</strong> TLS/HTTPS, JWT, control de acceso por roles.</p>
+  <p><strong>Calidad y operación:</strong> Git, GitHub Actions, Docker, PHPUnit, ESLint, SonarCloud, Postman.</p>
+
+  <h2>Educación</h2>
+  <div class="block">
+    <div class="row"><h3>Ingeniería en Desarrollo y Gestión de Software</h3><span class="when">Sep 2025 – Presente</span></div>
+    <p class="org">Universidad Tecnológica del Valle de Toluca</p>
+  </div>
+  <div class="block">
+    <div class="row"><h3>T.S.U. en Desarrollo de Software Multiplataforma</h3><span class="when">2022 – Ago 2025</span></div>
+    <p class="org">Universidad Tecnológica del Valle de Toluca · Titulado</p>
+  </div>
+</main>
 </body>
 </html>
