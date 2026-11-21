@@ -1,135 +1,879 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Luis Enrique González Ramírez — Desarrollador de software</title>
-  <meta name="description" content="Desarrollador de software en Toluca, México. APIs, plataformas web y autenticación segura con Java, TypeScript, PHP y Python. Disponible para nuevas oportunidades.">
-  <meta name="author" content="Luis Enrique González Ramírez">
-  <link rel="canonical" href="https://kikegonram.github.io/">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luis Enrique González Ramírez — Full-stack y DevOps</title>
+<meta name="description" content="Desarrollador full-stack y DevOps en Toluca, México. Laravel, Nuxt, Android, AWS y Terraform. Proyecto insignia: UrbanBlade.">
+<meta name="author" content="Luis Enrique González Ramírez">
+<meta name="theme-color" content="#05070B">
+<link rel="canonical" href="https://kikegonram.github.io/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://kikegonram.github.io/">
+<meta property="og:title" content="Luis Enrique González Ramírez — Full-stack y DevOps">
+<meta property="og:description" content="Ideas claras. Código con carácter. Laravel, Nuxt, Android, AWS y Terraform.">
+<meta property="og:image" content="https://kikegonram.github.io/images/mi-foto.jpg">
+<meta property="og:locale" content="es_MX">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%2305070B'/%3E%3Ctext x='50' y='63' font-family='monospace' font-size='38' font-weight='700' fill='%2367E8F9' text-anchor='middle'%3ELGR%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #05070B; --p1: #080B12; --p2: #0E1626; --line: #1C2638; --line-hi: #263248;
+  --ink: #F5F7FC; --text: #C5D2E6; --muted: #8494AD;
+  --blue: #1769FF; --blue2: #3986FF; --cyan: #67E8F9; --sky: #38BDF8; --red: #FF4D5E; --green: #28C840; --white: #EAF1FF;
+  --mono: "JetBrains Mono", Consolas, "SFMono-Regular", Menlo, monospace;
+  --sans: "Outfit", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --r: 14px;
+}
+:root[data-theme="light"] {
+  --bg: #F6F8FC; --p1: #FFFFFF; --p2: #EEF3FB; --line: #DCE3EE; --line-hi: #C9D4E5;
+  --ink: #0B1220; --text: #2A3648; --muted: #5B6B82;
+  --blue: #1458D6; --blue2: #1769FF; --cyan: #0E7490; --sky: #0369A1; --white: #FFFFFF;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.65 var(--sans); overflow-x: hidden; }
+a { color: var(--blue2); text-decoration: none; }
+a:hover { text-decoration: underline; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 4px; }
+.mono { font-family: var(--mono); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+
+/* ── barra de progreso: rama de git ── */
+.progress { position: fixed; top: 0; left: 0; height: 3px; width: 100%; z-index: 30; }
+.progress span { position: relative; display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--cyan)); }
+.progress span::after { content: ""; position: absolute; right: -5px; top: -3.5px; width: 10px; height: 10px; border-radius: 50%; background: var(--bg); border: 2px solid var(--cyan); }
+
+/* ── nav como pipeline ── */
+header.top { position: sticky; top: 0; z-index: 20; background: color-mix(in srgb, var(--bg) 86%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.logo { font: 700 15px var(--mono); color: var(--ink); display: flex; align-items: center; gap: 10px; }
+.logo b { color: var(--cyan); font-weight: 700; }
+.logo em { color: var(--muted); font-style: normal; }
+.logo:hover { text-decoration: none; }
+nav.stages { display: flex; align-items: center; gap: 2px; }
+nav.stages a { display: flex; align-items: center; gap: 7px; padding: 6px 10px; border-radius: 8px; color: var(--muted); font: 500 13px var(--mono); }
+nav.stages a::before { content: ""; width: 8px; height: 8px; border-radius: 50%; border: 2px solid var(--line-hi); transition: .2s; }
+nav.stages a.done::before { background: var(--green); border-color: var(--green); }
+nav.stages a.now { color: var(--ink); background: var(--p2); }
+nav.stages a.now::before { background: var(--blue2); border-color: var(--blue2); box-shadow: 0 0 0 4px color-mix(in srgb, var(--blue2) 25%, transparent); }
+nav.stages a:hover { color: var(--ink); text-decoration: none; }
+nav.stages a small { color: var(--muted); font-size: 11px; }
+.tools { display: flex; gap: 8px; align-items: center; }
+.icon-btn { background: var(--p2); border: 1px solid var(--line); color: var(--ink); border-radius: 10px; height: 38px; min-width: 38px; padding: 0 12px; font: 600 13px var(--mono); cursor: pointer; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.icon-btn:hover { border-color: var(--blue2); text-decoration: none; }
+.burger { display: none; }
+
+/* ── hero ── */
+.hero { padding: 72px 0 56px; display: grid; grid-template-columns: 1.05fr 1fr; gap: 48px; align-items: center; }
+.term { background: var(--p1); border: 1px solid var(--line-hi); border-radius: var(--r); overflow: hidden; box-shadow: 0 30px 80px -40px color-mix(in srgb, var(--blue) 60%, transparent); }
+.term-head { display: flex; align-items: center; gap: 8px; padding: 12px 16px; background: var(--p2); border-bottom: 1px solid var(--line); font: 13px var(--mono); color: var(--muted); }
+.term-head b { width: 11px; height: 11px; border-radius: 50%; display: inline-block; }
+.term-head b:nth-child(1) { background: #FF6058; } .term-head b:nth-child(2) { background: #FEBC2E; } .term-head b:nth-child(3) { background: #28C840; margin-right: 8px; }
+.term-body { padding: 20px 22px 22px; font: 14px/1.75 var(--mono); color: var(--text); }
+.p { color: var(--cyan); } .p em { color: var(--muted); font-style: normal; }
+.neo { display: grid; grid-template-columns: 112px 1fr; gap: 18px; margin: 14px 0; }
+.neo img { width: 112px; height: 112px; object-fit: cover; border-radius: 12px; border: 2px solid var(--blue); filter: saturate(.9); }
+.neo .u { color: var(--ink); font-weight: 700; }
+.neo .k { color: var(--sky); display: inline-block; width: 92px; }
+.neo hr { border: 0; border-top: 1px dashed var(--line-hi); margin: 4px 0 6px; }
+.chips { display: flex; gap: 6px; margin-top: 8px; }
+.chips i { width: 18px; height: 12px; border-radius: 3px; display: block; }
+.ok { color: var(--green); } .cursor { display: inline-block; width: 9px; height: 17px; background: var(--cyan); vertical-align: -3px; animation: blink 1.1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.deploy span { opacity: 0; animation: appear .3s forwards; }
+@keyframes appear { to { opacity: 1; } }
+
+.kicker { display: inline-flex; align-items: center; gap: 10px; font: 500 13px var(--mono); color: var(--muted); letter-spacing: .14em; text-transform: uppercase; }
+.kicker::before { content: ""; width: 34px; height: 4px; background: var(--blue2); }
+.hero h1 { font: 900 clamp(46px, 7.4vw, 92px)/.92 var(--sans); color: var(--ink); letter-spacing: -.045em; margin: 18px 0 16px; }
+.hero h1 span { color: var(--blue2); }
+.tagline { font: 700 clamp(20px, 2.3vw, 27px)/1.3 var(--sans); color: var(--blue2); margin: 0 0 12px; }
+.roles { font: 15px var(--mono); color: var(--muted); min-height: 24px; margin: 0 0 18px; }
+.roles b { color: var(--ink); font-weight: 500; }
+.lead { color: var(--text); margin: 0 0 24px; max-width: 54ch; }
+.status { display: inline-flex; align-items: center; gap: 8px; font: 13px var(--mono); color: var(--text); background: var(--p2); border: 1px solid var(--line); padding: 6px 12px; border-radius: 99px; margin-bottom: 20px; }
+.status::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px color-mix(in srgb, var(--green) 25%, transparent); }
+.cta { display: flex; flex-wrap: wrap; gap: 10px; }
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 10px; font: 600 15px var(--sans); border: 1px solid var(--line-hi); color: var(--ink); background: var(--p2); }
+.btn.fill { background: var(--blue); border-color: var(--blue); color: #fff; }
+.btn:hover { text-decoration: none; border-color: var(--blue2); transform: translateY(-1px); }
+
+/* ── secciones ── */
+section.s { padding: 72px 0; border-top: 1px solid var(--line); }
+.s-head { margin-bottom: 32px; }
+.s-cmd { font: 14px var(--mono); color: var(--cyan); }
+.s-cmd em { color: var(--muted); font-style: normal; }
+.s-head h2 { font: 800 clamp(30px, 4vw, 44px)/1.1 var(--sans); color: var(--ink); letter-spacing: -.03em; margin: 8px 0 0; }
+.s-head h2 span { color: var(--blue2); }
+.s-head p { color: var(--muted); max-width: 64ch; margin: 10px 0 0; }
+
+/* experiencia */
+.timeline { display: grid; gap: 16px; }
+.job { display: grid; grid-template-columns: 180px 1fr; gap: 24px; background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 22px 24px; }
+.job .when { font: 13px var(--mono); color: var(--muted); }
+.job .when b { display: block; color: var(--green); font-weight: 500; margin-top: 6px; }
+.job h3 { margin: 0; color: var(--ink); font-size: 20px; }
+.job .org { color: var(--sky); font: 14px var(--mono); margin: 2px 0 10px; }
+.job ul { margin: 0; padding-left: 18px; } .job li { margin-bottom: 4px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 12px 0 0; }
+.tags li { font: 12.5px var(--mono); padding: 3px 10px; border-radius: 99px; background: var(--p2); border: 1px solid var(--line); color: var(--text); margin: 0; }
+
+/* UrbanBlade */
+.flagship { background: var(--p1); border: 1px solid var(--line-hi); border-radius: 18px; overflow: hidden; }
+.flagship .bar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; padding: 14px 20px; border-bottom: 1px solid var(--line); background: var(--p2); font: 13px var(--mono); color: var(--muted); }
+.flagship .bar a { color: var(--cyan); }
+.flag-grid { display: grid; grid-template-columns: 1fr 1.35fr; }
+.flag-copy { padding: 28px; border-right: 1px solid var(--line); }
+.flag-copy h3 { font: 800 30px/1.1 var(--sans); color: var(--ink); margin: 0 0 6px; letter-spacing: -.02em; }
+.flag-copy .sub { color: var(--blue2); font-weight: 600; margin: 0 0 16px; }
+.flag-copy dl { display: grid; grid-template-columns: 96px 1fr; gap: 8px 14px; margin: 18px 0; font-size: 15px; }
+.flag-copy dt { font: 12px var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .08em; padding-top: 3px; }
+.flag-copy dd { margin: 0; }
+.commits { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 18px; }
+.commits div { background: var(--p2); border: 1px solid var(--line); border-radius: 10px; padding: 10px; text-align: center; }
+.commits b { display: block; font: 700 22px var(--mono); color: var(--ink); }
+.commits span { font: 12px var(--mono); color: var(--muted); }
+.arch { padding: 22px; display: flex; flex-direction: column; justify-content: center; }
+.arch svg { width: 100%; height: auto; }
+.arch .n { fill: var(--p2); stroke: var(--line-hi); } .arch .n.hi { fill: color-mix(in srgb, var(--blue) 22%, var(--p2)); stroke: var(--blue2); }
+.arch .t { fill: var(--ink); font: 700 14px var(--sans); } .arch .d { fill: var(--muted); font: 12px var(--mono); } .arch .l { fill: var(--muted); font: 11px var(--mono); letter-spacing: .14em; }
+.arch .w { fill: none; stroke: var(--blue2); stroke-width: 2; stroke-dasharray: 6 7; animation: flow 1.2s linear infinite; }
+@keyframes flow { to { stroke-dashoffset: -13; } }
+.repos { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+.repos a { padding: 16px 20px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); color: var(--text); }
+.repos a:nth-child(3n) { border-right: 0; }
+.repos a:hover { background: var(--p2); text-decoration: none; }
+.repos b { display: block; color: var(--ink); font: 600 14px var(--mono); }
+.repos span { font-size: 14px; color: var(--muted); }
+
+/* proyectos */
+.grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.card { background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; color: var(--text); }
+.card:hover { border-color: var(--blue2); transform: translateY(-2px); text-decoration: none; }
+.card .ch { display: flex; align-items: center; gap: 6px; padding: 10px 14px; background: var(--p2); border-bottom: 1px solid var(--line); font: 12.5px var(--mono); color: var(--muted); }
+.card .ch b { width: 9px; height: 9px; border-radius: 50%; background: var(--line-hi); }
+.card .ch span { margin-left: 8px; }
+.card .cb { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+.card h3 { margin: 0 0 6px; color: var(--ink); font-size: 19px; }
+.card p { margin: 0; font-size: 15.5px; flex: 1; }
+.card .go { margin-top: 14px; font: 13px var(--mono); color: var(--blue2); }
+
+/* certificaciones */
+.certs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.cert { position: relative; background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 22px; overflow: hidden; }
+.cert::after { content: ""; position: absolute; right: -30px; top: -30px; width: 110px; height: 110px; border-radius: 50%; background: radial-gradient(color-mix(in srgb, var(--accent, var(--blue)) 35%, transparent), transparent 70%); }
+.cert .iss { font: 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--accent, var(--blue2)); }
+.cert h3 { margin: 8px 0 6px; color: var(--ink); font-size: 18px; line-height: 1.3; }
+.cert .meta { font: 13px var(--mono); color: var(--muted); }
+.cert a { display: inline-block; margin-top: 12px; font: 13px var(--mono); }
+.cert.pending { border-style: dashed; }
+.cert.pending h3 { color: var(--muted); }
+
+/* stack */
+.stack { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.stack div { background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; }
+.stack h3 { margin: 0 0 10px; font: 500 13px var(--mono); color: var(--sky); text-transform: uppercase; letter-spacing: .1em; }
+.stack p { margin: 0; color: var(--text); font-size: 15.5px; }
+
+/* educación + contacto */
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+.edu { background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 20px 22px; }
+.edu h3 { margin: 0; color: var(--ink); font-size: 18px; }
+.edu p { margin: 4px 0 0; color: var(--muted); font: 13.5px var(--mono); }
+.contact .term-body a { color: var(--ink); overflow-wrap: anywhere; }
+.contact .term-body a:hover { color: var(--cyan); }
+.contact .k { color: var(--sky); display: inline-block; width: 84px; }
+footer { border-top: 1px solid var(--line); padding: 28px 0 48px; color: var(--muted); font: 13px var(--mono); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+/* números */
+.nums { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; padding-bottom: 64px; }
+.nums div { background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 18px 20px; position: relative; }
+.nums div::before { content: ""; display: block; width: 26px; height: 4px; background: var(--blue2); margin-bottom: 12px; }
+.nums b { display: block; font: 800 38px/1 var(--sans); color: var(--ink); letter-spacing: -.02em; }
+.nums span { display: block; margin-top: 8px; font-weight: 600; color: var(--text); font-size: 15px; }
+.nums small { display: block; font: 12px var(--mono); color: var(--muted); margin-top: 2px; }
+
+/* equipo */
+.collab { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+.co { background: var(--p1); border: 1px solid var(--line); border-radius: var(--r); padding: 18px; display: flex; flex-direction: column; }
+.co-top { display: flex; flex-direction: column-reverse; align-items: flex-start; gap: 8px; }
+.co h3 { margin: 0; color: var(--ink); font-size: 16.5px; line-height: 1.3; }
+.co .role { flex: none; font: 11px var(--mono); color: var(--cyan); border: 1px solid var(--line-hi); border-radius: 99px; padding: 1px 8px; }
+.co p { margin: 8px 0 0; font-size: 14.5px; flex: 1; }
+.co .tags { margin-top: 10px; }
+.meter { height: 8px; border-radius: 99px; background: var(--p2); border: 1px solid var(--line); margin-top: 14px; overflow: hidden; }
+.meter i { display: block; height: 100%; width: calc(var(--v) * 100%); background: linear-gradient(90deg, var(--blue), var(--cyan)); border-radius: 99px; transform-origin: left; }
+.js .co .meter i { transform: scaleX(0); transition: transform 1s cubic-bezier(.2,.8,.2,1) .2s; }
+.js .co.in .meter i { transform: none; }
+.co-n { font: 12.5px var(--mono); color: var(--muted); margin-top: 6px; }
+.co-n b { color: var(--ink); }
+.foot-note { color: var(--muted); font-size: 14.5px; margin: 18px 0 0; }
+
+/* filtros de certificaciones */
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.filters button { font: 500 13px var(--mono); color: var(--muted); background: var(--p1); border: 1px solid var(--line); border-radius: 99px; padding: 7px 14px; cursor: pointer; }
+.filters button span { color: var(--ink); margin-left: 4px; }
+.filters button.on { color: var(--ink); border-color: var(--blue2); background: var(--p2); }
+.cert[hidden] { display: none; }
+.certs { grid-template-columns: repeat(4, 1fr) !important; }
+
+/* stack con íconos */
+.stack img { height: 34px; max-width: 100%; margin-bottom: 10px; display: block; }
+
+/* actividad */
+.activity { margin-top: 24px; }
+.activity ol { list-style: none; margin: 0; }
+.activity li { display: grid; grid-template-columns: 110px 1fr auto; gap: 12px; padding: 4px 0; }
+.activity li a { color: var(--ink); }
+.activity .when { color: var(--muted); }
+.activity .lang { color: var(--sky); }
+
+/* proceso */
+.flow { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); position: relative; }
+.flow::before { content: ""; position: absolute; left: 8%; right: 8%; top: 13px; height: 4px; border-radius: 4px; background: linear-gradient(90deg, var(--blue), var(--cyan), var(--green)); opacity: .9; }
+.flow li { position: relative; padding: 0 10px; text-align: center; }
+.flow i { display: block; width: 30px; height: 30px; margin: 0 auto 16px; border-radius: 50%; background: var(--bg); border: 3px solid var(--blue2); position: relative; z-index: 1; transition: transform .2s; }
+.flow i::after { content: ""; position: absolute; inset: 6px; border-radius: 50%; background: var(--blue2); }
+.flow .last i { border-color: var(--green); } .flow .last i::after { background: var(--green); }
+.flow li:hover i { transform: scale(1.15); }
+.flow b { display: block; font: 600 14px var(--mono); color: var(--ink); }
+.flow span { display: block; font-size: 14.5px; margin: 6px 0; }
+.flow small { display: block; font: 12px var(--mono); color: var(--sky); }
+
+/* capturas */
+.shots { display: grid; grid-template-columns: repeat(3, 1fr) 1.1fr; gap: 18px; align-items: end; padding: 28px; border-top: 1px solid var(--line); background: radial-gradient(120% 90% at 20% 0%, color-mix(in srgb, var(--blue) 12%, transparent), transparent 60%); }
+.shots figure { margin: 0; }
+.shots img { width: 100%; height: auto; border-radius: 22px; border: 6px solid #0B0F17; outline: 1px solid var(--line-hi); box-shadow: 0 24px 50px -24px rgba(0,0,0,.7); display: block; }
+.shots figcaption { font: 12px var(--mono); color: var(--muted); text-align: center; margin-top: 8px; }
+.shots-note { font-size: 13px; color: var(--text); margin: 0 0 30px; }
+.shots-note span { color: var(--muted); }
+
+/* modo CLI */
+button.btn { cursor: pointer; }
+.hint { font-size: 12.5px; color: var(--muted); margin: 14px 0 0; }
+kbd { font: 12px var(--mono); border: 1px solid var(--line-hi); border-bottom-width: 2px; border-radius: 5px; padding: 0 6px; color: var(--ink); background: var(--p2); }
+.cli { position: fixed; inset: 0; z-index: 50; background: color-mix(in srgb, #000 62%, transparent); backdrop-filter: blur(4px); display: grid; place-items: center; padding: 16px; }
+.cli[hidden] { display: none; }
+.cli-win { width: min(820px, 100%); height: min(560px, 86vh); display: flex; flex-direction: column; background: #070A10; border: 1px solid var(--line-hi); border-radius: 14px; overflow: hidden; box-shadow: 0 40px 120px -30px color-mix(in srgb, var(--blue) 55%, transparent); }
+.cli-x { margin-left: auto; background: none; border: 1px solid var(--line-hi); color: var(--muted); font: 12px var(--mono); border-radius: 6px; padding: 2px 8px; cursor: pointer; }
+.cli-body { flex: 1; overflow-y: auto; padding: 16px 18px 6px; font: 13.5px/1.7 var(--mono); color: #C5D2E6; white-space: pre-wrap; }
+.cli-body .echo { color: #67E8F9; } .cli-body .echo em { color: #8494AD; font-style: normal; }
+.cli-body a { color: #F5F7FC; text-decoration: underline; text-decoration-color: #3986FF; }
+.cli-body .ok { color: #28C840; } .cli-body .err { color: #FF6B6B; } .cli-body .dim { color: #8494AD; } .cli-body .hl { color: #38BDF8; }
+.cli-form { display: flex; align-items: center; gap: 10px; padding: 8px 18px 12px; font: 13.5px var(--mono); }
+.cli-form input { flex: 1; background: transparent; border: 0; outline: 0; color: #F5F7FC; font: inherit; caret-color: #67E8F9; }
+.cli-chips { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 18px 14px; border-top: 1px solid #1C2638; }
+.cli-chips button { font: 12px var(--mono); color: #C5D2E6; background: #0E1626; border: 1px solid #263248; border-radius: 99px; padding: 4px 10px; cursor: pointer; }
+.cli-chips button:hover { border-color: #3986FF; color: #fff; }
+
+/* revelado suave (solo con JS) */
+.js .rv { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
+.js .rv.in { opacity: 1; transform: none; }
+
+@media (max-width: 980px) {
+  nav.stages small { display: none; }
+  .hero { grid-template-columns: 1fr; gap: 36px; padding-top: 44px; }
+  .hero .term { order: 2; }
+  .flag-grid { grid-template-columns: 1fr; } .flag-copy { border-right: 0; border-bottom: 1px solid var(--line); }
+  .stack, .nums, .collab { grid-template-columns: 1fr 1fr; }
+  .flow { grid-template-columns: repeat(3, 1fr); row-gap: 28px; } .flow::before { display: none; }
+  .certs { grid-template-columns: 1fr 1fr !important; }
+}
+@media (max-width: 760px) {
+  .wrap { padding: 0 16px; }
+  .burger { display: inline-flex; }
+  nav.stages { display: none; position: absolute; top: 64px; left: 0; right: 0; flex-direction: column; align-items: stretch; background: var(--bg); border-bottom: 1px solid var(--line); padding: 10px 16px 14px; }
+  nav.stages.open { display: flex; }
+  nav.stages a { padding: 10px; font-size: 14px; }
+  .job { grid-template-columns: 1fr; gap: 6px; }
+  .grid, .stack, .two, .repos, .collab { grid-template-columns: 1fr; }
+  .flow { grid-template-columns: 1fr; gap: 18px; }
+  .flow::before { display: block; left: 14px; right: auto; top: 6px; bottom: 6px; width: 4px; height: auto; background: linear-gradient(180deg, var(--blue), var(--cyan), var(--green)); }
+  .flow li { text-align: left; padding: 0 0 0 46px; }
+  .flow i { position: absolute; left: 1px; top: 0; margin: 0; }
+  .shots { grid-template-columns: repeat(3, 1fr); padding: 18px; gap: 10px; }
+  .shots img { border-width: 3px; border-radius: 14px; }
+  .shots-note { grid-column: 1 / -1; margin: 0; }
+  .certs { grid-template-columns: 1fr !important; }
+  .nums b { font-size: 30px; }
+  .activity li { grid-template-columns: 1fr auto; } .activity .when { grid-column: 1 / -1; }
+  .repos a { border-right: 0; }
+  .neo { grid-template-columns: 80px 1fr; gap: 12px; } .neo img { width: 80px; height: 80px; }
+  .neo .k { width: 74px; }
+  .term-body { font-size: 12.5px; padding: 16px; }
+  .commits { grid-template-columns: repeat(2, 1fr); }
+  section.s { padding: 56px 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .js .rv { opacity: 1; transform: none; }
+  .deploy span { opacity: 1; }
+}
+</style>
+<script>
+  document.documentElement.classList.add('js');
+  try { var t = localStorage.getItem('tema'); if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t; } catch (e) {}
+</script>
 </head>
 <body>
+<a class="sr" href="#main">Saltar al contenido</a>
+<div class="progress" aria-hidden="true"><span id="pp"></span></div>
+
 <header class="top">
   <div class="wrap">
-    <strong>Luis Enrique González Ramírez</strong>
-    <nav aria-label="Secciones">
+    <a class="logo" href="#inicio" aria-label="Inicio"><em>❰</em><b>LGR</b><em>❱</em></a>
+    <nav class="stages" id="stages" aria-label="Secciones">
       <a href="#experiencia">Experiencia</a>
+      <a href="#equipo">Equipo</a>
+      <a href="#urbanblade">UrbanBlade</a>
       <a href="#proyectos">Proyectos</a>
-      <a href="#habilidades">Habilidades</a>
-      <a href="#educacion">Educación</a>
+      <a href="#certificaciones">Certificaciones</a>
       <a href="#contacto">Contacto</a>
     </nav>
+    <div class="tools">
+      <a class="icon-btn" href="cv.html">CV</a>
+      <button class="icon-btn" id="theme" type="button" aria-label="Cambiar tema claro u oscuro">◐</button>
+      <button class="icon-btn burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="stages">☰</button>
+    </div>
   </div>
 </header>
 
-<main class="wrap">
-  <section class="hero">
-    <h1>Luis Enrique González Ramírez</h1>
-    <p class="role">Desarrollador de software</p>
-    <p>Desarrollo plataformas web y APIs que están en producción. Actualmente trabajo en una plataforma de pagos institucional y en el portal corporativo de una empresa, a cargo de la autenticación, el control de accesos y el despliegue.</p>
-    <p>Fuera del trabajo construyo proyectos propios de punta a punta con Laravel, Nuxt, Spring Boot y Python. Vivo en Toluca, México, y estoy disponible para nuevas oportunidades.</p>
-    <div class="links">
-      <a class="btn fill" href="cv.html">Ver CV</a>
-      <a class="btn" href="#contacto">Contacto</a>
-      <a class="btn" href="https://github.com/KikeGonRam">GitHub</a>
-      <a class="btn" href="https://www.linkedin.com/in/luisgonzalezramirez-dev">LinkedIn</a>
+<main id="main">
+<div class="wrap">
+  <section class="hero" id="inicio">
+    <div class="term" aria-label="Terminal de presentación">
+      <div class="term-head"><b></b><b></b><b></b> kike@dev: ~</div>
+      <div class="term-body">
+        <div class="p">kike@dev<em>:~$</em> neofetch</div>
+        <div class="neo">
+          <img src="images/mi-foto.jpg" alt="Retrato de Luis Enrique González Ramírez" width="112" height="112">
+          <div>
+            <div class="u">luis<span style="color:var(--muted)">@</span><span style="color:var(--cyan)">kikegonram</span></div>
+            <hr>
+            <div><span class="k">rol</span>Full-stack · DevOps</div>
+            <div><span class="k">base</span>Toluca, México</div>
+            <div><span class="k">estudio</span>Ing. IDGS · UTVT</div>
+            <div><span class="k">stack</span>Laravel · Nuxt · Kotlin</div>
+            <div><span class="k">nube</span>AWS · Terraform</div>
+            <div class="chips" aria-hidden="true"><i style="background:#1769FF"></i><i style="background:#3986FF"></i><i style="background:#38BDF8"></i><i style="background:#67E8F9"></i><i style="background:#A78BFA"></i><i style="background:#28C840"></i></div>
+          </div>
+        </div>
+        <div class="p">kike@dev<em>:~$</em> ./deploy urbanblade --env staging</div>
+        <div class="deploy" id="deploy"><span class="ok">✓ build</span> <span class="ok">✓ test</span> <span class="ok">✓ scan</span> <span class="ok">✓ ecs</span> <span>→ urbanblade.com.mx</span></div>
+        <div class="p">kike@dev<em>:~$</em> <span class="cursor"></span></div>
+      </div>
+    </div>
+
+    <div>
+      <span class="kicker">KikeGonRam / software developer</span>
+      <h1>Luis<br>Enrique<span>.</span></h1>
+      <p class="tagline">Ideas claras. Código con carácter.</p>
+      <p class="roles mono" aria-live="polite">// <b id="role">full-stack: de la API a la app</b></p>
+      <p class="lead">Desarrollo plataformas web, APIs y apps que están en producción, y me encargo de que lleguen ahí: contenedores, pipelines e infraestructura como código. En el trabajo colaboro en una plataforma de pagos, un login corporativo y herramientas internas; por mi cuenta construyo sistemas completos con web, móvil, datos y nube.</p>
+      <div class="status">disponible para nuevas oportunidades</div>
+      <div class="cta">
+        <a class="btn fill" href="#urbanblade">Ver UrbanBlade</a>
+        <a class="btn" href="cv.html">Ver CV</a>
+        <a class="btn" href="https://github.com/KikeGonRam">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/luisgonzalezramirez-dev">LinkedIn</a>
+        <button type="button" class="btn cli-open" id="cli-open" aria-haspopup="dialog"><span class="mono" style="color:var(--cyan)">&gt;_</span> modo_cli()</button>
+      </div>
+      <p class="hint mono">tip: presiona <kbd>/</kbd> para abrir la terminal</p>
     </div>
   </section>
 
-  <section id="experiencia">
-    <h2>Experiencia</h2>
-    <div class="item">
-      <h3>Software Developer — Infraestructura Digital Corporativa</h3>
-      <p class="meta">Agosto 2025 – Presente · Contratado directamente tras la estadía</p>
-      <ul>
-        <li>Desarrollé el login principal del portal corporativo, el punto de acceso a los módulos internos.</li>
-        <li>Desarrollo y mantenimiento, en equipo, de una plataforma de pagos institucional en producción.</li>
-        <li>Autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo.</li>
-      </ul>
-      <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>TLS</li><li>Autenticación</li></ul>
-    </div>
-    <div class="item">
-      <h3>Estadía profesional — Infraestructura Digital Corporativa</h3>
-      <p class="meta">Abril – Agosto 2025</p>
-      <ul>
-        <li>Desarrollo de la plataforma de pagos institucional y del portal corporativo con autenticación y TLS.</li>
-        <li>Al terminar la estadía se formalizó la contratación.</li>
-      </ul>
-    </div>
-  </section>
+  <div class="nums" aria-label="Números">
+    <div class="rv"><b>1,229</b><span>commits en UrbanBlade</span><small>web · API · Android · Terraform</small></div>
+    <div class="rv"><b>821</b><span>commits en proyectos de equipo</span><small>16 repos privados de trabajo</small></div>
+    <div class="rv"><b>11</b><span>certificados</span><small>Cisco Networking Academy + AWS</small></div>
+    <div class="rv"><b>39</b><span>repos públicos</span><small>web, móvil, datos, IA y seguridad</small></div>
+  </div>
+</div>
 
-  <section id="proyectos">
-    <h2>Proyectos</h2>
-    <div class="item">
-      <h3>UrbanBlade — plataforma para barberías</h3>
-      <p class="meta">Proyecto en equipo · <a href="https://github.com/KikeGonRam/barber">API</a> · <a href="https://github.com/KikeGonRam/frontend_Urbanblade">Web</a> · <a href="https://github.com/KikeGonRam/spark">Analítica</a></p>
-      <p>Reservas, agenda, pagos, inventario y reportes. Web por roles (administrador, recepción, barbero y cliente) instalable como PWA, API REST con pagos en línea y una capa de analítica separada.</p>
-      <ul class="tags"><li>Laravel</li><li>Nuxt / Vue</li><li>TypeScript</li><li>MongoDB</li><li>Redis</li><li>Stripe</li><li>PySpark</li><li>GitHub Actions</li></ul>
+<section class="s" id="experiencia">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ git log <em>--author=kike --experiencia</em></div>
+      <h2>Experiencia <span>profesional</span></h2>
     </div>
-    <div class="item">
-      <h3>DBMonitor — observabilidad de bases de datos</h3>
-      <p class="meta"><a href="https://github.com/KikeGonRam/dbmonitor">Código</a></p>
-      <p>Monitoreo en tiempo real de MySQL y MongoDB: indicadores, consultas lentas, conexiones y almacenamiento. Autenticación con JWT y despliegue con Docker Compose.</p>
-      <ul class="tags"><li>React</li><li>Node.js</li><li>FastAPI</li><li>Docker</li></ul>
+    <div class="timeline">
+      <article class="job rv">
+        <div class="when">Ago 2025 — hoy<b>● en curso</b></div>
+        <div>
+          <h3>Software Developer</h3>
+          <div class="org">Infraestructura Digital Corporativa</div>
+          <ul>
+            <li>Desarrollé el login principal del portal corporativo, el punto de acceso a los módulos internos.</li>
+            <li>Desarrollo y mantenimiento, en equipo, de una plataforma de pagos institucional en producción.</li>
+            <li>Autenticación, seguridad TLS, control de accesos y despliegue en servidor productivo.</li>
+          </ul>
+          <ul class="tags"><li>Next.js</li><li>TypeScript</li><li>TLS</li><li>Autenticación</li></ul>
+        </div>
+      </article>
+      <article class="job rv">
+        <div class="when">Abr — Ago 2025<b style="color:var(--sky)">✓ contratado al terminar</b></div>
+        <div>
+          <h3>Estadía profesional</h3>
+          <div class="org">Infraestructura Digital Corporativa</div>
+          <ul><li>Plataforma de pagos institucional y portal corporativo con autenticación y TLS.</li></ul>
+        </div>
+      </article>
     </div>
-    <div class="item">
-      <h3>RAG con modelos locales</h3>
-      <p class="meta"><a href="https://github.com/KikeGonRam/RAG">Código</a></p>
-      <p>Sistema que responde preguntas con el contexto de tus propios documentos, sin APIs externas: fragmentación, embeddings, almacén vectorial y chat con streaming.</p>
-      <ul class="tags"><li>FastAPI</li><li>ChromaDB</li><li>Ollama</li></ul>
-    </div>
-    <div class="item">
-      <h3>VulnCore — escáner de vulnerabilidades</h3>
-      <p class="meta"><a href="https://github.com/KikeGonRam/vulncore">Código</a></p>
-      <p>Escaneo asíncrono de puertos y cruce con CVE (OSV, NVD) para servidores Linux, con panel web y alertas.</p>
-      <ul class="tags"><li>Rust</li><li>Go</li><li>Seguridad</li></ul>
-    </div>
-    <div class="item">
-      <h3>API de evaluación docente</h3>
-      <p class="meta"><a href="https://github.com/KikeGonRam/evaluacion-docente-api">Código</a></p>
-      <p>API REST con docentes, estudiantes, cuestionarios y evaluaciones, documentada con OpenAPI y con frontend en Next.js.</p>
-      <ul class="tags"><li>Java</li><li>Spring Boot</li><li>MySQL</li><li>Swagger</li></ul>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section id="habilidades">
-    <h2>Habilidades</h2>
-    <dl class="skills">
-      <dt>Lenguajes</dt><dd>Java, TypeScript, JavaScript, PHP, Python, SQL</dd>
-      <dt>Backend</dt><dd>Spring Boot, Laravel, Node.js, FastAPI, APIs REST y OpenAPI</dd>
-      <dt>Frontend</dt><dd>Next.js, React, Nuxt, Vue, Tailwind CSS</dd>
-      <dt>Datos</dt><dd>MySQL, MongoDB, Redis, PySpark, ChromaDB</dd>
-      <dt>Seguridad</dt><dd>TLS/HTTPS, JWT, control de acceso por roles</dd>
-      <dt>Calidad y operación</dt><dd>Git, GitHub Actions, Docker, PHPUnit, ESLint, SonarCloud, Postman</dd>
-    </dl>
-  </section>
-
-  <section id="educacion">
-    <h2>Educación</h2>
-    <div class="item">
-      <h3>Ingeniería en Desarrollo y Gestión de Software</h3>
-      <p class="meta">Universidad Tecnológica del Valle de Toluca · Septiembre 2025 – Presente</p>
+<section class="s" id="equipo">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ git shortlog -sn <em>--author=kike</em></div>
+      <h2>Trabajo en <span>equipo</span></h2>
+      <p>Proyectos donde colaboro con otros desarrolladores. Son repos privados del trabajo, así que muestro qué hacen y cuánto aporté, sin nombres internos.</p>
     </div>
-    <div class="item">
-      <h3>T.S.U. en Desarrollo de Software Multiplataforma</h3>
-      <p class="meta">Universidad Tecnológica del Valle de Toluca · 2022 – Agosto 2025 · Titulado</p>
+    <div class="collab">
+      <article class="co rv"><div class="co-top"><h3>Plataforma de pagos · web</h3><span class="role">colaborador</span></div><p>Gestión de pagos, solicitudes y usuarios con roles y reportes, en producción.</p><ul class="tags"><li>Next.js</li><li>TypeScript</li></ul><div class="meter" style="--v:.596"><i></i></div><div class="co-n"><b>528</b> de 886 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Plataforma de pagos · API</h3><span class="role">colaborador</span></div><p>Servicios del backend de la plataforma de pagos.</p><ul class="tags"><li>Node.js</li><li>JavaScript</li></ul><div class="meter" style="--v:.461"><i></i></div><div class="co-n"><b>129</b> de 280 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Login corporativo por roles</h3><span class="role">colaborador</span></div><p>Acceso general a los módulos internos, dividido por roles, con TLS.</p><ul class="tags"><li>Next.js</li><li>Python</li></ul><div class="meter" style="--v:.294"><i></i></div><div class="co-n"><b>37</b> de 126 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Gestión empresarial</h3><span class="role">colaborador</span></div><p>Sistema para administrar áreas internas de una empresa.</p><ul class="tags"><li>JavaScript</li><li>Python</li></ul><div class="meter" style="--v:.508"><i></i></div><div class="co-n"><b>30</b> de 59 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Extractor de estados de cuenta</h3><span class="role">colaborador</span></div><p>Lee estados de cuenta y obtiene los CEP del Banco de México.</p><ul class="tags"><li>Python</li><li>TypeScript</li></ul><div class="meter" style="--v:.491"><i></i></div><div class="co-n"><b>26</b> de 53 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Medición de tiempo remoto</h3><span class="role">colaborador</span></div><p>Mide tiempo y eficiencia del personal que trabaja a distancia.</p><ul class="tags"><li>JavaScript</li></ul><div class="meter" style="--v:.71"><i></i></div><div class="co-n"><b>22</b> de 31 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Sitio web corporativo</h3><span class="role">autor principal</span></div><p>Página web corporativa con su backend.</p><ul class="tags"><li>TypeScript</li><li>Python</li></ul><div class="meter" style="--v:1"><i></i></div><div class="co-n"><b>21</b> de 21 commits</div></article>
+      <article class="co rv"><div class="co-top"><h3>Gestor de contraseñas</h3><span class="role">autor principal</span></div><p>Aplicación para guardar y gestionar contraseñas.</p><ul class="tags"><li>JavaScript</li></ul><div class="meter" style="--v:1"><i></i></div><div class="co-n"><b>17</b> de 17 commits</div></article>
     </div>
-  </section>
+    <p class="foot-note rv">También colaboro en repos de compañeros de UrbanBlade: <a href="https://github.com/al140605/UrbanBladeMobile">UrbanBladeMobile</a> (303 de 308 commits) y <a href="https://github.com/al140605/barberterraform">barberterraform</a> (44 de 46).</p>
+  </div>
+</section>
 
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Toluca, Estado de México</p>
-    <p>
-      <a href="mailto:kikeramirez160418@gmail.com">kikeramirez160418@gmail.com</a><br>
-      <a href="tel:+527222501340">722 250 1340</a> · <a href="https://wa.me/527222501340">WhatsApp</a><br>
-      <a href="https://www.linkedin.com/in/luisgonzalezramirez-dev">LinkedIn</a> · <a href="https://github.com/KikeGonRam">GitHub</a>
-    </p>
-  </section>
+<section class="s" id="proceso">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ cat <em>~/</em>como-trabajo.md</div>
+      <h2>De la idea a <span>producción</span></h2>
+      <p>Así llevo un cambio desde el diseño hasta el servidor: el mismo flujo que uso en el trabajo y en mis proyectos.</p>
+    </div>
+    <ol class="flow rv">
+      <li><i></i><b>01 · contrato</b><span>Diseño la API primero: recursos, roles y errores.</span><small>OpenAPI · REST</small></li>
+      <li><i></i><b>02 · rama + PR</b><span>Cambios pequeños, revisables y con mensaje claro.</span><small>Git · GitHub</small></li>
+      <li><i></i><b>03 · pruebas</b><span>Unitarias, de integración y de extremo a extremo.</span><small>PHPUnit · Vitest · Playwright</small></li>
+      <li><i></i><b>04 · seguridad</b><span>Análisis estático y dependencias antes de fusionar.</span><small>CodeQL · auditoría</small></li>
+      <li><i></i><b>05 · imagen</b><span>Build reproducible en contenedor.</span><small>Docker · ECR</small></li>
+      <li class="last"><i></i><b>06 · deploy</b><span>Infraestructura como código y despliegue automatizado.</span><small>ECS Fargate · Terraform</small></li>
+    </ol>
+  </div>
+</section>
+
+<section class="s" id="urbanblade">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ cat <em>~/proyectos/</em>urbanblade/README.md</div>
+      <h2>Proyecto principal: <span>UrbanBlade</span></h2>
+      <p>Un sistema completo de punta a punta: API, web, app Android, analítica e infraestructura en AWS con despliegues automatizados. El caso de uso son negocios de servicios con citas, como barberías.</p>
+    </div>
+    <div class="flagship rv">
+      <div class="bar"><span>~/urbanblade · proyecto en equipo</span><a href="https://urbanblade.com.mx/">urbanblade.com.mx ↗</a></div>
+      <div class="flag-grid">
+        <div class="flag-copy">
+          <h3>Reservas, agenda y pagos para barberías</h3>
+          <p class="sub">Paneles por rol: administración, recepción, barbero y cliente.</p>
+          <dl>
+            <dt>Mi parte</dt><dd>API, web, app Android, infraestructura en AWS y pipelines de CI/CD.</dd>
+            <dt>Backend</dt><dd>Laravel 13 · MongoDB Atlas · Redis · Stripe</dd>
+            <dt>Clientes</dt><dd>Nuxt 4 (PWA) · Kotlin + Jetpack Compose</dd>
+            <dt>Operación</dt><dd>Docker · ECS Fargate · ECR · CloudFront · Terraform · GitHub Actions</dd>
+          </dl>
+          <div class="commits" aria-label="Commits propios por repositorio">
+            <div><b>512</b><span>web</span></div><div><b>370</b><span>API</span></div><div><b>303</b><span>Android</span></div><div><b>44</b><span>Terraform</span></div>
+          </div>
+        </div>
+        <div class="arch">
+          <svg viewBox="0 0 640 380" role="img" aria-labelledby="archT">
+            <title id="archT">Arquitectura: web y Android pasan por CloudFront a servicios en ECS Fargate (frontend Nuxt, API Laravel, chatbot con Ollama y analítica con PySpark), con MongoDB Atlas, Redis y Stripe. GitHub Actions publica imágenes en ECR y despliega en ECS; Terraform define la infraestructura.</title>
+            <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0l10 5-10 5z" fill="#3986FF"/></marker></defs>
+            <text class="l" x="0" y="14">CLIENTES</text>
+            <rect class="n" x="0" y="26" width="132" height="52" rx="9"/><text class="t" x="12" y="48">Web · PWA</text><text class="d" x="12" y="66">Nuxt 4</text>
+            <rect class="n" x="0" y="90" width="132" height="52" rx="9"/><text class="t" x="12" y="112">Android</text><text class="d" x="12" y="130">Kotlin</text>
+            <text class="l" x="164" y="14">BORDE</text>
+            <rect class="n hi" x="164" y="56" width="120" height="58" rx="9"/><text class="t" x="176" y="80">CloudFront</text><text class="d" x="176" y="99">CDN · TLS</text>
+            <text class="l" x="318" y="14">ECS FARGATE</text>
+            <rect x="318" y="24" width="168" height="206" rx="11" fill="none" stroke="#3986FF" stroke-dasharray="4 4"/>
+            <rect class="n" x="330" y="36" width="144" height="38" rx="7"/><text class="t" x="342" y="60">frontend</text>
+            <rect class="n hi" x="330" y="82" width="144" height="38" rx="7"/><text class="t" x="342" y="106">barber · API</text>
+            <rect class="n" x="330" y="128" width="144" height="38" rx="7"/><text class="t" x="342" y="152">ollama · chatbot</text>
+            <rect class="n" x="330" y="174" width="144" height="38" rx="7"/><text class="t" x="342" y="198">spark · analítica</text>
+            <text class="l" x="514" y="14">DATOS</text>
+            <rect class="n" x="514" y="30" width="126" height="40" rx="9"/><text class="t" x="526" y="55">MongoDB</text>
+            <rect class="n" x="514" y="80" width="126" height="40" rx="9"/><text class="t" x="526" y="105">Redis</text>
+            <rect class="n" x="514" y="130" width="126" height="40" rx="9"/><text class="t" x="526" y="155">Stripe</text>
+            <g marker-end="url(#ar)"><path class="w" d="M132 52q20 0 30 20"/><path class="w" d="M132 116q20 0 30-20"/><path class="w" d="M284 85h32"/><path class="w" d="M474 101h38"/><path class="w" d="M474 101q22 0 38-50"/><path class="w" d="M474 101q22 0 38 48"/></g>
+            <text class="l" x="0" y="262">PIPELINE</text>
+            <rect class="n" x="0" y="274" width="94" height="34" rx="8"/><text class="d" x="12" y="296">git push</text>
+            <rect class="n" x="110" y="274" width="104" height="34" rx="8"/><text class="d" x="122" y="296">Actions</text>
+            <rect class="n" x="230" y="274" width="94" height="34" rx="8"/><text class="d" x="242" y="296">pruebas</text>
+            <rect class="n" x="340" y="274" width="84" height="34" rx="8"/><text class="d" x="352" y="296">ECR</text>
+            <rect class="n hi" x="440" y="274" width="84" height="34" rx="8"/><text class="d" x="452" y="296">ECS</text>
+            <g marker-end="url(#ar)"><path class="w" d="M94 291h14"/><path class="w" d="M214 291h14"/><path class="w" d="M324 291h14"/><path class="w" d="M424 291h14"/></g>
+            <rect class="n" x="0" y="324" width="560" height="34" rx="8"/><text class="d" x="12" y="346">Terraform → VPC · ECS · ECR · CloudFront · staging y efímero</text>
+          </svg>
+        </div>
+      </div>
+      <div class="repos">
+        <a href="https://github.com/KikeGonRam/barber"><b>barber</b><span>API REST · Laravel</span></a>
+        <a href="https://github.com/KikeGonRam/frontend_Urbanblade"><b>frontend_Urbanblade</b><span>Web y PWA · Nuxt</span></a>
+        <a href="https://github.com/al140605/UrbanBladeMobile"><b>UrbanBladeMobile</b><span>App Android · Kotlin</span></a>
+        <a href="https://github.com/al140605/barberterraform"><b>barberterraform</b><span>Infraestructura · Terraform</span></a>
+        <a href="https://github.com/KikeGonRam/urbanblade-ci"><b>urbanblade-ci</b><span>Pipelines · GitHub Actions</span></a>
+        <a href="https://github.com/KikeGonRam/spark"><b>spark</b><span>Analítica · PySpark</span></a>
+      </div>
+      <div class="shots">
+        <figure><img src="images/app-inicio.jpg" alt="App Android de UrbanBlade: inicio con la próxima cita confirmada" width="360" height="720" loading="lazy"><figcaption>inicio</figcaption></figure>
+        <figure><img src="images/app-reservar.jpg" alt="App Android de UrbanBlade: catálogo de servicios para reservar" width="360" height="720" loading="lazy"><figcaption>reservar</figcaption></figure>
+        <figure><img src="images/app-citas.jpg" alt="App Android de UrbanBlade: historial de citas" width="360" height="720" loading="lazy"><figcaption>mis citas</figcaption></figure>
+        <p class="shots-note mono">app Android nativa · Kotlin + Jetpack Compose<br><span>capturas del entorno de demostración</span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="proyectos">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ ls <em>~/proyectos</em> --personales</div>
+      <h2>Otros <span>proyectos</span></h2>
+    </div>
+    <div class="grid">
+      <a class="card rv" href="https://github.com/KikeGonRam/dbmonitor"><div class="ch"><b></b><b></b><b></b><span>~/dbmonitor</span></div><div class="cb"><h3>DBMonitor</h3><p>Monitoreo en tiempo real de MySQL y MongoDB: indicadores, consultas lentas, conexiones y almacenamiento, con JWT y Docker Compose.</p><ul class="tags"><li>React</li><li>Node.js</li><li>FastAPI</li><li>Docker</li></ul><span class="go">ver código →</span></div></a>
+      <a class="card rv" href="https://github.com/KikeGonRam/RAG"><div class="ch"><b></b><b></b><b></b><span>~/rag</span></div><div class="cb"><h3>RAG con modelos locales</h3><p>Responde preguntas con el contexto de tus documentos sin APIs externas: fragmentación, embeddings, almacén vectorial y chat con streaming.</p><ul class="tags"><li>FastAPI</li><li>ChromaDB</li><li>Ollama</li></ul><span class="go">ver código →</span></div></a>
+      <a class="card rv" href="https://github.com/KikeGonRam/vulncore"><div class="ch"><b></b><b></b><b></b><span>~/vulncore</span></div><div class="cb"><h3>VulnCore</h3><p>Escaneo asíncrono de puertos y cruce con CVE (OSV, NVD) para servidores Linux, con panel web.</p><ul class="tags"><li>Go</li><li>Rust</li><li>Seguridad</li></ul><span class="go">ver código →</span></div></a>
+      <a class="card rv" href="https://github.com/KikeGonRam/evaluacion-docente-api"><div class="ch"><b></b><b></b><b></b><span>~/evaluacion-docente</span></div><div class="cb"><h3>API de evaluación docente</h3><p>Docentes, estudiantes, cuestionarios y evaluaciones, documentada con OpenAPI y con frontend en Next.js.</p><ul class="tags"><li>Java</li><li>Spring Boot</li><li>MySQL</li></ul><span class="go">ver código →</span></div></a>
+      <a class="card rv" href="https://github.com/KikeGonRam/scholl-sice"><div class="ch"><b></b><b></b><b></b><span>~/sice</span></div><div class="cb"><h3>SICE — gestión escolar</h3><p>Plataforma multi-escuela con paneles por rol para administración, docentes y alumnos.</p><ul class="tags"><li>Laravel 12</li><li>Inertia</li><li>Vue 3</li></ul><span class="go">ver código →</span></div></a>
+      <a class="card rv" href="https://github.com/KikeGonRam/Workflow-Studio-OpenClaw-Ollama"><div class="ch"><b></b><b></b><b></b><span>~/workflow-studio</span></div><div class="cb"><h3>Workflow Studio</h3><p>Sitio full-stack dockerizado para demostrar IA aplicada con modelos locales.</p><ul class="tags"><li>React</li><li>Vite</li><li>Nginx</li><li>Ollama</li></ul><span class="go">ver código →</span></div></a>
+    </div>
+    <div class="activity rv" id="activity" hidden>
+      <div class="term">
+        <div class="term-head"><b></b><b></b><b></b> git log --repos --recientes</div>
+        <ol class="term-body" id="activity-list"></ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="certificaciones">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ verify <em>~/certificaciones/*</em></div>
+      <h2>Certificaciones <span>verificables</span></h2>
+    </div>
+    <div class="filters" role="group" aria-label="Filtrar certificaciones">
+      <button type="button" class="on" data-f="all">Todas <span>11</span></button>
+      <button type="button" data-f="redes">Redes <span>3</span></button>
+      <button type="button" data-f="seg">Seguridad <span>1</span></button>
+      <button type="button" data-f="prog">Programación y sistemas <span>4</span></button>
+      <button type="button" data-f="cloud">Cloud e IA <span>1</span></button>
+      <button type="button" data-f="pro">Profesional <span>2</span></button>
+    </div>
+    <div class="certs">
+      <article class="cert rv" data-c="cloud" style="--accent:#FF9900">
+        <div class="iss">Amazon Web Services</div>
+        <h3>AWS Academy Graduate — Generative AI Foundations</h3>
+        <div class="meta">insignia · 12 h · oct 2026</div>
+        <a href="https://www.credly.com/badges/6b6503ba-8c58-4927-a820-5750b08b165d">verificar en Credly ↗</a>
+      </article>
+      <article class="cert rv" data-c="redes" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>CCNA: Introduction to Networks</h3><div class="meta">CCNAv7 · insignia + certificado · ene 2024</div></article>
+      <article class="cert rv" data-c="redes" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>CCNA: Switching, Routing and Wireless Essentials</h3><div class="meta">CCNAv7 · insignia + certificado · may 2024</div></article>
+      <article class="cert rv" data-c="seg" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Introducción a la Ciberseguridad</h3><div class="meta">insignia + certificado · jun 2024</div></article>
+      <article class="cert rv" data-c="prog" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Fundamentos de Python 1</h3><div class="meta">Python Essentials · insignia + certificado · jul 2024</div></article>
+      <article class="cert rv" data-c="prog" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Conceptos básicos de hardware de computadora</h3><div class="meta">insignia + certificado · jun 2024</div></article>
+      <article class="cert rv" data-c="prog" style="--accent:#22C55E"><div class="iss">NDG · Cisco</div><h3>Linux Essentials</h3><div class="meta">certificado · jul 2024</div></article>
+      <article class="cert rv" data-c="prog" style="--accent:#22C55E"><div class="iss">NDG · Cisco</div><h3>Linux Unhatched</h3><div class="meta">certificado · jul 2024</div></article>
+      <article class="cert rv" data-c="redes" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Getting Started with Cisco Packet Tracer</h3><div class="meta">certificado · sep 2023</div></article>
+      <article class="cert rv" data-c="pro" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Career Preparation Workshop</h3><div class="meta">insignia + certificado · ago 2024</div></article>
+      <article class="cert rv" data-c="pro" style="--accent:#049FD9"><div class="iss">Cisco</div><h3>Get Connected</h3><div class="meta">certificado · jul 2024</div></article>
+    </div>
+    <p class="foot-note rv">Las de Cisco se pueden consultar en Cisco Networking Academy; la de AWS, en Credly.</p>
+  </div>
+</section>
+
+<section class="s" id="stack">
+  <div class="wrap">
+    <div class="s-head rv">
+      <div class="s-cmd">$ cat <em>~/.config/</em>stack.toml</div>
+      <h2>Caja de <span>herramientas</span></h2>
+    </div>
+    <div class="stack">
+      <div class="rv"><h3>Backend</h3><img src="https://skillicons.dev/icons?i=laravel,php,spring,java,nodejs,fastapi,python&amp;theme=dark&amp;perline=7" alt="" loading="lazy"><p>Laravel · Spring Boot · Node.js · FastAPI · APIs REST y OpenAPI</p></div>
+      <div class="rv"><h3>Frontend</h3><img src="https://skillicons.dev/icons?i=nuxtjs,vue,nextjs,react,ts,tailwind&amp;theme=dark" alt="" loading="lazy"><p>Nuxt · Vue · Next.js · React · TypeScript · Tailwind CSS</p></div>
+      <div class="rv"><h3>Móvil</h3><img src="https://skillicons.dev/icons?i=kotlin,androidstudio&amp;theme=dark" alt="" loading="lazy"><p>Kotlin · Jetpack Compose</p></div>
+      <div class="rv"><h3>Datos</h3><img src="https://skillicons.dev/icons?i=mongodb,mysql,redis,postgres&amp;theme=dark" alt="" loading="lazy"><p>MongoDB · MySQL · Redis · PySpark · ChromaDB</p></div>
+      <div class="rv"><h3>Cloud y DevOps</h3><img src="https://skillicons.dev/icons?i=aws,terraform,docker,githubactions,linux,nginx&amp;theme=dark" alt="" loading="lazy"><p>AWS (ECS Fargate, ECR, CloudFront) · Terraform · Docker · GitHub Actions</p></div>
+      <div class="rv"><h3>Calidad y seguridad</h3><img src="https://skillicons.dev/icons?i=git,github,postman&amp;theme=dark" alt="" loading="lazy"><p>PHPUnit · Vitest · Playwright · CodeQL · SonarCloud · TLS · JWT</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="s" id="contacto">
+  <div class="wrap two">
+    <div>
+      <div class="s-head rv">
+        <div class="s-cmd">$ cat <em>~/</em>educacion</div>
+        <h2>Educación</h2>
+      </div>
+      <div class="timeline">
+        <div class="edu rv"><h3>Ingeniería en Desarrollo y Gestión de Software</h3><p>UTVT · sep 2025 — hoy</p></div>
+        <div class="edu rv"><h3>T.S.U. en Desarrollo de Software Multiplataforma</h3><p>UTVT · 2022 — ago 2025 · titulado</p></div>
+      </div>
+    </div>
+    <div class="contact">
+      <div class="s-head rv">
+        <div class="s-cmd">$ ./hablemos <em>--ahora</em></div>
+        <h2>Contacto</h2>
+      </div>
+      <div class="term rv">
+        <div class="term-head"><b></b><b></b><b></b> contacto</div>
+        <div class="term-body">
+          <div><span class="k">correo</span><a href="mailto:kikeramirez160418@gmail.com">kikeramirez160418@gmail.com</a></div>
+          <div><span class="k">whatsapp</span><a href="https://wa.me/527222501340">722 250 1340</a></div>
+          <div><span class="k">linkedin</span><a href="https://www.linkedin.com/in/luisgonzalezramirez-dev">luisgonzalezramirez-dev</a></div>
+          <div><span class="k">github</span><a href="https://github.com/KikeGonRam">KikeGonRam</a></div>
+          <div><span class="k">base</span>Toluca, Estado de México</div>
+          <div class="p" style="margin-top:10px">kike@dev<em>:~$</em> <span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
+<div class="cli" id="cli" role="dialog" aria-modal="true" aria-labelledby="cli-title" hidden>
+  <div class="cli-win">
+    <div class="term-head"><b></b><b></b><b></b> <span id="cli-title">kike@dev: ~ — modo_cli()</span><button type="button" class="cli-x" id="cli-close" aria-label="Cerrar terminal">esc ✕</button></div>
+    <div class="cli-body" id="cli-body" aria-live="polite"></div>
+    <form class="cli-form" id="cli-form" autocomplete="off">
+      <label for="cli-input" class="p">kike@dev<em>:~$</em></label>
+      <input id="cli-input" type="text" spellcheck="false" autocapitalize="off" aria-label="Comando">
+    </form>
+    <div class="cli-chips" id="cli-chips" aria-label="Comandos sugeridos"></div>
+  </div>
+</div>
+
 <footer>
-  <div class="wrap">© 2026 Luis Enrique González Ramírez · <a href="cv.html">CV</a> · <a href="Luis-Gonzalez-CV.pdf">CV en PDF</a></div>
+  <div class="wrap">
+    <span>© 2026 Luis Enrique González Ramírez · ideas claras, código con carácter</span>
+    <span><a href="cv.html">CV</a> · <a href="Luis-Gonzalez-CV.pdf">CV en PDF</a></span>
+  </div>
 </footer>
+
+<script>
+(function () {
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Barra de progreso (poste de barbero) y etapa activa del pipeline
+  var pp = document.getElementById('pp');
+  var links = Array.prototype.slice.call(document.querySelectorAll('nav.stages a'));
+  var secs = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  function onScroll() {
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    pp.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+    var y = h.scrollTop + 120, cur = -1;
+    secs.forEach(function (s, i) { if (s && s.offsetTop <= y) cur = i; });
+    if (max > 0 && max - h.scrollTop < 4) cur = secs.length - 1;
+    links.forEach(function (a, i) { a.classList.toggle('done', i < cur); a.classList.toggle('now', i === cur); });
+  }
+  window.addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  // Menú móvil
+  var burger = document.getElementById('burger'), nav = document.getElementById('stages');
+  burger.addEventListener('click', function () { var o = nav.classList.toggle('open'); burger.setAttribute('aria-expanded', o); });
+  links.forEach(function (a) { a.addEventListener('click', function () { nav.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); }); });
+
+  // Tema
+  document.getElementById('theme').addEventListener('click', function () {
+    var root = document.documentElement;
+    var next = root.dataset.theme === 'light' ? 'dark' : 'light';
+    root.dataset.theme = next;
+    try { localStorage.setItem('tema', next); } catch (e) {}
+  });
+
+  // Pasos del despliegue en la terminal
+  document.querySelectorAll('#deploy span').forEach(function (s, i) { s.style.animationDelay = (reduce ? 0 : 0.6 + i * 0.45) + 's'; });
+
+  // Roles rotando
+  var roles = ['full-stack: de la API a la app', 'devops: contenedores, pipelines e IaC', 'cloud: AWS + Terraform', 'móvil: Kotlin + Compose'];
+  var el = document.getElementById('role'), r = 0;
+  if (!reduce) setInterval(function () { r = (r + 1) % roles.length; el.textContent = roles[r]; }, 3200);
+
+  // Filtro de certificaciones
+  var fbtns = document.querySelectorAll('.filters button');
+  fbtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      fbtns.forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-pressed', x === b); });
+      var f = b.dataset.f;
+      document.querySelectorAll('.cert').forEach(function (c) { c.hidden = !(f === 'all' || c.dataset.c === f); });
+    });
+  });
+
+  // Actividad reciente (API pública de GitHub); si falla, la sección no aparece
+  if (window.fetch) {
+    fetch('https://api.github.com/users/KikeGonRam/repos?sort=pushed&per_page=6')
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (repos) {
+        var list = document.getElementById('activity-list');
+        repos.filter(function (x) { return !x.fork; }).slice(0, 5).forEach(function (x) {
+          var li = document.createElement('li');
+          var d = new Date(x.pushed_at);
+          var when = document.createElement('span'); when.className = 'when';
+          when.textContent = d.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
+          var a = document.createElement('a'); a.href = x.html_url; a.textContent = x.name;
+          var lang = document.createElement('span'); lang.className = 'lang'; lang.textContent = x.language || '';
+          li.append(when, a, lang); list.appendChild(li);
+        });
+        if (list.children.length) document.getElementById('activity').hidden = false;
+      })
+      .catch(function () {});
+  }
+
+  // ── modo_cli(): terminal interactiva ──
+  (function () {
+    var cli = document.getElementById('cli'), body = document.getElementById('cli-body');
+    var form = document.getElementById('cli-form'), input = document.getElementById('cli-input');
+    var chips = document.getElementById('cli-chips'), opener = document.getElementById('cli-open');
+    var hist = [], hi = -1, lastFocus = null, greeted = false;
+
+    // Cada línea es una lista de piezas: texto plano o {t, c (clase), href}
+    function line(parts) {
+      var d = document.createElement('div');
+      (Array.isArray(parts) ? parts : [parts]).forEach(function (p) {
+        if (typeof p === 'string') { d.appendChild(document.createTextNode(p)); return; }
+        var n = document.createElement(p.href ? 'a' : 'span');
+        if (p.href) { n.href = p.href; if (/^https?:/.test(p.href)) { n.target = '_blank'; n.rel = 'noopener noreferrer'; } }
+        if (p.c) n.className = p.c;
+        n.textContent = p.t; d.appendChild(n);
+      });
+      body.appendChild(d); body.scrollTop = body.scrollHeight;
+    }
+    function lines(arr) { arr.forEach(line); }
+    function gh(repo, label) { return { t: label || repo, href: 'https://github.com/' + repo }; }
+
+    var C = {
+      help: { d: 'lista de comandos', f: function () {
+        line({ t: 'comandos disponibles:', c: 'hl' });
+        Object.keys(C).forEach(function (k) { if (!C[k].hidden) line(['  ', { t: (k + '            ').slice(0, 12), c: 'ok' }, { t: C[k].d, c: 'dim' }]); });
+        line({ t: '  ↑ ↓ historial · Tab autocompleta · Esc cierra', c: 'dim' });
+      } },
+      whoami: { d: 'quién soy', f: function () { lines([
+        [{ t: 'Luis Enrique González Ramírez', c: 'hl' }, ' — full-stack & DevOps'],
+        'Toluca, México · Ing. en Desarrollo y Gestión de Software (UTVT)',
+        'APIs, web, Android e infraestructura en la nube. Ideas claras. Código con carácter.']); } },
+      neofetch: { d: 'resumen del sistema', f: function () { lines([
+        [{ t: 'luis', c: 'ok' }, '@', { t: 'kikegonram', c: 'hl' }], '──────────────────',
+        [{ t: 'rol      ', c: 'hl' }, 'Full-stack · DevOps'], [{ t: 'stack    ', c: 'hl' }, 'Laravel · Nuxt · Kotlin · Next.js'],
+        [{ t: 'nube     ', c: 'hl' }, 'AWS (ECS, ECR, CloudFront) · Terraform'], [{ t: 'certs    ', c: 'hl' }, '10 Cisco · 1 AWS'],
+        [{ t: 'estado   ', c: 'hl' }, { t: '● disponible', c: 'ok' }]]); } },
+      experiencia: { d: 'experiencia profesional', f: function () { lines([
+        [{ t: 'ago 2025 — hoy  ', c: 'dim' }, { t: 'Software Developer', c: 'hl' }, ' · Infraestructura Digital Corporativa'],
+        '  login principal del portal corporativo · plataforma de pagos en producción · TLS y despliegue',
+        [{ t: 'abr — ago 2025  ', c: 'dim' }, { t: 'Estadía profesional', c: 'hl' }, ' → contratado al terminar']]); } },
+      equipo: { d: 'proyectos de trabajo en equipo', f: function () {
+        line({ t: '$ git shortlog -sn --author=kike', c: 'dim' });
+        [['Plataforma de pagos · web', 528, 886], ['Plataforma de pagos · API', 129, 280], ['Login corporativo', 37, 126], ['Gestión empresarial', 30, 59],
+         ['Extractor de estados de cuenta', 26, 53], ['Medición de tiempo remoto', 22, 31], ['Sitio web corporativo', 21, 21], ['Gestor de contraseñas', 17, 17]]
+          .forEach(function (r) { var n = Math.round(r[1] / r[2] * 20); line([(r[0] + '                              ').slice(0, 31), { t: '█'.repeat(n), c: 'hl' }, { t: '░'.repeat(20 - n), c: 'dim' }, ' ' + r[1] + '/' + r[2]]); });
+      } },
+      proyectos: { d: 'ls ~/proyectos', f: function () { lines([
+        [gh('KikeGonRam/barber', 'urbanblade/'), { t: '      API, web, Android, IaC y CI/CD en AWS', c: 'dim' }],
+        [gh('KikeGonRam/dbmonitor', 'dbmonitor/'), { t: '       observabilidad MySQL/MongoDB', c: 'dim' }],
+        [gh('KikeGonRam/RAG', 'rag/'), { t: '             IA local con FastAPI, ChromaDB y Ollama', c: 'dim' }],
+        [gh('KikeGonRam/vulncore', 'vulncore/'), { t: '        escáner con cruce de CVE (Go, Rust)', c: 'dim' }],
+        [gh('KikeGonRam/scholl-sice', 'sice/'), { t: '            gestión escolar multi-escuela', c: 'dim' }],
+        [gh('KikeGonRam/evaluacion-docente-api', 'evaluacion-docente/'), { t: ' Spring Boot + Next.js', c: 'dim' }],
+        ['escribe ', { t: 'urbanblade', c: 'ok' }, ' para ver el detalle del proyecto principal']]); } },
+      urbanblade: { d: 'detalle de UrbanBlade', f: function () { lines([
+        [{ t: 'UrbanBlade', c: 'hl' }, ' — reservas, agenda, pagos e inventario con paneles por rol'],
+        ['  api      ', gh('KikeGonRam/barber', 'barber'), { t: '  Laravel 13 · MongoDB · Redis · Stripe', c: 'dim' }],
+        ['  web      ', gh('KikeGonRam/frontend_Urbanblade', 'frontend_Urbanblade'), { t: '  Nuxt 4 · PWA', c: 'dim' }],
+        ['  android  ', gh('al140605/UrbanBladeMobile', 'UrbanBladeMobile'), { t: '  Kotlin · Compose', c: 'dim' }],
+        ['  infra    ', gh('al140605/barberterraform', 'barberterraform'), { t: '  Terraform · ECS · ECR · CloudFront', c: 'dim' }],
+        ['  ci       ', gh('KikeGonRam/urbanblade-ci', 'urbanblade-ci'), { t: '  GitHub Actions', c: 'dim' }],
+        ['  sitio    ', { t: 'urbanblade.com.mx', href: 'https://urbanblade.com.mx/' }]]); } },
+      deploy: { d: 'simula un despliegue', f: function () {
+        var steps = ['git push origin main', '✓ pruebas (PHPUnit · Vitest · Playwright)', '✓ CodeQL y auditoría de dependencias', '✓ imagen Docker → ECR', '✓ ECS Fargate: servicio actualizado', '→ https://urbanblade.com.mx'];
+        input.disabled = true;
+        steps.forEach(function (s, i) { setTimeout(function () { line({ t: s, c: i === 0 ? 'dim' : (s[0] === '✓' ? 'ok' : 'hl') }); if (i === steps.length - 1) { input.disabled = false; input.focus(); } }, reduce ? 0 : 380 * i); });
+      } },
+      certs: { d: 'certificaciones', f: function () { lines([
+        [{ t: 'AWS   ', c: 'hl' }, 'Generative AI Foundations ·········· oct 2026 ', { t: 'Credly', href: 'https://www.credly.com/badges/6b6503ba-8c58-4927-a820-5750b08b165d' }],
+        [{ t: 'Cisco ', c: 'hl' }, 'CCNA: Introduction to Networks ····· ene 2024'],
+        [{ t: 'Cisco ', c: 'hl' }, 'CCNA: Switching, Routing, Wireless · may 2024'],
+        [{ t: 'Cisco ', c: 'hl' }, 'Introducción a la Ciberseguridad ··· jun 2024'],
+        [{ t: 'Cisco ', c: 'hl' }, 'Fundamentos de Python 1 ············ jul 2024'],
+        [{ t: 'Cisco ', c: 'hl' }, 'Hardware · Linux Essentials · Linux Unhatched · Packet Tracer · Get Connected · Career Prep']]); } },
+      stack: { d: 'cat stack.toml', f: function () { lines([
+        [{ t: 'backend   ', c: 'hl' }, 'Laravel, Spring Boot, Node.js, FastAPI'], [{ t: 'frontend  ', c: 'hl' }, 'Nuxt, Vue, Next.js, React, TypeScript, Tailwind'],
+        [{ t: 'movil     ', c: 'hl' }, 'Kotlin, Jetpack Compose'], [{ t: 'datos     ', c: 'hl' }, 'MongoDB, MySQL, Redis, PySpark, ChromaDB'],
+        [{ t: 'devops    ', c: 'hl' }, 'AWS, Terraform, Docker, GitHub Actions, Linux']]); } },
+      contacto: { d: 'cómo contactarme', f: function () { lines([
+        [{ t: 'correo    ', c: 'hl' }, { t: 'kikeramirez160418@gmail.com', href: 'mailto:kikeramirez160418@gmail.com' }],
+        [{ t: 'whatsapp  ', c: 'hl' }, { t: '722 250 1340', href: 'https://wa.me/527222501340' }],
+        [{ t: 'linkedin  ', c: 'hl' }, { t: 'luisgonzalezramirez-dev', href: 'https://www.linkedin.com/in/luisgonzalezramirez-dev' }],
+        [{ t: 'github    ', c: 'hl' }, { t: 'KikeGonRam', href: 'https://github.com/KikeGonRam' }]]); } },
+      cv: { d: 'abre mi CV', f: function () { line({ t: 'abriendo cv.html…', c: 'dim' }); window.open('cv.html', '_blank', 'noopener'); } },
+      tema: { d: 'cambia tema claro/oscuro', f: function () { document.getElementById('theme').click(); line({ t: 'tema: ' + (document.documentElement.dataset.theme || 'dark'), c: 'ok' }); } },
+      history: { d: 'comandos usados', f: function () { hist.slice().reverse().forEach(function (h, i) { line({ t: '  ' + (i + 1) + '  ' + h, c: 'dim' }); }); } },
+      clear: { d: 'limpia la pantalla', f: function () { body.textContent = ''; } },
+      exit: { d: 'cierra la terminal', f: function () { close(); } },
+      sudo: { hidden: true, f: function () { line({ t: 'kike no está en el archivo sudoers. Este incidente será reportado. 🙂', c: 'err' }); } },
+      ls: { hidden: true, f: function () { C.proyectos.f(); } },
+      ayuda: { hidden: true, f: function () { C.help.f(); } },
+      salir: { hidden: true, f: function () { close(); } }
+    };
+
+    ['help', 'whoami', 'equipo', 'proyectos', 'deploy', 'certs', 'contacto'].forEach(function (k) {
+      var b = document.createElement('button'); b.type = 'button'; b.textContent = k;
+      b.addEventListener('click', function () { run(k); input.focus(); }); chips.appendChild(b);
+    });
+
+    function run(raw) {
+      var cmd = raw.trim(); if (!cmd) return;
+      line([{ t: 'kike@dev', c: 'echo' }, { t: ':~$ ', c: 'echo' }, cmd]);
+      hist.unshift(cmd); hi = -1;
+      var k = cmd.split(/\s+/)[0].toLowerCase();
+      if (k === 'sudo') k = 'sudo';
+      if (C[k]) C[k].f(); else line([{ t: 'comando no encontrado: ' + k, c: 'err' }, { t: ' — escribe help', c: 'dim' }]);
+    }
+    function open() {
+      lastFocus = document.activeElement; cli.hidden = false; document.body.style.overflow = 'hidden';
+      if (!greeted) { greeted = true; line({ t: 'Bienvenido a modo_cli(). Escribe help o toca un comando de abajo.', c: 'dim' }); C.neofetch.f(); }
+      input.focus();
+    }
+    function close() { cli.hidden = true; document.body.style.overflow = ''; if (lastFocus) lastFocus.focus(); }
+
+    opener.addEventListener('click', open);
+    document.getElementById('cli-close').addEventListener('click', close);
+    cli.addEventListener('click', function (ev) { if (ev.target === cli) close(); });
+    form.addEventListener('submit', function (ev) { ev.preventDefault(); var v = input.value; input.value = ''; run(v); });
+    input.addEventListener('keydown', function (ev) {
+      if (ev.key === 'ArrowUp' && hist.length) { hi = Math.min(hi + 1, hist.length - 1); input.value = hist[hi]; ev.preventDefault(); }
+      else if (ev.key === 'ArrowDown') { hi = Math.max(hi - 1, -1); input.value = hi < 0 ? '' : hist[hi]; ev.preventDefault(); }
+      else if (ev.key === 'Tab') { var m = Object.keys(C).filter(function (k) { return !C[k].hidden && k.indexOf(input.value) === 0; }); if (m.length === 1) input.value = m[0]; ev.preventDefault(); }
+    });
+    document.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape' && !cli.hidden) close();
+      var tag = (ev.target.tagName || '').toLowerCase();
+      if (ev.key === '/' && cli.hidden && tag !== 'input' && tag !== 'textarea') { ev.preventDefault(); open(); }
+    });
+  })();
+
+  // Revelado al hacer scroll
+  var items = document.querySelectorAll('.rv');
+  if (!('IntersectionObserver' in window) || reduce) { items.forEach(function (n) { n.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -8% 0px' });
+  items.forEach(function (n) { io.observe(n); });
+})();
+</script>
 </body>
 </html>
